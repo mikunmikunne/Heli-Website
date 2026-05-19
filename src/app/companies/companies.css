@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-label: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: #006948;
+  --color-primary-container: #00855d;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #f5fff7;
+  
+  --color-secondary: #006a61;
+  --color-secondary-container: #86f2e4;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-fixed-variant: #005049;
+
+  --color-surface: #f8f9fa;
+  --color-surface-container-low: #f3f4f5;
+  --color-surface-container-high: #e7e8e9;
+  --color-surface-container-highest: #e1e3e4;
+  --color-surface-container-lowest: #ffffff;
+  
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #3d4a42;
+  
+  --color-outline-variant: #bccac0;
+  --color-error: #ba1a1a;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body antialiased;
+  }
+}
+
+.glass-nav {
+  @apply bg-white/70 backdrop-blur-xl;
+}
+
+.ambient-shadow {
+  box-shadow: 0 40px 60px -10px rgba(25, 28, 29, 0.04);
+}
