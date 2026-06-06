@@ -45,10 +45,10 @@ export default function Header() {
     <>
       <header className="fixed top-0 w-full z-60 glass-nav border-b border-outline-variant/30 shadow-sm">
         <nav className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <Link href="/" className="flex items-center gap-2.5 text-lg sm:text-xl font-bold text-emerald-950 dark:text-emerald-300 tracking-tight z-50 hover:opacity-90 transition-opacity">
+          <Link href="/" className="flex items-center gap-2 text-lg sm:text-xl font-bold text-emerald-950 dark:text-emerald-300 tracking-tight z-50 hover:opacity-90 transition-opacity">
             <svg
               className="w-8 h-8 sm:w-9 sm:h-9 transition-colors shrink-0"
-              viewBox="0 0 200 200"
+              viewBox="21 25 158 158"
               fill="none"
             >
               <path d="M60 160 L50 180 M120 160 L130 180" stroke="#064e3b" strokeWidth="6" strokeLinecap="round" />
