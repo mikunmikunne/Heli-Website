@@ -17,21 +17,21 @@ import Image from "next/image";
 
 export default function ServicesPage() {
   return (
-    <div className="bg-white text-black font-sans">
+    <div className="bg-background text-foreground font-sans">
       <Header />
-      <main className="flex flex-col">
+      <main className="grow">
         {/* Hero Section */}
         <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-          <div className="absolute inset-0 bg-emerald-50/30 -z-10" />
+          <div className="absolute inset-0 bg-emerald-50/30 dark:bg-emerald-950/10 -z-10" />
           <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeInUp} className="space-y-8">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold tracking-widest uppercase font-headline">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 text-xs font-bold tracking-widest uppercase font-headline">
                 Professional Wellness
               </span>
-              <h1 className="text-6xl lg:text-7xl font-headline font-extrabold text-slate-900 leading-[1.1] tracking-tight">
+              <h1 className="text-6xl lg:text-7xl font-headline font-extrabold text-on-surface leading-[1.1] tracking-tight">
                 Our Services
               </h1>
-              <p className="text-xl text-slate-600 leading-relaxed max-w-xl">
+              <p className="text-xl text-on-surface-variant leading-relaxed max-w-xl">
                 Transform your workspace into a digital sanctuary. Our expert practitioners bring restorative onsite chair massage directly to your office, event, or team gathering.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -44,18 +44,18 @@ export default function ServicesPage() {
                 >
                   View Packages
                 </button>
-                <button className="px-8 py-4 bg-white text-emerald-700 border border-emerald-100 rounded-2xl font-headline font-bold hover:bg-emerald-50 transition-all">
+                <button className="px-8 py-4 bg-surface-container-lowest text-emerald-700 dark:text-emerald-300 border border-emerald-800/20 rounded-2xl font-headline font-bold hover:bg-emerald-950/20 transition-all">
                   Learn More
                 </button>
               </div>
             </motion.div>
             <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="absolute -inset-4 bg-emerald-200/20 rounded-[3rem] blur-3xl" />
+              <div className="absolute -inset-4 bg-emerald-200/20 dark:bg-emerald-950/20 rounded-[3rem] blur-3xl" />
               <Image 
                 src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000" 
                 alt="Professional Massage"
@@ -69,28 +69,28 @@ export default function ServicesPage() {
         </section>
 
         {/* Bento Grid Overview */}
-        <section className="py-32 bg-white">
+        <section className="py-32 bg-surface">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <motion.div {...fadeInUp} className="mb-16">
-              <h2 className="text-4xl font-headline font-bold text-slate-900 mb-4">Wellness for Every Setting</h2>
-              <p className="text-slate-600 max-w-2xl text-lg">We provide flexible wellness solutions tailored to the modern professional environment.</p>
+              <h2 className="text-4xl font-headline font-bold text-on-surface mb-4">Wellness for Every Setting</h2>
+              <p className="text-on-surface-variant max-w-2xl text-lg">We provide flexible wellness solutions tailored to the modern professional environment.</p>
             </motion.div>
-
+ 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               <motion.div 
                 {...fadeInUp}
-                className="md:col-span-8 bg-slate-50 p-12 rounded-[2.5rem] flex flex-col justify-between border border-slate-100"
+                className="md:col-span-8 bg-surface-container-low p-12 rounded-[2.5rem] flex flex-col justify-between border border-outline-variant/60"
               >
                 <div>
                   <Building2 className="text-emerald-600 w-12 h-12 mb-6" />
-                  <h3 className="text-3xl font-headline font-bold mb-4">Companies & Corporate</h3>
-                  <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                  <h3 className="text-3xl font-headline font-bold mb-4 text-on-surface">Companies & Corporate</h3>
+                  <p className="text-on-surface-variant text-lg leading-relaxed mb-8">
                     Improve employee retention and reduce burnout with recurring wellness days. Our team integrates seamlessly into your corporate culture.
                   </p>
                 </div>
                 <div className="flex gap-3">
-                  <span className="px-4 py-2 bg-white text-emerald-700 rounded-xl text-sm font-bold shadow-sm">Boost Morale</span>
-                  <span className="px-4 py-2 bg-white text-emerald-700 rounded-xl text-sm font-bold shadow-sm">Reduce Stress</span>
+                  <span className="px-4 py-2 bg-surface-container-lowest text-emerald-700 dark:text-emerald-300 rounded-xl text-sm font-bold shadow-sm">Boost Morale</span>
+                  <span className="px-4 py-2 bg-surface-container-lowest text-emerald-700 dark:text-emerald-300 rounded-xl text-sm font-bold shadow-sm">Reduce Stress</span>
                 </div>
               </motion.div>
 
@@ -100,22 +100,22 @@ export default function ServicesPage() {
               >
                 <PartyPopper className="w-12 h-12 mx-auto mb-6" />
                 <h3 className="text-2xl font-headline font-bold mb-4">Special Events</h3>
-                <p className="text-emerald-100/80 mb-8">Make your event unforgettable. From product launches to holiday parties.</p>
-                <button className="w-full py-4 bg-white text-emerald-800 rounded-xl font-bold hover:bg-emerald-50 transition-colors">Book Event</button>
+                <p className="text-emerald-100/80 dark:text-emerald-200/80 mb-8">Make your event unforgettable. From product launches to holiday parties.</p>
+                <button className="w-full py-4 bg-white dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-800/10 rounded-xl font-bold hover:bg-emerald-50 transition-colors">Book Event</button>
               </motion.div>
-
+ 
               <motion.div 
                 {...fadeInUp}
-                className="md:col-span-4 bg-emerald-50 p-10 rounded-[2.5rem] flex flex-col justify-center border border-emerald-100"
+                className="md:col-span-4 bg-emerald-50/10 dark:bg-emerald-950/20 p-10 rounded-[2.5rem] flex flex-col justify-center border border-emerald-800/20"
               >
-                <Users2 className="text-emerald-700 w-10 h-10 mb-4" />
-                <h3 className="text-2xl font-headline font-bold mb-2">Team Retreats</h3>
-                <p className="text-slate-600">The perfect addition to your off-site or strategy session to keep minds fresh.</p>
+                <Users2 className="text-emerald-700 dark:text-emerald-400 w-10 h-10 mb-4" />
+                <h3 className="text-2xl font-headline font-bold mb-2 text-on-surface">Team Retreats</h3>
+                <p className="text-on-surface-variant">The perfect addition to your off-site or strategy session to keep minds fresh.</p>
               </motion.div>
 
               <motion.div 
                 {...fadeInUp}
-                className="md:col-span-8 bg-white p-10 rounded-[2.5rem] flex items-center gap-8 border border-slate-100 shadow-sm"
+                className="md:col-span-8 bg-surface-container-low p-10 rounded-[2.5rem] flex items-center gap-8 border border-outline-variant/60 shadow-sm"
               >
                 <div className="relative w-48 h-32 hidden sm:block flex-shrink-0">
                   <Image 
@@ -128,8 +128,8 @@ export default function ServicesPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-headline font-bold mb-2">Pop-up Wellness</h3>
-                  <p className="text-slate-600">Flexible scheduling for busy periods like end-of-quarter or major project deadlines.</p>
+                  <h3 className="text-2xl font-headline font-bold mb-2 text-on-surface">Pop-up Wellness</h3>
+                  <p className="text-on-surface-variant">Flexible scheduling for busy periods like end-of-quarter or major project deadlines.</p>
                 </div>
               </motion.div>
             </div>
@@ -137,11 +137,11 @@ export default function ServicesPage() {
         </section>
 
         {/* Packages Section */}
-        <section id="service-packages" className="py-32 bg-surface scroll-mt-28">
+        <section id="service-packages" className="py-32 bg-surface-container-low scroll-mt-28">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-20">
-              <h2 className="text-5xl font-headline font-extrabold text-slate-900 mb-6">Service Packages</h2>
-              <p className="text-slate-600 text-xl max-w-2xl mx-auto">Choose the duration that best fits your team&apos;s workflow and needs.</p>
+              <h2 className="text-5xl font-headline font-extrabold text-on-surface mb-6">Service Packages</h2>
+              <p className="text-on-surface-variant text-xl max-w-2xl mx-auto">Choose the duration that best fits your team&apos;s workflow and needs.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -176,7 +176,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Presence Section */}
-        <section className="py-32 bg-white">
+        <section className="py-32 bg-surface">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-24 items-center">
             <div className="relative">
               <Image 
@@ -190,16 +190,16 @@ export default function ServicesPage() {
               <motion.div 
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                className="absolute -bottom-10 -right-10 bg-white p-8 rounded-4xl shadow-2xl max-w-xs hidden md:block border border-slate-50"
+                className="absolute -bottom-10 -right-10 bg-surface-container-lowest p-8 rounded-4xl shadow-2xl max-w-xs hidden md:block border border-outline-variant/60"
               >
-                <p className="text-slate-600 italic leading-relaxed">&quot;The highlight of our trade show booth. Our lead generation increased by 40%.&quot;</p>
-                <div className="mt-4 font-headline font-bold text-emerald-800">Sarah J., Marketing Dir.</div>
+                <p className="text-on-surface-variant italic leading-relaxed">&quot;The highlight of our trade show booth. Our lead generation increased by 40%.&quot;</p>
+                <div className="mt-4 font-headline font-bold text-emerald-700 dark:text-emerald-400">Sarah J., Marketing Dir.</div>
               </motion.div>
             </div>
             <div className="space-y-12">
               <div>
-                <h2 className="text-4xl font-headline font-extrabold text-slate-900 mb-6">Elevate Your Presence</h2>
-                <p className="text-slate-600 text-lg">Beyond standard sessions, we offer specialized logistical support for large-scale implementations.</p>
+                <h2 className="text-4xl font-headline font-extrabold text-on-surface mb-6">Elevate Your Presence</h2>
+                <p className="text-on-surface-variant text-lg">Beyond standard sessions, we offer specialized logistical support for large-scale implementations.</p>
               </div>
               <div className="space-y-8">
                 {[
@@ -208,12 +208,12 @@ export default function ServicesPage() {
                   { title: "Trade Shows & Exhibitions", icon: <Store />, items: ["Lead generation integration", "Attract booth visitors", "Professional presence"] }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6">
-                    <div className="w-12 h-12 shrink-0 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-700">
+                    <div className="w-12 h-12 shrink-0 bg-emerald-50/50 dark:bg-emerald-950/40 rounded-xl flex items-center justify-center text-emerald-700 dark:text-emerald-400 animate-none">
                       {item.icon}
                     </div>
                     <div>
-                      <h4 className="text-xl font-headline font-bold mb-2">{item.title}</h4>
-                      <ul className="text-slate-500 space-y-1 list-disc list-inside marker:text-emerald-600 text-sm">
+                      <h4 className="text-xl font-headline font-bold mb-2 text-on-surface">{item.title}</h4>
+                      <ul className="text-on-surface-variant/70 space-y-1 list-disc list-inside marker:text-emerald-600 text-sm">
                         {item.items.map((li, k) => <li key={k}>{li}</li>)}
                       </ul>
                     </div>
@@ -243,22 +243,22 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-32 bg-white">
+        <section className="py-32 bg-surface">
           <div className="max-w-5xl mx-auto px-6">
             <motion.div 
               {...fadeInUp}
-              className="relative bg-emerald-50/50 rounded-[3rem] p-16 text-center border border-emerald-100 overflow-hidden"
+              className="relative bg-emerald-50/20 dark:bg-emerald-950/20 rounded-[3rem] p-16 text-center border border-emerald-800/20 overflow-hidden"
             >
               <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-emerald-100/40 rounded-full blur-3xl" />
-              <h2 className="text-4xl md:text-5xl font-headline font-extrabold text-slate-900 mb-8">Ready to bring restorative wellness to your team?</h2>
-              <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto">Join hundreds of companies investing in their most valuable asset—their people.</p>
+              <h2 className="text-4xl md:text-5xl font-headline font-extrabold text-on-surface mb-8">Ready to bring restorative wellness to your team?</h2>
+              <p className="text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto">Join hundreds of companies investing in their most valuable asset—their people.</p>
               <div className="flex flex-wrap justify-center gap-6">
                 <Link href="/booking">
                   <button className="px-10 py-5 bg-emerald-700 text-white rounded-2xl font-headline font-extrabold text-lg shadow-xl shadow-emerald-900/20 hover:scale-105 transition-all">
                     Start Your Booking
                   </button>
                 </Link>
-                <button className="px-10 py-5 bg-white text-slate-900 rounded-2xl font-headline font-bold text-lg border border-slate-200 hover:bg-slate-50 transition-all">
+                <button className="px-10 py-5 bg-surface-container-lowest text-on-surface rounded-2xl font-headline font-bold text-lg border border-outline-variant hover:bg-surface-container-low transition-all">
                   Download Brochure
                 </button>
               </div>
@@ -286,29 +286,29 @@ function ServiceCard({ title, time, desc, features, icon, popular, index }: {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`relative bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col ${popular ? 'md:-translate-y-4 ring-2 ring-emerald-600/20 shadow-xl' : ''}`}
+      className={`relative bg-surface-container-lowest p-10 rounded-[2.5rem] shadow-sm border border-outline-variant/60 flex flex-col ${popular ? 'md:-translate-y-4 ring-2 ring-emerald-600/30 shadow-xl' : ''}`}
     >
       {popular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-700 text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
           Most Popular
         </div>
       )}
-      <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 text-emerald-700">
+      <div className="w-14 h-14 bg-emerald-100/50 dark:bg-emerald-950/50 rounded-2xl flex items-center justify-center mb-8 text-emerald-700 dark:text-emerald-400">
         {icon}
       </div>
-      <h3 className="text-2xl font-headline font-bold mb-2">{title}</h3>
-      <div className="text-emerald-700 font-bold text-lg mb-4">{time}</div>
-      <p className="text-slate-500 mb-8 leading-relaxed">{desc}</p>
+      <h3 className="text-2xl font-headline font-bold mb-2 text-on-surface">{title}</h3>
+      <div className="text-emerald-700 dark:text-emerald-400 font-bold text-lg mb-4">{time}</div>
+      <p className="text-on-surface-variant mb-8 leading-relaxed">{desc}</p>
       <ul className="space-y-4 mb-10 grow">
         {features.map((f, j) => (
-          <li key={j} className="flex items-center gap-3 text-sm text-slate-600">
-            <CheckCircle2 className="text-emerald-600 w-5 h-5" />
+          <li key={j} className="flex items-center gap-3 text-sm text-on-surface-variant/90">
+            <CheckCircle2 className="text-emerald-600 w-5 h-5 animate-none" />
             {f}
           </li>
         ))}
       </ul>
       <Link href="/booking" className="w-full">
-        <button className={`w-full py-4 rounded-2xl font-bold transition-all ${popular ? 'bg-emerald-700 text-white shadow-lg hover:bg-emerald-800' : 'bg-slate-100 text-slate-900 hover:bg-emerald-700 hover:text-white'}`}>
+        <button className={`w-full py-4 rounded-2xl font-bold transition-all ${popular ? 'bg-emerald-700 text-white shadow-lg hover:bg-emerald-800' : 'bg-surface-container-high text-on-surface hover:bg-emerald-700 hover:text-white'}`}>
           Get a Quote
         </button>
       </Link>

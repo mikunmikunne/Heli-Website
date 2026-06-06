@@ -1,4 +1,4 @@
-﻿import * as React from "react";
+import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "../component/header";
@@ -34,7 +34,7 @@ export default function ForCompanies() {
         <CompanyHeroAnim />
 
         {/* Section 2: Why It Matters */}
-        <section className="bg-gray-50 py-24 px-6">
+        <section className="bg-surface-container-low py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="order-2 md:order-1">
@@ -57,7 +57,7 @@ export default function ForCompanies() {
                       desc="The time needed to lower cortisol significantly."
                       colorClass="text-teal-600"
                     />
-                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <div className="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/60">
                       <div className="relative w-full h-32 rounded-lg overflow-hidden">
                         <Image
                           className="object-cover"
@@ -72,10 +72,10 @@ export default function ForCompanies() {
                 </div>
               </div>
               <div className="order-1 md:order-2 space-y-6">
-                <h2 className="text-3xl md:text-5xl font-headline font-bold text-gray-900 tracking-tight">
+                <h2 className="text-3xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">
                   The silent cost of workplace stress
                 </h2>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                <p className="text-on-surface-variant leading-relaxed text-lg">
                   Physical tension and mental fatigue are more than just
                   discomfort—they are direct inhibitors to your company&apos;s
                   potential. We provide a restorative anchor in the fast-paced
@@ -89,7 +89,7 @@ export default function ForCompanies() {
                   ].map((item, idx) => (
                     <li
                       key={idx}
-                      className="flex items-center gap-3 text-gray-800 font-medium"
+                      className="flex items-center gap-3 text-on-surface/90 font-medium"
                     >
                       <CheckCircle2 className="text-emerald-600" size={20} />
                       {item}
@@ -102,13 +102,13 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 3: Benefits for Companies */}
-        <section className="py-24 px-6 bg-white">
+        <section className="py-24 px-6 bg-surface-container-lowest">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-20">
-              <h2 className="text-4xl font-headline font-bold mb-6">
+              <h2 className="text-4xl font-headline font-bold mb-6 text-on-surface">
                 Quantifiable Benefits for Your Business
               </h2>
-              <p className="text-gray-600">
+              <p className="text-on-surface-variant">
                 Investing in wellness isn&apos;t just a perk; it&apos;s a strategy for
                 high-performance cultures.
               </p>
@@ -143,13 +143,13 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 4: Process */}
-        <section className="py-24 px-6 bg-gray-50">
+        <section className="py-24 px-6 bg-surface-container-low">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-headline font-bold text-center mb-20">
+            <h2 className="text-4xl font-headline font-bold text-center mb-20 text-on-surface">
               A seamless process for HR leaders
             </h2>
             <div className="relative">
-              <div className="hidden lg:block absolute top-8 left-[12%] w-[76%] h-0.5 bg-gray-200 z-0"></div>
+              <div className="hidden lg:block absolute top-8 left-[12%] w-[76%] h-0.5 bg-outline-variant z-0"></div>
               <div className="grid lg:grid-cols-4 gap-12 relative z-10">
                 {[
                   {
@@ -177,14 +177,14 @@ export default function ForCompanies() {
                     key={item.step}
                     className="flex flex-col items-center text-center space-y-6"
                   >
-                    <div className="w-16 h-16 rounded-full bg-emerald-700 text-white flex items-center justify-center font-headline font-bold text-xl shadow-lg ring-8 ring-gray-50">
+                    <div className="w-16 h-16 rounded-full bg-emerald-700 text-white flex items-center justify-center font-headline font-bold text-xl shadow-lg ring-8 ring-surface-container-low">
                       {item.step}
                     </div>
                     <div className="space-y-2">
-                      <h4 className="font-headline font-bold text-lg">
+                      <h4 className="font-headline font-bold text-lg text-on-surface">
                         {item.title}
                       </h4>
-                      <p className="text-gray-500 text-sm">{item.desc}</p>
+                      <p className="text-on-surface-variant/70 text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -194,9 +194,9 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 5: Use Cases */}
-        <section className="py-24 px-6">
+        <section className="py-24 px-6 bg-surface">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-headline font-bold text-center mb-16">
+            <h2 className="text-4xl font-headline font-bold text-center mb-16 text-on-surface">
               Perfect for every corporate occasion
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 min-h-auto md:min-h-150">
@@ -239,7 +239,7 @@ export default function ForCompanies() {
                   className={`${item.span} relative group overflow-hidden rounded-3xl bg-gray-900`}
                 >
                   <Image
-                    className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover opacity-85 dark:opacity-75 group-hover:scale-105 transition-transform duration-700"
                     src={item.img}
                     alt={item.alt}
                     fill
@@ -261,23 +261,23 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 6: Testimonials */}
-        <section className="py-24 px-6 bg-white">
+        <section className="py-24 px-6 bg-surface-container-lowest">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <div className="max-w-2xl">
-                <h2 className="text-4xl font-headline font-bold text-gray-900 mb-6">
+                <h2 className="text-4xl font-headline font-bold text-on-surface mb-6">
                   Trusted by leading HR teams
                 </h2>
-                <p className="text-gray-600 text-lg">
+                <p className="text-on-surface-variant text-lg">
                   See why hundreds of companies choose us as their primary
                   wellness partner.
                 </p>
               </div>
               <div className="flex gap-4">
-                <button className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors">
+                <button className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-surface-container-low transition-colors text-on-surface animate-none">
                   <ArrowLeft size={24} />
                 </button>
-                <button className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors">
+                <button className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-surface-container-low transition-colors text-on-surface animate-none">
                   <ArrowRight size={24} />
                 </button>
               </div>
@@ -306,9 +306,9 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 7: CTA */}
-        <section className="py-24 px-6 bg-white">
+        <section className="py-24 px-6 bg-surface-container-lowest">
           <div className="max-w-7xl mx-auto">
-            <div className="relative bg-[#027054] rounded-[3rem] p-12 md:p-24 overflow-hidden shadow-2xl shadow-[#027054]/30">
+            <div className="relative bg-emerald-800 rounded-[3rem] p-12 md:p-24 overflow-hidden shadow-2xl shadow-emerald-900/30">
               <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
               <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-900/40 rounded-full blur-3xl"></div>
               <div className="relative z-10 text-center max-w-4xl mx-auto space-y-10">
@@ -322,7 +322,7 @@ export default function ForCompanies() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                   <Link
                     href="/booking"
-                    className="bg-white text-[#027054] px-10 py-5 rounded-2xl font-headline font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl block text-center"
+                    className="bg-white text-emerald-800 px-10 py-5 rounded-2xl font-headline font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl block text-center"
                   >
                     Request a Quote for Your Company
                   </Link>
@@ -372,15 +372,15 @@ function TestimonialCard({
   img: string;
 }) {
   return (
-    <div className="p-8 rounded-3xl bg-gray-50 border border-gray-100">
+    <div className="p-8 rounded-3xl bg-surface-container-low border border-outline-variant/60">
       <div className="flex gap-1 text-emerald-600 mb-6">
         {[...Array(5)].map((_, i) => (
           <Star key={i} size={18} fill="currentColor" />
         ))}
       </div>
-      <p className="text-gray-800 italic mb-8 leading-relaxed">&quot;{quote}&quot;</p>
+      <p className="text-on-surface/90 italic mb-8 leading-relaxed">&quot;{quote}&quot;</p>
       <div className="flex items-center gap-4">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-slate-200">
+        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-surface-container-high">
           <Image
             className="object-cover"
             src={img}
@@ -390,8 +390,8 @@ function TestimonialCard({
           />
         </div>
         <div>
-          <p className="font-bold text-sm text-gray-900">{author}</p>
-          <p className="text-xs text-gray-500">{role}</p>
+          <p className="font-bold text-sm text-on-surface">{author}</p>
+          <p className="text-xs text-on-surface-variant/70">{role}</p>
         </div>
       </div>
     </div>

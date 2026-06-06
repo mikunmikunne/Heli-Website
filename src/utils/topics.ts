@@ -25,17 +25,17 @@ export function getTopicFromText(title: string, content: string): string {
   const text = (title + " " + content).toLowerCase();
   
   const rules = [
-    { topic: "onsite-chair-massage", keywords: ['massage', 'chair massage', 'shiatsu', 'acupressure'] },
     { topic: "office-ergonomics", keywords: ['ergonomics', 'ergonomic', 'posture', 'standing desk', 'desk setup', 'sitting posture'] },
     { topic: "burnout-prevention", keywords: ['burnout', 'overworked', 'exhaustion', 'fatigue', 'overwhelming'] },
-    { topic: "stress-relief", keywords: ['stress relief', 'relieve stress', 'reduce stress', 'stressful', 'tension', 'anxiety'] },
-    { topic: "work-life-balance", keywords: ['work-life', 'work life', 'worklife', 'balance', 'hybrid work', 'remote work'] },
-    { topic: "team-productivity", keywords: ['productivity', 'performance', 'efficiency', 'efficient', 'focus', 'concentration', 'output'] },
     { topic: "mental-health-at-work", keywords: ['mental health', 'mindfulness', 'meditation', 'depression', 'psychological'] },
     { topic: "corporate-events", keywords: ['event', 'events', 'conference', 'retreat', 'party', 'celebration'] },
-    { topic: "corporate-wellness", keywords: ['corporate wellness', 'wellness program', 'wellness initiative'] },
+    { topic: "team-productivity", keywords: ['productivity', 'performance', 'efficiency', 'efficient', 'focus', 'concentration', 'output'] },
+    { topic: "work-life-balance", keywords: ['work-life', 'work life', 'worklife', 'balance', 'hybrid work', 'remote work'] },
+    { topic: "stress-relief", keywords: ['stress relief', 'relieve stress', 'reduce stress', 'stressful', 'tension', 'anxiety'] },
     { topic: "healthy-workplace", keywords: ['healthy', 'nutrition', 'exercise', 'physical health', 'fitness'] },
-    { topic: "office-relaxation", keywords: ['relax', 'relaxation', 'calm', 'break', 'breaks', 'downtime'] },
+    { topic: "office-relaxation", keywords: ['relaxation', 'calm', 'break', 'breaks', 'downtime'] },
+    { topic: "corporate-wellness", keywords: ['corporate wellness', 'wellness program', 'wellness initiative'] },
+    { topic: "onsite-chair-massage", keywords: ['chair massage', 'shiatsu', 'acupressure', 'massage therapist', 'massage therapy'] },
     { topic: "employee-wellbeing", keywords: ['wellbeing', 'well-being', 'employee wellness', 'care'] }
   ];
 

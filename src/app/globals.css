@@ -3,32 +3,69 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #10b981;
-  --bg: #ffffff;
-  --text: #171717;
+  --background: #f8f9fa;
+  --foreground: #191c1d;
+  --primary: #047857; /* Emerald 700 */
+  --primary-hover: #065f46;
+  --bg: #f8f9fa;
+  --text: #191c1d;
+  
+  --surface-container-low: #f3f4f5;
+  --surface-container-high: #e7e8e9;
+  --surface-container-highest: #e1e3e4;
+  --surface-container-lowest: #ffffff;
+  --on-surface-variant: #3d4a42;
+  --border: #e5e7eb;
+
   --nav-bg: rgba(255, 255, 255, 0.7);
   --nav-border: #e5e7eb;
   --nav-text: #334155;
-  --nav-hover: #059669;
+  --nav-hover: #047857;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-headline: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  
+  --color-surface: var(--bg);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  
+  --color-on-surface: var(--text);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline-variant: var(--border);
+  --color-error: #ba1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --background: #0a0a0a;
+    --foreground: #f3f4f6;
+    --primary: #10b981; /* Emerald 500 for dark mode */
+    --primary-hover: #34d399;
     --bg: #0a0a0a;
-    --text: #ededed;
+    --text: #f3f4f6;
+
+    --surface-container-low: #111827; /* Gray 900 */
+    --surface-container-high: #1f2937; /* Gray 800 */
+    --surface-container-highest: #374151; /* Gray 700 */
+    --surface-container-lowest: #030712; /* Gray 950 */
+    --on-surface-variant: #cbd5e1; /* Slate 300 */
+    --border: #1f2937;
+
     --nav-bg: rgba(15, 23, 42, 0.7);
     --nav-border: #1e293b;
-    --nav-text: #cbd5f5;
-    --nav-hover: #34d399;
+    --nav-text: #cbd5e1;
+    --nav-hover: #10b981;
   }
 }
 
@@ -39,7 +76,7 @@ body {
 
 @layer base {
   .glass-nav {
-    @apply bg-white/70 backdrop-blur-xl;
+    @apply bg-white/70 backdrop-blur-xl dark:bg-slate-900/70;
   }
 
   .ambient-shadow {

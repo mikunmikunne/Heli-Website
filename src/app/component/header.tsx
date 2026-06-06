@@ -43,9 +43,21 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 w-full z-60 bg-white/70 backdrop-blur-xl shadow-sm ">
+      <header className="fixed top-0 w-full z-60 glass-nav border-b border-outline-variant/30 shadow-sm">
         <nav className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <Link href="/" className="text-lg sm:text-xl font-bold text-emerald-900  tracking-tight z-50">
+          <Link href="/" className="flex items-center gap-2.5 text-lg sm:text-xl font-bold text-emerald-950 dark:text-emerald-300 tracking-tight z-50 hover:opacity-90 transition-opacity">
+            <svg
+              className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-600 dark:text-emerald-400 transition-colors shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.58 1 9.8a7 7 0 0 1-9 8.2Z" fill="currentColor" fillOpacity="0.15" />
+              <path d="M19 2c-2.26 4.33-5.27 7.14-8 10" />
+            </svg>
             Onsite Chair Massage
           </Link>
 
@@ -101,7 +113,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-50 bg-white  md:hidden flex flex-col pt-24 px-6 transition-all duration-300 ${
+        className={`fixed inset-0 z-50 bg-white dark:bg-slate-950 md:hidden flex flex-col pt-24 px-6 transition-all duration-300 ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         style={{
@@ -117,8 +129,8 @@ export default function Header() {
                 href={item.href}
                 className={`py-4 px-4 rounded-lg transition-colors ${
                   active
-                    ? "text-emerald-700  bg-emerald-100 border-emerald-600"
-                    : "text-slate-800  hover:bg-gray-100 "
+                    ? "text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/45 border-emerald-600"
+                    : "text-slate-800 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-900"
                 }`}
               >
                 {item.label}
