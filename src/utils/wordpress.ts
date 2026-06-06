@@ -19,7 +19,8 @@ export interface WordPressPost {
 
 export async function getPublishedArticles(): Promise<WordPressPost[]> {
   try {
-    const res = await fetch(`${WP_API_URL}/posts?_embed&per_page=100`, {
+    const cb = Math.floor(Date.now() / 30000); // 30 seconds cache buster
+    const res = await fetch(`${WP_API_URL}/posts?_embed&per_page=100&_cb=${cb}`, {
       next: { revalidate: 5 }
     });
     if (!res.ok) throw new Error('Failed to fetch WordPress articles');
@@ -32,7 +33,8 @@ export async function getPublishedArticles(): Promise<WordPressPost[]> {
 
 export async function getArticleBySlug(slug: string): Promise<WordPressPost | null> {
   try {
-    const res = await fetch(`${WP_API_URL}/posts?slug=${slug}&_embed`, {
+    const cb = Math.floor(Date.now() / 30000); // 30 seconds cache buster
+    const res = await fetch(`${WP_API_URL}/posts?slug=${slug}&_embed&_cb=${cb}`, {
       next: { revalidate: 5 }
     });
     if (!res.ok) throw new Error('Failed to fetch WordPress article');

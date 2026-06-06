@@ -13,6 +13,28 @@ export const topicImageMap: Record<string, string> = {
   "team-productivity": "team-productivity.jpg"
 };
 
+export const topicDisplayNameMap: Record<string, string> = {
+  "employee-wellbeing": "Employee Wellbeing",
+  "office-ergonomics": "Office Ergonomics",
+  "work-life-balance": "Work-Life Balance",
+  "burnout-prevention": "Burnout Prevention",
+  "corporate-events": "Corporate Events",
+  "corporate-wellness": "Corporate Wellness",
+  "healthy-workplace": "Healthy Workplace",
+  "mental-health-at-work": "Mental Health at Work",
+  "office-relaxation": "Office Relaxation",
+  "onsite-chair-massage": "Onsite Chair Massage",
+  "stress-relief": "Stress Relief",
+  "team-productivity": "Team Productivity"
+};
+
+export function getTopicDisplayName(topic?: string | null): string {
+  if (topic && topicDisplayNameMap[topic]) {
+    return topicDisplayNameMap[topic];
+  }
+  return "Wellness";
+}
+
 export function getImageForTopic(topic?: string | null): string {
   if (topic && topicImageMap[topic]) {
     return `/blog-images/${topicImageMap[topic]}`;
@@ -46,6 +68,18 @@ export function getTopicFromArticle(article: any): string {
             return normalizedName;
           }
         }
+      }
+    }
+  }
+
+  // 3. Fallback: Check the article's own slug for keywords matching our topic keys
+  if (article.slug) {
+    const postSlug = article.slug.toLowerCase();
+    // Sort topic keys by length descending to match longest topic keys first
+    const sortedTopics = Object.keys(topicImageMap).sort((a, b) => b.length - a.length);
+    for (const topicKey of sortedTopics) {
+      if (postSlug.includes(topicKey)) {
+        return topicKey;
       }
     }
   }

@@ -3,7 +3,7 @@ import Header from "@/app/component/header";
 import Footer from "@/app/component/footer";
 import BlogClient, { BlogPostData } from "./BlogClient";
 import { getPublishedArticles, extractAndStripFirstImage, cleanWordPressHtmlToMarkdown, decodeHtmlEntities } from "@/utils/wordpress";
-import { getImageForTopic, getTopicFromArticle } from "@/utils/topics";
+import { getImageForTopic, getTopicFromArticle, getTopicDisplayName } from "@/utils/topics";
 
 export const metadata: Metadata = {
   title: "Wellness Insights & Blog | Onsite Chair Massage",
@@ -44,7 +44,7 @@ export default async function BlogPage() {
     return {
       id: article.id,
       slug: article.slug,
-      category: "Wellness",
+      category: getTopicDisplayName(topic),
       readTime: readTimeStr,
       title: decodeHtmlEntities(article.title.rendered),
       description: plainTextDescription,

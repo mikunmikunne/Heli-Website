@@ -5,7 +5,7 @@ import BlogDetail from "./BlogDetail";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getArticleBySlug, extractAndStripFirstImage, cleanWordPressHtmlToMarkdown, decodeHtmlEntities } from "@/utils/wordpress";
-import { getImageForTopic, getTopicFromArticle } from "@/utils/topics";
+import { getImageForTopic, getTopicFromArticle, getTopicDisplayName } from "@/utils/topics";
 
 export const revalidate = 5; // Cache and revalidate pages at most every 5 seconds
 
@@ -72,7 +72,7 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
     const mappedPost = {
         id: article.id,
         slug: article.slug,
-        category: "Wellness",
+        category: getTopicDisplayName(topic),
         readTime: readTimeStr,
         title: decodeHtmlEntities(article.title.rendered),
         description: plainTextDescription,
