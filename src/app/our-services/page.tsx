@@ -13,6 +13,8 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
+import Image from "next/image";
+
 export default function ServicesPage() {
   return (
     <div className="bg-white text-black font-sans">
@@ -54,10 +56,12 @@ export default function ServicesPage() {
               className="relative"
             >
               <div className="absolute -inset-4 bg-emerald-200/20 rounded-[3rem] blur-3xl" />
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000" 
                 alt="Professional Massage"
-                className="relative rounded-[2.5rem] shadow-2xl w-full aspect-4/3 object-cover"
+                width={1000}
+                height={750}
+                className="relative rounded-[2.5rem] shadow-2xl w-full aspect-[4/3] object-cover"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
@@ -113,12 +117,16 @@ export default function ServicesPage() {
                 {...fadeInUp}
                 className="md:col-span-8 bg-white p-10 rounded-[2.5rem] flex items-center gap-8 border border-slate-100 shadow-sm"
               >
-                <img 
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400" 
-                  className="w-48 h-32 rounded-2xl object-cover hidden sm:block"
-                  alt="Office Space"
-                  referrerPolicy="no-referrer"
-                />
+                <div className="relative w-48 h-32 hidden sm:block flex-shrink-0">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400" 
+                    fill
+                    sizes="192px"
+                    className="rounded-2xl object-cover"
+                    alt="Office Space"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
                 <div>
                   <h3 className="text-2xl font-headline font-bold mb-2">Pop-up Wellness</h3>
                   <p className="text-slate-600">Flexible scheduling for busy periods like end-of-quarter or major project deadlines.</p>
@@ -133,7 +141,7 @@ export default function ServicesPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-20">
               <h2 className="text-5xl font-headline font-extrabold text-slate-900 mb-6">Service Packages</h2>
-              <p className="text-slate-600 text-xl max-w-2xl mx-auto">Choose the duration that best fits your team's workflow and needs.</p>
+              <p className="text-slate-600 text-xl max-w-2xl mx-auto">Choose the duration that best fits your team&apos;s workflow and needs.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -171,8 +179,10 @@ export default function ServicesPage() {
         <section className="py-32 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-24 items-center">
             <div className="relative">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" 
+                width={800}
+                height={800}
                 className="rounded-[3rem] shadow-2xl aspect-square object-cover"
                 alt="Professional Environment"
                 referrerPolicy="no-referrer"
@@ -182,7 +192,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 className="absolute -bottom-10 -right-10 bg-white p-8 rounded-4xl shadow-2xl max-w-xs hidden md:block border border-slate-50"
               >
-                <p className="text-slate-600 italic leading-relaxed">"The highlight of our trade show booth. Our lead generation increased by 40%."</p>
+                <p className="text-slate-600 italic leading-relaxed">&quot;The highlight of our trade show booth. Our lead generation increased by 40%.&quot;</p>
                 <div className="mt-4 font-headline font-bold text-emerald-800">Sarah J., Marketing Dir.</div>
               </motion.div>
             </div>

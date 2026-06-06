@@ -1,11 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { CheckCircle2, ChevronDown } from "lucide-react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { isValidEmail, isValidPhoneNumber } from "@/utils/validators";
 import { FormState } from "./types";
+import ReCAPTCHA from "react-google-recaptcha";
 
-const MOCK_API_DELAY_MS = 1500;
 const EMPLOYEE_COUNT_OPTIONS = [
   "1-20 employees",
   "21-50 employees",
@@ -15,6 +15,7 @@ const EMPLOYEE_COUNT_OPTIONS = [
 
 export default function BookingForm() {
   const [isSuccess, setIsSuccess] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const {
     register,
@@ -36,10 +37,16 @@ export default function BookingForm() {
 
   const onSubmit: SubmitHandler<FormState> = async (data) => {
     try {
+      const captchaToken = recaptchaRef.current?.getValue();
+      if (!captchaToken) {
+        alert("Please verify that you are not a robot.");
+        return;
+      }
+
       const response = await fetch('/api/bookings', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ ...data, captchaToken }),
       });
 
       const result = await response.json();
@@ -51,9 +58,11 @@ export default function BookingForm() {
       console.log("Booking Form Submitted via API:", data);
       setIsSuccess(true);
       reset();
-    } catch (error: any) {
+      recaptchaRef.current?.reset();
+    } catch (error: unknown) {
       console.error("Booking Error:", error);
       alert(error instanceof Error ? error.message : "Failed to submit request.");
+      recaptchaRef.current?.reset();
     }
   };
 
@@ -200,6 +209,14 @@ export default function BookingForm() {
           rows={4}
           placeholder="Tell us about your event goals or specific requirements..."
           className="text-gray-900 dark:text-white placeholder:text-gray-400 bg-white dark:bg-gray-900 border dark:border-white/5 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none resize-none"
+        />
+      </div>
+
+      {/* Google reCAPTCHA v2 */}
+      <div className="flex justify-center py-2">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
         />
       </div>
 

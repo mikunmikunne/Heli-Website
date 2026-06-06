@@ -171,22 +171,26 @@ export const Steps = () => {
           
           <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 lg:mt-0">
             <div className="pt-0 sm:pt-12">
-              <Image 
-                src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=600" 
-                width={600}
-                height={400}
-                className="rounded-3xl shadow-lg w-full h-[400px] object-cover"
-                alt="Office Massage"
-              />
+              <div className="relative w-full h-[400px]">
+                <Image 
+                  src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=600" 
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="rounded-3xl shadow-lg object-cover"
+                  alt="Office Massage"
+                />
+              </div>
             </div>
             <div>
-              <Image 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" 
-                width={600}
-                height={400}
-                className="rounded-3xl shadow-lg w-full h-[400px] object-cover"
-                alt="Modern Office"
-              />
+              <div className="relative w-full h-[400px]">
+                <Image 
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" 
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="rounded-3xl shadow-lg object-cover"
+                  alt="Modern Office"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -4,9 +4,21 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { BLOG_POSTS } from "./data";
 
-export default function BlogClient() {
+export interface BlogPostData {
+  id: string | number;
+  slug: string;
+  category: string;
+  readTime: string;
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  author: string;
+  content: string;
+}
+
+export default function BlogClient({ posts }: { posts: BlogPostData[] }) {
   const router = useRouter();
   return (
     <main className="flex-grow pt-20">
@@ -36,7 +48,7 @@ export default function BlogClient() {
       {/* Blog Grid */}
       <section className="max-w-7xl mx-auto px-6 -mt-16 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post, index) => (
+          {posts.map((post, index) => (
             <motion.article
               key={post.id}
               onClick={() => router.push(`/blog/${post.slug}`)}
@@ -55,6 +67,7 @@ export default function BlogClient() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     priority
+                    unoptimized={true}
                   />
                 ) : (
                   <Image
@@ -64,6 +77,7 @@ export default function BlogClient() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    unoptimized={true}
                   />
                 )}
               </div>

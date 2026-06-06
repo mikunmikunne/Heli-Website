@@ -5,27 +5,41 @@ import { FormState } from '@/app/booking/types';
 
 export async function POST(req: Request) {
   try {
-    const body: FormState = await req.json();
+    const body = await req.json();
+    const { fullName, email, phone, preferredDate, captchaToken } = body;
 
     // 1. Server-side Validation
-    if (!body.fullName || !body.email || !body.phone || !body.preferredDate) {
+    if (!fullName || !email || !phone || !preferredDate) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
-    if (!isValidEmail(body.email) || !isValidPhoneNumber(body.phone)) {
+    if (!isValidEmail(email) || !isValidPhoneNumber(phone)) {
       return NextResponse.json({ error: 'Invalid email or phone format' }, { status: 400 });
     }
 
-    // 2. Insert to Supabase DB
-    const { data, error } = await supabase
+    // 2. CAPTCHA Verification
+    if (!captchaToken) {
+      return NextResponse.json({ error: 'CAPTCHA token is missing' }, { status: 400 });
+    }
+
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`;
+    const verifyRes = await fetch(verifyUrl, { method: 'POST' });
+    const verifyJson = await verifyRes.json();
+
+    if (!verifyJson.success) {
+      return NextResponse.json({ error: 'CAPTCHA verification failed' }, { status: 400 });
+    }
+
+    // 3. Insert to Supabase DB
+    const { error } = await supabase
       .from('bookings')
       .insert([
         {
-          full_name: body.fullName,
+          full_name: fullName,
           company_name: body.companyName,
-          email: body.email,
-          phone: body.phone,
+          email: email,
+          phone: phone,
           employee_count: body.employeeCount,
-          preferred_date: body.preferredDate,
+          preferred_date: preferredDate,
           location: body.location,
           details: body.details,
         }
@@ -35,7 +49,7 @@ export async function POST(req: Request) {
     
     return NextResponse.json({ success: true }, { status: 200 });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Booking API Error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }

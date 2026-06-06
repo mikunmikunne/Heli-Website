@@ -3,9 +3,12 @@ import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { Clock, Calendar, Share2 } from "lucide-react";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 interface BlogPost {
-  id: number;
+  id: string | number;
   slug: string;
   category: string;
   readTime: string;
@@ -64,23 +67,21 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
             </button>
           </div>
         </div>
-      </motion.div>
 
-      {/* Featured Image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        className="relative h-[25rem] md:h-[35rem] rounded-[2rem] overflow-hidden mb-16 shadow-2xl"
-      >
-        <Image
-          src={post.image}
-          alt={post.title}
-          fill
-          sizes="(max-width: 1024px) 100vw, 1024px"
-          className="object-cover"
-          priority
-        />
+        {/* Featured Image */}
+        {post.image && (
+          <div className="relative w-full h-[400px] mb-12 rounded-3xl overflow-hidden shadow-lg">
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              priority
+              unoptimized={true}
+            />
+          </div>
+        )}
       </motion.div>
 
       {/* Post Content */}
@@ -88,9 +89,31 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-gray-600 dark:text-gray-400 leading-relaxed space-y-8"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+        className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-400 leading-relaxed mb-16"
+      >
+        <ReactMarkdown 
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
+          components={{
+            img: ({node, ...props}) => {
+              const cleanSrc = typeof props.src === 'string' ? props.src.replace(/&amp;/g, '&') : '';
+              if (cleanSrc.includes('pollinations.ai')) {
+                return null; // Do not render broken AI images in the body
+              }
+              return (
+                <img 
+                  src={cleanSrc}
+                  className="w-full rounded-2xl shadow-xl my-8 object-cover object-center max-h-[35rem]" 
+                  alt={props.alt || "Blog image"} 
+                  loading="lazy"
+                />
+              );
+            }
+          }}
+        >
+          {post.content}
+        </ReactMarkdown>
+      </motion.div>
 
       {/* CTA Footer */}
       <div className="mt-24 pt-12 border-t border-gray-200 dark:border-white/10 text-center">

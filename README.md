@@ -34,3 +34,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+npx n8n 
+http://localhost:5678gcloud config set project PROJECT_ID
+gcloud services enable sheets.googleapis.com drive.googleapis.com --project=PROJECT_ID
+gcloud iam service-accounts create n8n-seo-sa --display-name="n8n SEO service account"
+gcloud iam service-accounts keys create ./n8n-service-account.json \
+  --iam-account=n8n-seo-sa@PROJECT_ID.iam.gserviceaccount.com
