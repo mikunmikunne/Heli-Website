@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 5; // Revalidate pages at most every 5 seconds
+
 export default async function BlogPage() {
   const articles = await getPublishedArticles();
 
