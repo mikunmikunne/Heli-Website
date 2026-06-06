@@ -47,16 +47,14 @@ export default function Header() {
         <nav className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <Link href="/" className="flex items-center gap-2.5 text-lg sm:text-xl font-bold text-emerald-950 dark:text-emerald-300 tracking-tight z-50 hover:opacity-90 transition-opacity">
             <svg
-              className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-600 dark:text-emerald-400 transition-colors shrink-0"
-              viewBox="0 0 24 24"
+              className="w-8 h-8 sm:w-9 sm:h-9 transition-colors shrink-0"
+              viewBox="0 0 200 200"
               fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
             >
-              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.58 1 9.8a7 7 0 0 1-9 8.2Z" fill="currentColor" fillOpacity="0.15" />
-              <path d="M19 2c-2.26 4.33-5.27 7.14-8 10" />
+              <path d="M60 160 L50 180 M120 160 L130 180" stroke="#064e3b" strokeWidth="6" strokeLinecap="round" />
+              <path d="M55 120 Q55 160 95 160 H140 L150 120" fill="none" stroke="#059669" strokeWidth="12" strokeLinecap="round" />
+              <path d="M70 120 L50 70 Q45 60 60 60 H100 Q115 60 110 70 L90 120" fill="none" stroke="#10b981" strokeWidth="12" strokeLinecap="round" />
+              <circle cx="85" cy="40" r="15" fill="#059669" />
             </svg>
             Onsite Chair Massage
           </Link>
