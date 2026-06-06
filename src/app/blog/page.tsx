@@ -3,7 +3,7 @@ import Header from "@/app/component/header";
 import Footer from "@/app/component/footer";
 import BlogClient, { BlogPostData } from "./BlogClient";
 import { getPublishedArticles, extractAndStripFirstImage, cleanWordPressHtmlToMarkdown, decodeHtmlEntities } from "@/utils/wordpress";
-import { getImageForTopic, getTopicFromText } from "@/utils/topics";
+import { getImageForTopic, getTopicFromArticle } from "@/utils/topics";
 
 export const metadata: Metadata = {
   title: "Wellness Insights & Blog | Onsite Chair Massage",
@@ -24,8 +24,8 @@ export default async function BlogPage() {
     // Extract dynamic image from content if available
     const { imageUrl, cleanContent } = extractAndStripFirstImage(article.content.rendered);
     
-    // Determine topic dynamically from title/content, or fall back to meta topic
-    const topic = article.meta?.topic || getTopicFromText(article.title.rendered, article.content.rendered);
+    // Determine topic dynamically from title/content, category/tag slugs, or meta topic
+    const topic = getTopicFromArticle(article);
     
     // Clean paragraph HTML wrapping to get raw markdown
     const markdownContent = cleanWordPressHtmlToMarkdown(cleanContent);

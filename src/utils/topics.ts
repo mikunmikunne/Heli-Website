@@ -50,3 +50,39 @@ export function getTopicFromText(title: string, content: string): string {
   return "employee-wellbeing"; // default fallback
 }
 
+export function getTopicFromArticle(article: any): string {
+  if (!article) return "employee-wellbeing";
+
+  // 1. Check if the post metadata explicitly sets the topic
+  if (article.meta?.topic && topicImageMap[article.meta.topic]) {
+    return article.meta.topic;
+  }
+
+  // 2. Check embedded categories and tags (taxonomies) from WordPress REST API
+  if (article._embedded && article._embedded['wp:term']) {
+    const termArrays = article._embedded['wp:term'];
+    for (const termArray of termArrays) {
+      if (Array.isArray(termArray)) {
+        for (const term of termArray) {
+          const slug = term?.slug;
+          // Direct slug match (e.g., 'stress-relief')
+          if (slug && topicImageMap[slug]) {
+            return slug;
+          }
+          // Name-based match normalized to slug format (e.g., 'Stress Relief' -> 'stress-relief')
+          const normalizedName = term?.name?.toLowerCase().replace(/\s+/g, '-');
+          if (normalizedName && topicImageMap[normalizedName]) {
+            return normalizedName;
+          }
+        }
+      }
+    }
+  }
+
+  // 3. Fallback to scanning title and content
+  const title = article.title?.rendered || "";
+  const content = article.content?.rendered || "";
+  return getTopicFromText(title, content);
+}
+
+

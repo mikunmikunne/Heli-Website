@@ -5,7 +5,7 @@ import BlogDetail from "./BlogDetail";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getArticleBySlug, extractAndStripFirstImage, cleanWordPressHtmlToMarkdown, decodeHtmlEntities } from "@/utils/wordpress";
-import { getImageForTopic, getTopicFromText } from "@/utils/topics";
+import { getImageForTopic, getTopicFromArticle } from "@/utils/topics";
 
 export const revalidate = 5; // Cache and revalidate pages at most every 5 seconds
 
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     
     // Generate description and image from content
     const { imageUrl, cleanContent } = extractAndStripFirstImage(post.content.rendered);
-    const topic = post.meta?.topic || getTopicFromText(post.title.rendered, post.content.rendered);
+    const topic = getTopicFromArticle(post);
     const markdownContent = cleanWordPressHtmlToMarkdown(cleanContent);
     const plainTextDescription = markdownContent
         .replace(/<[^>]+>/g, '') // remove HTML
@@ -56,7 +56,7 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
     if (!article) { return notFound(); }
     
     const { imageUrl, cleanContent } = extractAndStripFirstImage(article.content.rendered);
-    const topic = article.meta?.topic || getTopicFromText(article.title.rendered, article.content.rendered);
+    const topic = getTopicFromArticle(article);
     const markdownContent = cleanWordPressHtmlToMarkdown(cleanContent);
     
     const plainTextDescription = markdownContent
