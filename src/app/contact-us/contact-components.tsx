@@ -3,10 +3,10 @@ import Image from "next/image";
 import React from 'react';
 import { motion } from "motion/react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
   Calendar,
   Building2,
   ChevronRight,
@@ -43,7 +43,7 @@ export function ContactUsContent() {
       setIsSubmitting(false);
       return;
     }
-    
+
     try {
       const captchaToken = recaptchaRef.current?.getValue();
       if (!captchaToken) {
@@ -53,9 +53,9 @@ export function ContactUsContent() {
       }
 
       const response = await fetch('/api/contacts', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...formData, captchaToken }),
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, captchaToken }),
       });
 
       const result = await response.json();
@@ -80,26 +80,26 @@ export function ContactUsContent() {
       {/* Hero Section */}
       <section className="relative py-28 md:py-36 overflow-hidden text-white">
         <div className="absolute inset-0 -z-10 bg-black">
-          <Image 
-            fill 
+          <Image
+            fill
             priority
             sizes="100vw"
             src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2000"
-            alt="Relaxing corporate massage treatment" 
+            alt="Relaxing corporate massage treatment"
             className="object-cover brightness-40 contrast-110"
             referrerPolicy="no-referrer"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/35 -z-10"></div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6"
           >
             Contact Us
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -122,17 +122,17 @@ export function ContactUsContent() {
               </div>
 
               <div className="space-y-8">
-                <ContactItem 
+                <ContactItem
                   icon={<Mail className="w-6 h-6" />}
                   title="Email Us"
-                  lines={["hello@onsitechairmassage.com", "support@onsitechairmassage.com"]}
+                  lines={["Mikun.creatory@gmail.com", "support@onsitechairmassage.com"]}
                 />
-                <ContactItem 
+                <ContactItem
                   icon={<Phone className="w-6 h-6" />}
                   title="Call Us"
                   lines={["+1 (555) 892-4410", "Mon-Fri, 9am - 6pm EST"]}
                 />
-                <ContactItem 
+                <ContactItem
                   icon={<MapPin className="w-6 h-6" />}
                   title="Business Location"
                   lines={["452 Wellness Way, Suite 200", "San Francisco, CA 94107"]}
@@ -140,24 +140,24 @@ export function ContactUsContent() {
               </div>
 
               <div className="p-8 rounded-3xl bg-surface-container-low border border-outline-variant/10">
-                <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
                 >
-                    <div className="flex items-center gap-4 mb-4">
-                        <div className="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
-                        <span className="text-[10px] font-semibold tracking-wider text-secondary uppercase">Now Booking</span>
-                    </div>
-                    <p className="text-on-surface font-medium leading-snug italic">
-                        &quot;Our therapists are currently available for bookings in the greater Bay Area and surrounding regions.&quot;
-                    </p>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+                    <span className="text-[10px] font-semibold tracking-wider text-secondary uppercase">Now Booking</span>
+                  </div>
+                  <p className="text-on-surface font-medium leading-snug italic">
+                    &quot;Our therapists are currently available for bookings in the greater Bay Area and surrounding regions.&quot;
+                  </p>
                 </motion.div>
               </div>
             </div>
 
             {/* Right: Form */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -180,27 +180,27 @@ export function ContactUsContent() {
                   </button>
                 </div>
               ) : (
-                <form 
+                <form
                   className="space-y-6"
                   onSubmit={handleSubmit}
                 >
-                  <FormField 
-                    label="Full Name" 
-                    placeholder="John Doe" 
-                    type="text" 
-                    value={formData.fullName} 
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })} 
+                  <FormField
+                    label="Full Name"
+                    placeholder="John Doe"
+                    type="text"
+                    value={formData.fullName}
+                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   />
-                  <FormField 
-                    label="Email Address" 
-                    placeholder="john@company.com" 
-                    type="email" 
-                    value={formData.email} 
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })} 
+                  <FormField
+                    label="Email Address"
+                    placeholder="john@company.com"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                   <div className="space-y-2">
                     <label htmlFor={messageId} className="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase ml-1">Message</label>
-                    <textarea 
+                    <textarea
                       id={messageId}
                       className="w-full px-6 py-4 rounded-xl bg-surface-container-high border-transparent focus:border-primary/20 focus:ring-0 focus:bg-white transition-all duration-200 placeholder:text-on-surface-variant text-black resize-none"
                       placeholder="Tell us about your team and preferred dates..."
@@ -230,8 +230,8 @@ export function ContactUsContent() {
                     </div>
                   )}
 
-                  <button 
-                    className="w-full py-5 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 text-white font-headline font-bold text-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-emerald-700/20 disabled:opacity-75 disabled:cursor-not-allowed" 
+                  <button
+                    className="w-full py-5 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 text-white font-headline font-bold text-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-emerald-700/20 disabled:opacity-75 disabled:cursor-not-allowed"
                     type="submit"
                     disabled={isSubmitting}
                   >
@@ -248,8 +248,8 @@ export function ContactUsContent() {
       <section className="px-6 lg:px-8 max-w-7xl mx-auto mb-24">
         <div className="relative w-full h-[500px] rounded-[2.5rem] overflow-hidden bg-surface-container shadow-inner group">
           <div className="absolute inset-0 opacity-80 transition-all duration-700">
-            <Image fill sizes="100vw" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUCa1yF0nW-gafVv-BepUmA8yFq4YSOyhat0nY3u6bTvcUCvI2SYYoaGwjFTpke6Dz2CSUGRZXwJh-KHNqRg9Ta47GyQjrVQBrMc5c77yNIVhZR0uWQTO5DcLWuLsOSvOCyPwSpWQo2jDsb-NJ9yCBj4Mb5VgK9gmiL8Xzqy77sxf7rdsBCNhcHJ_EqYjx8HSTT_94UfZE0MnMDDSrOttkQQaK1pJoJkk53Z_ygEAzGwhH00lS1rSo5zwOGpRJ1_ZRCq2HPuuh9e8" 
-              alt="Map location" 
+            <Image fill sizes="100vw" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUCa1yF0nW-gafVv-BepUmA8yFq4YSOyhat0nY3u6bTvcUCvI2SYYoaGwjFTpke6Dz2CSUGRZXwJh-KHNqRg9Ta47GyQjrVQBrMc5c77yNIVhZR0uWQTO5DcLWuLsOSvOCyPwSpWQo2jDsb-NJ9yCBj4Mb5VgK9gmiL8Xzqy77sxf7rdsBCNhcHJ_EqYjx8HSTT_94UfZE0MnMDDSrOttkQQaK1pJoJkk53Z_ygEAzGwhH00lS1rSo5zwOGpRJ1_ZRCq2HPuuh9e8"
+              alt="Map location"
               className="object-cover"
               referrerPolicy="no-referrer"
             />
@@ -272,8 +272,8 @@ export function ContactUsContent() {
       {/* CTA Section */}
       <section className="relative py-24 mx-6 lg:mx-8 mb-24 rounded-[3rem] overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-black">
-          <Image width={800} height={600} src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9gvBXNykZZ35V8DnkJSqWe9k_xiVFrJAAF76372vFyQeMU5ij8bQqZu22FWCMzSJEovnp7myRsPPc7v9Sv7J71ovBDFGFRaMdvV3XA9bcToKELYD5KwS6EQqpcYbixhxzyLqJ_fudpzx7mB-SfjKDqh7BAGsB2lM3lCyNgE4eSK8LJKk1nLZwsklHuDZnI55PT7aP3hmku-fNrMCmV_ILzX5exp_ppQg4Yih5B5xU0DZNpTpifrkCGi-fUInZVfQP1-UOawdLZaE" 
-            alt="Relaxing massage" 
+          <Image width={800} height={600} src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9gvBXNykZZ35V8DnkJSqWe9k_xiVFrJAAF76372vFyQeMU5ij8bQqZu22FWCMzSJEovnp7myRsPPc7v9Sv7J71ovBDFGFRaMdvV3XA9bcToKELYD5KwS6EQqpcYbixhxzyLqJ_fudpzx7mB-SfjKDqh7BAGsB2lM3lCyNgE4eSK8LJKk1nLZwsklHuDZnI55PT7aP3hmku-fNrMCmV_ILzX5exp_ppQg4Yih5B5xU0DZNpTpifrkCGi-fUInZVfQP1-UOawdLZaE"
+            alt="Relaxing massage"
             className="w-full h-full object-cover brightness-50 contrast-125 opacity-70"
             referrerPolicy="no-referrer"
           />
@@ -282,7 +282,7 @@ export function ContactUsContent() {
           <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
             Ready to transform your office culture?
           </h2>
-          <button 
+          <button
             onClick={() => router.push('/booking')}
             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary rounded-full font-headline font-bold text-lg shadow-lg hover:scale-105 transition-transform mx-auto"
           >
