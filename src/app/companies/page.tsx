@@ -34,7 +34,7 @@ export default function ForCompanies() {
         <CompanyHeroAnim />
 
         {/* Section 2: Why It Matters */}
-        <section className="bg-surface-container-low py-24 px-6">
+        <section className="bg-surface-container-low py-12 md:py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="order-2 md:order-1">
@@ -102,7 +102,7 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 3: Benefits for Companies */}
-        <section className="py-24 px-6 bg-surface-container-lowest">
+        <section className="py-12 md:py-24 px-6 bg-surface-container-lowest">
           <div className="max-w-7xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-4xl font-headline font-bold mb-6 text-on-surface">
@@ -143,7 +143,7 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 4: Process */}
-        <section className="py-24 px-6 bg-surface-container-low">
+        <section className="py-12 md:py-24 px-6 bg-surface-container-low">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl font-headline font-bold text-center mb-20 text-on-surface">
               A seamless process for HR leaders
@@ -194,12 +194,12 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 5: Use Cases */}
-        <section className="py-24 px-6 bg-surface">
+        <section className="py-12 md:py-24 px-6 bg-surface">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-headline font-bold text-center mb-16 text-on-surface">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-8 md:mb-16 text-on-surface">
               Perfect for every corporate occasion
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 min-h-auto md:min-h-150">
+            <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 md:min-h-150">
               {[
                 {
                   title: "Office wellness",
@@ -236,7 +236,7 @@ export default function ForCompanies() {
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className={`${item.span} relative group overflow-hidden rounded-3xl bg-gray-900`}
+                  className={`${item.span} relative group overflow-hidden rounded-3xl bg-gray-900 h-72 md:h-auto`}
                 >
                   <Image
                     className="object-cover opacity-85 dark:opacity-75 group-hover:scale-105 transition-transform duration-700"
@@ -261,7 +261,7 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 6: Testimonials */}
-        <section className="py-24 px-6 bg-surface-container-lowest">
+        <section className="py-12 md:py-24 px-6 bg-surface-container-lowest">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <div className="max-w-2xl">
@@ -282,7 +282,7 @@ export default function ForCompanies() {
                 </button>
               </div>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <TestimonialCard
                 quote="The most appreciated benefit we've ever introduced. Our therapist is professional, and the team counts down the days until their next session."
                 author="Sarah Jenkins"
@@ -306,7 +306,7 @@ export default function ForCompanies() {
         </section>
 
         {/* Section 7: CTA */}
-        <section className="py-24 px-6 bg-surface-container-lowest">
+        <section className="py-12 md:py-24 px-6 bg-surface-container-lowest">
           <div className="max-w-7xl mx-auto">
             <div className="relative bg-emerald-800 rounded-[3rem] p-12 md:p-24 overflow-hidden shadow-2xl shadow-emerald-900/30">
               <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
@@ -380,7 +380,7 @@ function TestimonialCard({
       </div>
       <p className="text-on-surface/90 italic mb-8 leading-relaxed">&quot;{quote}&quot;</p>
       <div className="flex items-center gap-4">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-surface-container-high">
+        <div className="relative w-12 h-12 rounded-full overflow-hidden bg-surface-container-high shrink-0">
           <Image
             className="object-cover"
             src={img}

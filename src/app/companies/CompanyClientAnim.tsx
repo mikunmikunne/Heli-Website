@@ -8,7 +8,7 @@ import { TrendingUp } from 'lucide-react';
 
 export function CompanyHeroAnim() {
   return (
-    <section className="relative px-6 py-24 md:py-32 overflow-hidden">
+    <section className="relative px-6 py-12 md:py-24 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}

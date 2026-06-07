@@ -60,7 +60,7 @@ export default function Header() {
           </Link>
 
           {/* Menu ở desktop */}
-          <div className="hidden md:flex items-center gap-8 font-sans font-medium text-sm tracking-tight">
+          <div className="hidden lg:flex items-center gap-8 font-sans font-medium text-sm tracking-tight">
             {navItems.map((item) => {
               const active = isActive(item.href);
 
@@ -71,7 +71,7 @@ export default function Header() {
                   className={
                     active
                       ? "text-emerald-700 dark:text-emerald-400 font-semibold pb-1 border-b-2 border-emerald-600 dark:border-emerald-400"
-                      : "text-slate-600  hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                      : "text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                   }
                   aria-current={active ? "page" : undefined}
                 >
@@ -82,13 +82,13 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-4">
-            <Link href="/booking" className="hidden md:block bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:brightness-105 active:scale-95 transition-all">
+            <Link href="/booking" className="hidden lg:block bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:brightness-105 active:scale-95 transition-all">
               Get a Quote
             </Link>
 
             {/* Icon burger ở chế độ di động */}
             <button
-              className="md:hidden z-50 p-2 text-slate-800 dark:text-slate-200 transition-colors focus:outline-none"
+              className="lg:hidden z-50 p-2 text-slate-800 dark:text-slate-200 transition-colors focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -111,7 +111,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-50 bg-white dark:bg-slate-950 md:hidden flex flex-col pt-24 px-6 transition-all duration-300 ${
+        className={`fixed inset-0 z-50 bg-white dark:bg-slate-950 lg:hidden flex flex-col pt-24 px-6 transition-all duration-300 ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         style={{

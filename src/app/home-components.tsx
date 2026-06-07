@@ -9,20 +9,20 @@ const benefitsData = [
   {
     title: "Reduce Stress",
     desc: "Lower cortisol levels and alleviate physical tension that accumulates during long work hours.",
-    icon: <Heart className="text-emerald-700" />,
-    color: "bg-emerald-50"
+    icon: <Heart className="text-emerald-700 dark:text-emerald-400" />,
+    color: "bg-emerald-50 dark:bg-emerald-950/40"
   },
   {
     title: "Improve Productivity",
     desc: "A brief mental and physical reset increases focus and cognitive function for the rest of the day.",
-    icon: <TrendingUp className="text-emerald-700" />,
-    color: "bg-emerald-50"
+    icon: <TrendingUp className="text-emerald-700 dark:text-emerald-400" />,
+    color: "bg-emerald-50 dark:bg-emerald-950/40"
   },
   {
     title: "Boost Morale",
     desc: "Show genuine appreciation for your team with a perk that feels deeply personal and restorative.",
-    icon: <Users className="text-emerald-700" />,
-    color: "bg-emerald-50"
+    icon: <Users className="text-emerald-700 dark:text-emerald-400" />,
+    color: "bg-emerald-50 dark:bg-emerald-950/40"
   }
 ];
 
@@ -55,7 +55,7 @@ const reviewsData = [
 
 export const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section className="relative pt-24 pb-12 sm:pt-32 sm:pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -63,10 +63,10 @@ export const Hero = () => {
           transition={{ duration: 0.6 }}
           className="z-10"
         >
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6 text-balance">
-            Premium Onsite Chair Massage for Your <span className="text-emerald-700">Workspace</span>
+          <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-[1.1] mb-6 text-balance">
+            Premium Onsite Chair Massage for Your <span className="text-emerald-700 dark:text-emerald-400">Workspace</span>
           </h1>
-          <p className="text-lg lg:text-xl text-slate-600 mb-10 max-w-xl leading-relaxed">
+          <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-xl leading-relaxed">
             Boost morale, reduce stress, and show your team you care with professional massage therapy delivered directly to your office.
           </p>
           
@@ -82,13 +82,13 @@ export const Hero = () => {
                   src={`https://picsum.photos/seed/user${i}/100/100`} 
                   width={48}
                   height={48}
-                  className="w-12 h-12 rounded-full border-4 border-white object-cover"
+                  className="w-12 h-12 rounded-full border-4 border-white object-cover shrink-0"
                   alt={`Portrait of participating HR professional ${i}`}
                 />
               ))}
             </div>
-            <p className="text-sm font-medium text-slate-500">
-              Trusted by <span className="text-slate-900 font-bold">500+</span> local HR teams
+            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+              Trusted by <span className="text-slate-900 dark:text-white font-bold">500+</span> local HR teams
             </p>
           </div>
         </motion.div>
@@ -100,7 +100,7 @@ export const Hero = () => {
           className="relative"
         >
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-teal-100 rounded-full blur-[100px] opacity-50" />
-          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/5] lg:aspect-auto">
+          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto">
             <Image 
               src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000" 
               width={1000}
@@ -118,11 +118,11 @@ export const Hero = () => {
 
 export const Benefits = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 md:py-20 lg:py-24 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <span className="text-emerald-700 font-bold tracking-widest uppercase text-xs mb-4 block">Why Wellness Matters</span>
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900">Investing in Your People</h2>
+        <div className="text-center mb-10 md:mb-16 lg:mb-20">
+          <span className="text-emerald-700 dark:text-emerald-400 font-bold tracking-widest uppercase text-xs mb-4 block">Why Wellness Matters</span>
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white">Investing in Your People</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -130,13 +130,13 @@ export const Benefits = () => {
             <motion.div 
               key={idx}
               whileHover={{ y: -10 }}
-              className="p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-emerald-700/5 transition-all"
+              className="p-10 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:shadow-emerald-700/5 transition-all"
             >
               <div className={`w-16 h-16 ${benefit.color} rounded-2xl flex items-center justify-center mb-8`}>
                 {benefit.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-900">{benefit.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{benefit.desc}</p>
+              <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">{benefit.title}</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{benefit.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -147,22 +147,22 @@ export const Benefits = () => {
 
 export const Steps = () => {
   return (
-    <section className="py-24 bg-[#f8f9fa]">
+    <section className="py-12 md:py-20 lg:py-24 bg-[#f8f9fa] dark:bg-slate-900/40">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-20 items-center">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
           <div className="lg:w-1/2">
-            <h2 className="text-4xl text-slate-900 lg:text-5xl font-extrabold mb-8 leading-tight">Seamless Integration Into Your Workday</h2>
-            <p className="text-lg text-slate-600 mb-12">We handle everything from scheduling to setup, so you can focus on running your business.</p>
+            <h2 className="text-4xl text-slate-900 dark:text-white lg:text-5xl font-extrabold mb-8 leading-tight">Seamless Integration Into Your Workday</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 mb-12">We handle everything from scheduling to setup, so you can focus on running your business.</p>
             
             <div className="space-y-10">
               {stepsData.map((item, idx) => (
                 <div key={idx} className="flex gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 text-teal-900 flex items-center justify-center font-bold font-headline">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-950/65 text-teal-900 dark:text-teal-300 flex items-center justify-center font-bold font-headline">
                     {item.step}
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-2 text-slate-900">{item.title}</h4>
-                    <p className="text-slate-600">{item.desc}</p>
+                    <h4 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">{item.title}</h4>
+                    <p className="text-slate-600 dark:text-slate-400">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -201,23 +201,23 @@ export const Steps = () => {
 
 export const Testimonials = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 md:py-20 lg:py-24 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-extrabold text-slate-900">What HR Leaders are Saying</h2>
+        <div className="text-center mb-8 md:mb-12 lg:mb-16">
+          <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white">What HR Leaders are Saying</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviewsData.map((review, idx) => (
-            <div key={idx} className="p-8 rounded-3xl bg-slate-50 border border-slate-100">
-              <div className="flex text-emerald-700 mb-6">
+            <div key={idx} className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
+              <div className="flex text-emerald-700 dark:text-emerald-400 mb-6">
                 {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={16} fill="currentColor" />)}
               </div>
-              <p className="text-lg text-slate-700 italic mb-8">&quot;{review.text}&quot;</p>
+              <p className="text-lg text-slate-700 dark:text-slate-300 italic mb-8">&quot;{review.text}&quot;</p>
               <div className="flex items-center gap-4">
-                <Image src={review.avatar} width={48} height={48} className="w-12 h-12 rounded-full object-cover" alt={`Portrait of ${review.name}, ${review.role}`} />
+                <Image src={review.avatar} width={48} height={48} className="w-12 h-12 rounded-full object-cover shrink-0" alt={`Portrait of ${review.name}, ${review.role}`} />
                 <div>
-                  <p className="font-bold text-slate-900">{review.name}</p>
-                  <p className="text-xs text-slate-500">{review.role}</p>
+                  <p className="font-bold text-slate-900 dark:text-white">{review.name}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">{review.role}</p>
                 </div>
               </div>
             </div>
@@ -230,8 +230,8 @@ export const Testimonials = () => {
 
 export const CTA = () => {
   return (
-    <section className="py-24 px-6 bg-[#f8f9fa]">
-      <div className="max-w-7xl mx-auto bg-emerald-700 rounded-[3rem] p-12 lg:p-24 text-center relative overflow-hidden">
+    <section className="py-12 md:py-20 lg:py-24 px-6 bg-[#f8f9fa] dark:bg-slate-900/40">
+      <div className="max-w-7xl mx-auto bg-emerald-700 dark:bg-emerald-800/80 rounded-[3rem] p-12 lg:p-24 text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-white rounded-full blur-[120px]" />
         </div>
@@ -240,7 +240,7 @@ export const CTA = () => {
           <h2 className="text-4xl lg:text-6xl font-extrabold text-white mb-8 leading-tight">Ready to Transform Your Workplace?</h2>
           <p className="text-white/80 text-xl mb-12">Join hundreds of companies that prioritize employee wellness with onsite chair massage.</p>
           
-          <Link href="/contact-us" className="inline-block bg-white text-emerald-700 px-10 py-5 rounded-2xl font-bold text-xl shadow-xl hover:scale-105 transition-transform text-center">
+          <Link href="/contact-us" className="inline-block bg-white text-emerald-700 dark:text-emerald-800 px-10 py-5 rounded-2xl font-bold text-xl shadow-xl hover:scale-105 transition-transform text-center">
             Book Your Session
           </Link>
         </div>

@@ -184,7 +184,7 @@ export function ContactUsContent() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })} 
                   />
                   <div className="space-y-2">
-                    <label htmlFor={messageId} className="block text-xs font-semibold tracking-wider text-emerald-900 uppercase ml-1">Message</label>
+                    <label htmlFor={messageId} className="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase ml-1">Message</label>
                     <textarea 
                       id={messageId}
                       className="w-full px-6 py-4 rounded-xl bg-gray-100 border-transparent focus:border-emerald-700/20 focus:ring-0 focus:bg-white transition-all duration-200 placeholder:text-gray-500 resize-none"

@@ -4,19 +4,19 @@ import Link from "next/link";
 
 export default function Footer() {
 	return (
-		<footer className="w-full pt-16 pb-8 border-t border-slate-200 bg-slate-50">
+		<footer className="w-full pt-16 pb-8 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950">
 			<div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
 				<div className="col-span-1 md:col-span-1">
-					<div className="text-lg font-bold text-emerald-800 mb-6 ">
+					<div className="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-6 ">
 						Onsite Chair Massage
 					</div>
-					<p className=" text-sm text-slate-500 mb-8 leading-relaxed">
+					<p className=" text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
 						Bringing relaxation and restorative wellness directly to the modern workplace across the
 						nation.
 					</p>
 					<div className="flex gap-4">
 						<a
-							className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-emerald-600 transition-colors"
+							className="w-10 h-10 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
 							href="#"
 						>
 							<span className="inline-block text-xl">
@@ -25,17 +25,18 @@ export default function Footer() {
 								alt="Share"
 								width={24} 
 								height={24}
+								className="dark:invert"
 							/>
 							</span>
 						</a>
 					</div>
 				</div>
 				<div>
-					<h4 className="text-gray-700  font-bold mb-6">Services</h4>
+					<h4 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Services</h4>
 					<ul className="space-y-4">
 						<li>
 							<Link
-								className="text-sm text-slate-500 hover:text-emerald-600 hover:translate-x-1 transition-all inline-block"
+								className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
 								href="/our-services"
 							>
 								Weekly Wellness
@@ -43,7 +44,7 @@ export default function Footer() {
 						</li>
 						<li>
 							<Link
-								className=" text-sm text-slate-500 hover:text-emerald-600 hover:translate-x-1 transition-all inline-block"
+								className=" text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
 								href="/our-services"
 							>
 								Corporate Events
@@ -51,7 +52,7 @@ export default function Footer() {
 						</li>
 						<li>
 							<Link
-								className=" text-sm text-slate-500 hover:text-emerald-600 hover:translate-x-1 transition-all inline-block"
+								className=" text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
 								href="/our-services"
 							>
 								Employee Appreciation
@@ -59,7 +60,7 @@ export default function Footer() {
 						</li>
 						<li>
 							<Link
-								className=" text-sm text-slate-500 hover:text-emerald-600 hover:translate-x-1 transition-all inline-block"
+								className=" text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
 								href="/our-services"
 							>
 								Trade Shows
@@ -68,11 +69,11 @@ export default function Footer() {
 					</ul>
 				</div>
 				<div>
-					<h4 className="text-gray-700 font-bold mb-6">Company</h4>
+					<h4 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Company</h4>
 					<ul className="space-y-4">
 						<li>
 							<Link
-								className=" text-sm text-slate-500 hover:text-emerald-600 hover:translate-x-1 transition-all inline-block"
+								className=" text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
 								href="/about"
 							>
 								About
@@ -80,7 +81,7 @@ export default function Footer() {
 						</li>
 						<li>
 							<Link
-								className=" text-sm text-slate-500 hover:text-emerald-600 hover:translate-x-1 transition-all inline-block"
+								className=" text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
 								href="/companies"
 							>
 								For Companies
@@ -88,7 +89,7 @@ export default function Footer() {
 						</li>
 						<li>
 							<Link
-								className=" text-sm text-slate-500 hover:text-emerald-600 hover:translate-x-1 transition-all inline-block"
+								className=" text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
 								href="/blog"
 							>
 								Blog
@@ -96,7 +97,7 @@ export default function Footer() {
 						</li>
 						<li>
 							<Link
-								className=" text-sm text-slate-500 hover:text-emerald-600 hover:translate-x-1 transition-all inline-block"
+								className=" text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
 								href="/contact-us"
 							>
 								Contact
@@ -105,12 +106,12 @@ export default function Footer() {
 					</ul>
 				</div>
 				<div>
-					<h4 className="text-gray-700 font-bold  mb-6">Contact</h4>
+					<h4 className="text-gray-700 dark:text-gray-300 font-bold  mb-6">Contact</h4>
 					<ul className="space-y-4">
-						<li className="text-gray-500 flex items-center gap-2">
+						<li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
 							info@onsitechairmassage.com
 						</li>
-						<li className="text-gray-500 flex items-center gap-2">
+						<li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
 							(555) 123-4567
 						</li>
 						
@@ -118,8 +119,8 @@ export default function Footer() {
 					</ul>
 				</div>
 			</div>
-			<div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200/60 text-center">
-				<p className=" text-sm text-slate-500">
+			<div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200/60 dark:border-slate-800/60 text-center">
+				<p className=" text-sm text-slate-500 dark:text-slate-400">
 					&copy; {new Date().getFullYear()} Onsite Chair Massage. All rights reserved.
 				</p>
 			</div>
