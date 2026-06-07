@@ -18,12 +18,22 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'CAPTCHA token is missing' }, { status: 400 });
     }
 
-    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`;
-    const verifyRes = await fetch(verifyUrl, { method: 'POST' });
-    const verifyJson = await verifyRes.json();
+    if (process.env.RECAPTCHA_SECRET_KEY) {
+      const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: process.env.RECAPTCHA_SECRET_KEY,
+          response: captchaToken,
+        }).toString(),
+      });
+      const verifyJson = await verifyRes.json();
 
-    if (!verifyJson.success) {
-      return NextResponse.json({ error: 'CAPTCHA verification failed' }, { status: 400 });
+      if (!verifyJson.success) {
+        return NextResponse.json({ error: 'CAPTCHA verification failed' }, { status: 400 });
+      }
+    } else {
+      console.warn('RECAPTCHA_SECRET_KEY is not defined. Skipping server-side verification.');
     }
 
     const { error } = await supabase

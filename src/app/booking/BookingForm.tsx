@@ -15,6 +15,7 @@ const EMPLOYEE_COUNT_OPTIONS = [
 
 export default function BookingForm() {
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const {
@@ -36,10 +37,11 @@ export default function BookingForm() {
   });
 
   const onSubmit: SubmitHandler<FormState> = async (data) => {
+    setSubmitError(null);
     try {
       const captchaToken = recaptchaRef.current?.getValue();
       if (!captchaToken) {
-        alert("Please verify that you are not a robot.");
+        setSubmitError("Please verify that you are not a robot.");
         return;
       }
 
@@ -61,7 +63,7 @@ export default function BookingForm() {
       recaptchaRef.current?.reset();
     } catch (error: unknown) {
       console.error("Booking Error:", error);
-      alert(error instanceof Error ? error.message : "Failed to submit request.");
+      setSubmitError(error instanceof Error ? error.message : "Failed to submit request.");
       recaptchaRef.current?.reset();
     }
   };
@@ -219,6 +221,12 @@ export default function BookingForm() {
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
         />
       </div>
+
+      {submitError && (
+        <div className="text-red-600 dark:text-red-400 text-sm font-semibold text-center bg-red-50 dark:bg-red-950/20 py-3 px-4 rounded-xl border border-red-200 dark:border-red-900/50">
+          {submitError}
+        </div>
+      )}
 
       <button
         type="submit"

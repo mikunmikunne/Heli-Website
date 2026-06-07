@@ -150,7 +150,7 @@ export const Steps = () => {
     <section className="py-12 md:py-20 lg:py-24 bg-[#f8f9fa] dark:bg-slate-900/40">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
-          <div className="lg:w-1/2">
+          <div className="w-full lg:w-1/2">
             <h2 className="text-4xl text-slate-900 dark:text-white lg:text-5xl font-extrabold mb-8 leading-tight">Seamless Integration Into Your Workday</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-12">We handle everything from scheduling to setup, so you can focus on running your business.</p>
             
@@ -169,9 +169,9 @@ export const Steps = () => {
             </div>
           </div>
           
-          <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 lg:mt-0">
+          <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:mt-0">
             <div className="pt-0 sm:pt-12">
-              <div className="relative w-full h-[400px]">
+              <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[400px]">
                 <Image 
                   src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=600" 
                   fill
@@ -182,7 +182,7 @@ export const Steps = () => {
               </div>
             </div>
             <div>
-              <div className="relative w-full h-[400px]">
+              <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[400px]">
                 <Image 
                   src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" 
                   fill

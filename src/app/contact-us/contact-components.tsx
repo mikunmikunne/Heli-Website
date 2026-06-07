@@ -23,16 +23,18 @@ export function ContactUsContent() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [formData, setFormData] = React.useState({ fullName: '', email: '', message: '' });
+  const [submitError, setSubmitError] = React.useState<string | null>(null);
   const recaptchaRef = React.useRef<ReCAPTCHA>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
     try {
       const captchaToken = recaptchaRef.current?.getValue();
       if (!captchaToken) {
-        alert("Please verify that you are not a robot.");
+        setSubmitError("Please verify that you are not a robot.");
         setIsSubmitting(false);
         return;
       }
@@ -53,7 +55,7 @@ export function ContactUsContent() {
     } catch (error: unknown) {
       console.error("Contact Error:", error);
       const errorMessage = error instanceof Error ? error.message : "Unknown error";
-      alert("Failed to send message: " + errorMessage);
+      setSubmitError(errorMessage);
       recaptchaRef.current?.reset();
     } finally {
       setIsSubmitting(false);
@@ -203,6 +205,12 @@ export function ContactUsContent() {
                       sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
                     />
                   </div>
+
+                  {submitError && (
+                    <div className="text-red-600 dark:text-red-400 text-sm font-semibold text-center bg-red-50 dark:bg-red-950/20 py-3 px-4 rounded-xl border border-red-200 dark:border-red-900/50">
+                      {submitError}
+                    </div>
+                  )}
 
                   <button 
                     className="w-full py-5 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-700 text-white font-headline font-bold text-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-emerald-700/20 disabled:opacity-75 disabled:cursor-not-allowed" 
