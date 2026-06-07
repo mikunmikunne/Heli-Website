@@ -1,36 +1,15 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl) {
+  throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL environment variable.');
+}
+if (!supabaseKey) {
+  throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY or NEXT_PUBLIC_SUPABASE_ANON_KEY environment variable.');
+}
 
 // Dùng chung cho Server API Handlers
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
-export async function getPublishedArticles() {
-  const { data, error } = await supabase
-    .from('seo_articles')
-    .select('id, keyword, title, slug, content, published_at, created_at, image_url, category')
-    .eq('status', 'published')
-    .order('published_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching articles:', error);
-    return [];
-  }
-  return data || [];
-}
-
-export async function getArticleBySlug(slug: string) {
-  const { data, error } = await supabase
-    .from('seo_articles')
-    .select('id, keyword, title, slug, content, published_at, created_at, image_url, category')
-    .eq('status', 'published')
-    .eq('slug', slug)
-    .single();
-
-  if (error) {
-    console.error('Error fetching article:', error);
-    return null;
-  }
-  return data || null;
-}

@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ContactItem } from "../component/ui/contact-item";
 import { FormField } from "../component/ui/form-field";
+import { isValidEmail } from "@/utils/validators";
 
 export function ContactUsContent() {
   const router = useRouter();
@@ -30,6 +31,18 @@ export function ContactUsContent() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
+
+    // Client-side Validation
+    if (!formData.fullName.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setSubmitError("Please fill in all fields.");
+      setIsSubmitting(false);
+      return;
+    }
+    if (!isValidEmail(formData.email)) {
+      setSubmitError("Invalid email format.");
+      setIsSubmitting(false);
+      return;
+    }
     
     try {
       const captchaToken = recaptchaRef.current?.getValue();
@@ -148,7 +161,7 @@ export function ContactUsContent() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-surface-container-lowest p-8 md:p-12 rounded-[2rem] ambient-shadow border border-outline-variant/5"
+              className="bg-surface-container-lowest p-8 md:p-12 rounded-[2rem] ambient-shadow border border-outline-variant/5 w-full max-w-2xl mx-auto lg:max-w-none"
             >
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
@@ -189,7 +202,7 @@ export function ContactUsContent() {
                     <label htmlFor={messageId} className="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase ml-1">Message</label>
                     <textarea 
                       id={messageId}
-                      className="w-full px-6 py-4 rounded-xl bg-gray-100 border-transparent focus:border-emerald-700/20 focus:ring-0 focus:bg-white transition-all duration-200 placeholder:text-gray-500 resize-none"
+                      className="w-full px-6 py-4 rounded-xl bg-surface-container-high border-transparent focus:border-primary/20 focus:ring-0 focus:bg-white transition-all duration-200 placeholder:text-on-surface-variant text-black resize-none"
                       placeholder="Tell us about your team and preferred dates..."
                       rows={5}
                       value={formData.message}
@@ -203,6 +216,11 @@ export function ContactUsContent() {
                     <ReCAPTCHA
                       ref={recaptchaRef}
                       sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                      onChange={(token) => {
+                        if (token) {
+                          setSubmitError(null);
+                        }
+                      }}
                     />
                   </div>
 
@@ -243,7 +261,7 @@ export function ContactUsContent() {
               <h3 className="font-headline font-bold text-on-surface">Main Office</h3>
             </div>
             <p className="text-on-surface-variant text-sm mb-4">Visit our administrative headquarters in the Financial District.</p>
-            <Link href="https://google.com/maps" className="text-primary font-bold text-sm flex items-center gap-2 group/link">
+            <Link href="https://maps.google.com/?q=452+Wellness+Way,+Suite+200,+San+Francisco,+CA+94107" className="text-primary font-bold text-sm flex items-center gap-2 group/link">
               Open in Google Maps
               <ChevronRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
             </Link>
@@ -266,7 +284,7 @@ export function ContactUsContent() {
           </h2>
           <button 
             onClick={() => router.push('/booking')}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#007052] rounded-full font-headline font-bold text-lg shadow-lg hover:scale-105 transition-transform mx-auto"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary rounded-full font-headline font-bold text-lg shadow-lg hover:scale-105 transition-transform mx-auto"
           >
             Book a Session
             <Calendar className="w-5 h-5" />

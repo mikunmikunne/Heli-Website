@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import BlogDetail from "./BlogDetail";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { getArticleBySlug, extractAndStripFirstImage, cleanWordPressHtmlToMarkdown, decodeHtmlEntities } from "@/utils/wordpress";
-import { getImageForTopic, getTopicFromArticle, getTopicDisplayName } from "@/utils/topics";
+import { getArticleBySlug } from "@/utils/wordpress";
+import { mapWordPressPostToBlogData } from "@/utils/blog";
 
 export const revalidate = 5; // Cache and revalidate pages at most every 5 seconds
 
@@ -18,32 +18,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         };
     }
     
-    // Generate description and image from content
-    const { imageUrl, cleanContent } = extractAndStripFirstImage(post.content.rendered);
-    const topic = getTopicFromArticle(post);
-    const markdownContent = cleanWordPressHtmlToMarkdown(cleanContent);
-    const plainTextDescription = markdownContent
-        .replace(/<[^>]+>/g, '') // remove HTML
-        .trim()
-        .substring(0, 150) + "...";
-
-    const finalImageUrl = imageUrl || getImageForTopic(topic);
-    const decodedTitle = decodeHtmlEntities(post.title.rendered);
+    const mappedPost = mapWordPressPostToBlogData(post);
 
     return {
-        title: `${decodedTitle} | Onsite Chair Massage`,
-        description: plainTextDescription,
+        title: `${mappedPost.title} | Onsite Chair Massage`,
+        description: mappedPost.description,
         openGraph: {
-            title: `${decodedTitle} | Onsite Chair Massage`,
-            description: plainTextDescription,
-            images: [{ url: finalImageUrl }],
+            title: `${mappedPost.title} | Onsite Chair Massage`,
+            description: mappedPost.description,
+            images: [{ url: mappedPost.image }],
             type: "article",
         },
         twitter: {
             card: "summary_large_image",
-            title: `${decodedTitle} | Onsite Chair Massage`,
-            description: plainTextDescription,
-            images: [finalImageUrl],
+            title: `${mappedPost.title} | Onsite Chair Massage`,
+            description: mappedPost.description,
+            images: [mappedPost.image],
         }
     };
 }
@@ -55,32 +45,7 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
     const article = await getArticleBySlug(slug);
     if (!article) { return notFound(); }
     
-    const { imageUrl, cleanContent } = extractAndStripFirstImage(article.content.rendered);
-    const topic = getTopicFromArticle(article);
-    const markdownContent = cleanWordPressHtmlToMarkdown(cleanContent);
-    
-    const plainTextDescription = markdownContent
-        .replace(/<[^>]+>/g, '')
-        .trim()
-        .substring(0, 150) + "...";
-
-    const wordCount = markdownContent ? markdownContent.replace(/<[^>]+>/g, '').split(/\s+/).length : 0;
-    const readTimeMin = Math.ceil(wordCount / 200);
-    const readTimeStr = `${readTimeMin} min read`;
-
-    // Map database article to conform to BlogDetail interface
-    const mappedPost = {
-        id: article.id,
-        slug: article.slug,
-        category: getTopicDisplayName(topic),
-        readTime: readTimeStr,
-        title: decodeHtmlEntities(article.title.rendered),
-        description: plainTextDescription,
-        image: imageUrl || getImageForTopic(topic),
-        date: article.date ? new Date(article.date).toLocaleDateString() : 'Unknown Date',
-        author: "Onsite Chair Massage Team",
-        content: markdownContent,
-    };
+    const mappedPost = mapWordPressPostToBlogData(article);
 
 
     // JSON-LD structured data for SEO rich snippets (Fallback standard schema)

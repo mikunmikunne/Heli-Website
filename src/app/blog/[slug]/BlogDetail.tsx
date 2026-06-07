@@ -6,19 +6,7 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-
-interface BlogPost {
-  id: string | number;
-  slug: string;
-  category: string;
-  readTime: string;
-  title: string;
-  description: string;
-  image: string;
-  date: string;
-  author: string;
-  content: string;
-}
+import { BlogPost } from "@/utils/blog";
 
 export default function BlogDetail({ post }: { post: BlogPost }) {
   const router = useRouter();

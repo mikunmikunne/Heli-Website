@@ -8,5 +8,3 @@ export type FormState = {
   location: string;
   details: string;
 };
-
-export type FormErrors = Partial<Record<keyof FormState, string>>;

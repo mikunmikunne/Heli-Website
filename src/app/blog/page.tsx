@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Header from "@/app/component/header";
 import Footer from "@/app/component/footer";
-import BlogClient, { BlogPostData } from "./BlogClient";
-import { getPublishedArticles, extractAndStripFirstImage, cleanWordPressHtmlToMarkdown, decodeHtmlEntities } from "@/utils/wordpress";
-import { getImageForTopic, getTopicFromArticle, getTopicDisplayName } from "@/utils/topics";
+import BlogClient from "./BlogClient";
+import { getPublishedArticles } from "@/utils/wordpress";
+import { mapWordPressPostToBlogData } from "@/utils/blog";
 
 export const metadata: Metadata = {
   title: "Wellness Insights & Blog | Onsite Chair Massage",
@@ -20,40 +20,7 @@ export const revalidate = 5; // Revalidate pages at most every 5 seconds
 export default async function BlogPage() {
   const articles = await getPublishedArticles();
 
-  const posts: BlogPostData[] = articles.map((article) => {
-    // Extract dynamic image from content if available
-    const { imageUrl, cleanContent } = extractAndStripFirstImage(article.content.rendered);
-    
-    // Determine topic dynamically from title/content, category/tag slugs, or meta topic
-    const topic = getTopicFromArticle(article);
-    
-    // Clean paragraph HTML wrapping to get raw markdown
-    const markdownContent = cleanWordPressHtmlToMarkdown(cleanContent);
-    
-    // Create plain text description from content since we aren't using Yoast SEO
-    const plainTextDescription = markdownContent
-      .replace(/<[^>]+>/g, '') // remove HTML
-      .replace(/[#*`_]/g, '')
-      .trim()
-      .substring(0, 150) + "...";
-
-    const wordCount = markdownContent ? markdownContent.replace(/<[^>]+>/g, '').split(/\s+/).length : 0;
-    const readTimeMin = Math.ceil(wordCount / 200);
-    const readTimeStr = `${readTimeMin} min read`;
-
-    return {
-      id: article.id,
-      slug: article.slug,
-      category: getTopicDisplayName(topic),
-      readTime: readTimeStr,
-      title: decodeHtmlEntities(article.title.rendered),
-      description: plainTextDescription,
-      image: imageUrl || getImageForTopic(topic),
-      date: article.date ? new Date(article.date).toLocaleDateString() : 'Unknown Date',
-      author: "Onsite Chair Massage Team", // Or from WP author
-      content: markdownContent,
-    };
-  });
+  const posts = articles.map(mapWordPressPostToBlogData);
 
 
   return (

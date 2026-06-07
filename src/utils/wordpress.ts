@@ -10,11 +10,24 @@ export interface WordPressPost {
     rendered: string;
   };
   date: string;
-  yoast_head_json?: any;
+  yoast_head_json?: Record<string, unknown>;
   meta?: {
     topic?: string;
   };
-  _embedded?: any;
+  _embedded?: {
+    'wp:term'?: Array<Array<{
+      id: number;
+      link: string;
+      name: string;
+      slug: string;
+      taxonomy: string;
+    }>>;
+    'wp:featuredmedia'?: Array<{
+      id: number;
+      source_url: string;
+      alt_text: string;
+    }>;
+  };
 }
 
 export async function getPublishedArticles(): Promise<WordPressPost[]> {

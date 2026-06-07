@@ -219,6 +219,11 @@ export default function BookingForm() {
         <ReCAPTCHA
           ref={recaptchaRef}
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+          onChange={(token) => {
+            if (token) {
+              setSubmitError(null);
+            }
+          }}
         />
       </div>
 

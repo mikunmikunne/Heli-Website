@@ -15,8 +15,6 @@ import {
   Zap,
   Heart,
   Users,
-  ArrowLeft,
-  ArrowRight,
   Star,
 } from "lucide-react";
 
@@ -46,7 +44,7 @@ export default function ForCompanies() {
                       colorClass="text-red-500"
                     />
                     <AnimStatCard
-                      title=""
+                      title="$1T"
                       desc="Lost globally in productivity due to stress."
                       colorClass="text-emerald-700"
                     />
@@ -272,14 +270,6 @@ export default function ForCompanies() {
                   See why hundreds of companies choose us as their primary
                   wellness partner.
                 </p>
-              </div>
-              <div className="flex gap-4">
-                <button className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-surface-container-low transition-colors text-on-surface animate-none">
-                  <ArrowLeft size={24} />
-                </button>
-                <button className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center cursor-pointer hover:bg-surface-container-low transition-colors text-on-surface animate-none">
-                  <ArrowRight size={24} />
-                </button>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

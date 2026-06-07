@@ -1,3 +1,5 @@
+import { WordPressPost } from "./wordpress";
+
 export const topicImageMap: Record<string, string> = {
   "employee-wellbeing": "employee-wellbeing.avif",
   "office-ergonomics": "office-ergonomics.avif",
@@ -43,7 +45,7 @@ export function getImageForTopic(topic?: string | null): string {
   return "/blog-images/employee-wellbeing.avif";
 }
 
-export function getTopicFromArticle(article: any): string {
+export function getTopicFromArticle(article: Partial<WordPressPost> | null | undefined): string {
   if (!article) return "employee-wellbeing";
 
   // 1. Check if the post metadata explicitly sets the topic

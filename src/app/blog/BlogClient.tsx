@@ -4,21 +4,9 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { BlogPost } from "@/utils/blog";
 
-export interface BlogPostData {
-  id: string | number;
-  slug: string;
-  category: string;
-  readTime: string;
-  title: string;
-  description: string;
-  image: string;
-  date: string;
-  author: string;
-  content: string;
-}
-
-export default function BlogClient({ posts }: { posts: BlogPostData[] }) {
+export default function BlogClient({ posts }: { posts: BlogPost[] }) {
   const router = useRouter();
   return (
     <main className="flex-grow pt-20">

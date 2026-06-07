@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next';
-import { getPublishedArticles } from '@/utils/supabaseServer';
+import { getPublishedArticles, WordPressPost } from '@/utils/wordpress';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.SITE_URL || 'https://onsitechairmassage.com';
 
-  // 1. Fetch dynamic blog posts from Supabase
-  let posts: any[] = [];
+  // 1. Fetch dynamic blog posts from WordPress
+  let posts: WordPressPost[] = [];
   try {
     posts = await getPublishedArticles();
   } catch (error) {
@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogUrls = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.published_at ? new Date(post.published_at) : new Date(),
+    lastModified: post.date ? new Date(post.date) : new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));

@@ -1,9 +1,15 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/utils/supabaseServer';
 import { isValidEmail } from '@/utils/validators';
+import { isRateLimited } from '@/utils/rateLimit';
 
 export async function POST(req: Request) {
   try {
+    const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '127.0.0.1';
+    if (isRateLimited(ip)) {
+      return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });
+    }
+
     const { fullName, email, message, captchaToken } = await req.json();
 
     if (!fullName || !email || !message) {
@@ -46,7 +52,7 @@ export async function POST(req: Request) {
 
   } catch (error: unknown) {
     console.error('Contact API Error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return NextResponse.json({ error: 'Internal Server Error', details: errorMessage }, { status: 500 });
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
+
