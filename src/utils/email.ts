@@ -228,7 +228,7 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
 }
 
 /**
- * Gửi email thông báo cho ADMIN khi có tin nhắn liên hệ (Contact Us) mới.
+ * Gửi email thông báo cho ADMIN và xác nhận gửi thành công cho KHÁCH HÀNG khi có tin nhắn liên hệ (Contact Us) mới.
  */
 export async function sendContactEmail(data: ContactEmailData): Promise<void> {
   const transporter = getTransporter();
@@ -241,7 +241,60 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
   const fromName = process.env.SMTP_FROM_NAME || 'Onsite Chair Massage Team';
   const fromEmail = process.env.SMTP_USER;
 
-  const html = `
+  // 1. HTML Template gửi cho KHÁCH HÀNG (Customer Confirmation)
+  const customerHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Message Received</title>
+        <style>
+          body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 0; }
+          .container { max-width: 600px; margin: 30px auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+          .header { background: linear-gradient(135deg, #065f46, #047857); padding: 40px 30px; text-align: center; color: #ffffff; }
+          .header h1 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+          .header p { margin: 10px 0 0 0; opacity: 0.9; font-size: 16px; }
+          .content { padding: 40px 30px; line-height: 1.6; }
+          .content h2 { color: #065f46; font-size: 18px; margin-top: 0; border-bottom: 2px solid #f0fdf4; padding-bottom: 10px; }
+          .message-box { background-color: #f9fafb; border-left: 4px solid #10b981; padding: 15px; border-radius: 6px; font-size: 14px; color: #374151; white-space: pre-wrap; margin: 20px 0; }
+          .next-steps { background-color: #f0fdf4; border-left: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 25px 0; }
+          .next-steps h3 { margin: 0 0 8px 0; font-size: 15px; color: #065f46; }
+          .next-steps p { margin: 0; font-size: 14px; color: #047857; }
+          .footer { background-color: #f9fafb; padding: 25px 30px; text-align: center; font-size: 12px; color: #9ca3af; border-top: 1px solid #f3f4f6; }
+          .footer a { color: #047857; text-decoration: none; font-weight: 500; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>Onsite Chair Massage</h1>
+            <p>We have received your message</p>
+          </div>
+          <div class="content">
+            <h2>Thank you for contacting us!</h2>
+            <p>Hi <strong>${data.fullName}</strong>,</p>
+            <p>This is to confirm that we have successfully received the message you sent through our contact form. Here is a copy of your message:</p>
+            
+            <div class="message-box">${data.message}</div>
+
+            <div class="next-steps">
+              <h3>What's next?</h3>
+              <p>Our team will review your inquiry and get back to you within <strong>1 business day</strong>.</p>
+            </div>
+
+            <p>If you have any other questions, please feel free to reply directly to this email.</p>
+          </div>
+          <div class="footer">
+            <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>
+            <p>452 Wellness Way, Suite 200, San Francisco, CA 94107</p>
+          </div>
+        </div>
+      </body>
+    </html>
+  `;
+
+  // 2. HTML Template gửi cho ADMIN (Admin Alert)
+  const adminHtml = `
     <!DOCTYPE html>
     <html>
       <head>
@@ -279,10 +332,19 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
     </html>
   `;
 
+  // Gửi cho Khách hàng
+  await transporter.sendMail({
+    from: `"${fromName}" <${fromEmail}>`,
+    to: data.email,
+    subject: 'We have received your message | Onsite Chair Massage',
+    html: customerHtml,
+  });
+
+  // Gửi cho Admin
   await transporter.sendMail({
     from: `"${fromName} System" <${fromEmail}>`,
     to: adminEmail,
     subject: `✉️ [New Message] ${data.fullName} - Onsite Chair Massage`,
-    html: html,
+    html: adminHtml,
   });
 }
