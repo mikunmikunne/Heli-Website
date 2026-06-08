@@ -3,6 +3,7 @@ import { supabase } from '@/utils/supabaseServer';
 import { isValidEmail, isValidPhoneNumber } from '@/utils/validators';
 import { FormState } from '@/app/booking/types';
 import { isRateLimited } from '@/utils/rateLimit';
+import { sendBookingEmails } from '@/utils/email';
 
 export async function POST(req: Request) {
   try {
@@ -62,6 +63,22 @@ export async function POST(req: Request) {
       ]);
 
     if (error) throw error;
+
+    // Gửi email thông báo cho Khách hàng & Admin
+    try {
+      await sendBookingEmails({
+        fullName,
+        companyName: body.companyName,
+        email,
+        phone,
+        employeeCount: body.employeeCount,
+        preferredDate,
+        location: body.location,
+        details: body.details,
+      });
+    } catch (mailError) {
+      console.error('Failed to send booking notification emails:', mailError);
+    }
     
     return NextResponse.json({ success: true }, { status: 200 });
 

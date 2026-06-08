@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/utils/supabaseServer';
 import { isValidEmail } from '@/utils/validators';
 import { isRateLimited } from '@/utils/rateLimit';
+import { sendContactEmail } from '@/utils/email';
 
 export async function POST(req: Request) {
   try {
@@ -47,6 +48,13 @@ export async function POST(req: Request) {
       .insert([{ full_name: fullName, email, message }]);
 
     if (error) throw error;
+
+    // Gửi email thông báo cho Admin
+    try {
+      await sendContactEmail({ fullName, email, message });
+    } catch (mailError) {
+      console.error('Failed to send contact notification email:', mailError);
+    }
     
     return NextResponse.json({ success: true }, { status: 200 });
 
