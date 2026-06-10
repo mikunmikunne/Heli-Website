@@ -146,8 +146,8 @@ export function ContactUsContent() {
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
-                    <span className="text-[10px] font-semibold tracking-wider text-secondary uppercase">Now Booking</span>
+                    <div className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-500 animate-pulse"></div>
+                    <span className="text-[10px] font-semibold tracking-wider text-emerald-700 dark:text-emerald-400 uppercase">Now Booking</span>
                   </div>
                   <p className="text-on-surface font-medium leading-snug italic">
                     &quot;Our therapists are currently available for bookings in the greater Bay Area and surrounding regions.&quot;
@@ -255,7 +255,7 @@ export function ContactUsContent() {
             />
           </div>
           {/* Interactive Overlay */}
-          <div className="absolute bottom-8 left-8 right-8 md:right-auto md:w-80 bg-white/90 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-white/20">
+          <div className="absolute bottom-8 left-8 right-8 md:right-auto md:w-80 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-white/20 dark:border-white/10">
             <div className="flex items-center gap-3 mb-2">
               <Building2 className="text-primary w-5 h-5" />
               <h3 className="font-headline font-bold text-on-surface">Main Office</h3>

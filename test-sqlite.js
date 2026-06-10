@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 
 const dbPath = 'C:\\Users\\Dell\\.n8n\\database.sqlite';

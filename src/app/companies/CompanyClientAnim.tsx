@@ -29,7 +29,7 @@ export function CompanyHeroAnim() {
             <Link href="/booking" className="inline-block text-center bg-emerald-700 text-white px-8 py-4 rounded-xl font-headline font-bold text-base shadow-lg shadow-emerald-700/20 hover:brightness-110 transition-all">
               Book for Your Office
             </Link>
-            <Link href="/our-services" className="inline-block text-center bg-surface-container-lowest/50 backdrop-blur-md text-emerald-800 dark:text-emerald-300 px-8 py-4 rounded-xl font-headline font-bold text-base border border-outline-variant hover:bg-surface-container-low transition-all">
+            <Link href="/our-services" className="inline-block text-center bg-surface-container-lowest/50 backdrop-blur-md text-emerald-700 dark:text-emerald-300 px-8 py-4 rounded-xl font-headline font-bold text-base border-2 border-emerald-700 dark:border-emerald-500/60 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 transition-all">
               View Packages
             </Link>
           </div>
@@ -52,7 +52,7 @@ export function CompanyHeroAnim() {
               priority
             />
           </div>
-          <div className="absolute -bottom-8 -left-8 bg-surface-container-lowest p-6 rounded-2xl shadow-xl flex items-center gap-4 border border-outline-variant/60">
+          <div className="absolute -bottom-8 -left-8 bg-surface-container-lowest dark:bg-slate-900/90 p-6 rounded-2xl shadow-xl flex items-center gap-4 border-2 border-emerald-700/30 dark:border-emerald-500/30">
             <div className="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-950/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
               <TrendingUp size={24} />
             </div>
@@ -87,7 +87,7 @@ export function AnimBenefitCard({ icon, title, desc, color }: { icon: React.Reac
   return (
     <motion.div 
       whileHover={{ y: -10 }}
-      className="bg-surface-container-lowest p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/60 group"
+      className="bg-surface-container-lowest dark:bg-slate-900/80 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border-2 border-emerald-700/30 dark:border-emerald-500/30 group"
     >
       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:text-white transition-colors ${colorClasses}`}>
         {icon}

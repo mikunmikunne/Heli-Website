@@ -88,8 +88,13 @@ export default function BookingForm() {
     );
   }
 
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    void handleSubmit(onSubmit)(e);
+  };
+
   return (
-    <form className="space-y-8" onSubmit={handleSubmit(onSubmit)} noValidate>
+    <form className="space-y-8" onSubmit={handleFormSubmit} noValidate>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Full Name */}
         <div className="flex flex-col gap-2">

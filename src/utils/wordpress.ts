@@ -122,7 +122,7 @@ export function cleanWordPressHtmlToMarkdown(html: string): string {
   if (!html) return '';
   
   // Thay thế thẻ <p> thành rỗng và </p> thành xuống dòng kép
-  let cleaned = html
+  const cleaned = html
     .replace(/<p>/g, '')
     .replace(/<\/p>/g, '\n\n')
     .replace(/<br\s*\/?>/g, '\n');

@@ -47,7 +47,7 @@ export default function ServicesClient() {
                   e.preventDefault();
                   document.getElementById('bento-overview')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-4 bg-surface-container-lowest text-emerald-700 dark:text-emerald-300 border border-emerald-800/20 rounded-2xl font-headline font-bold hover:bg-emerald-950/20 transition-all"
+                className="px-8 py-4 bg-surface-container-lowest text-emerald-700 dark:text-emerald-300 border-2 border-emerald-700 dark:border-emerald-500/60 rounded-2xl font-headline font-bold hover:bg-emerald-50 dark:hover:bg-emerald-950/40 transition-all"
               >
                 Learn More
               </button>
@@ -199,7 +199,7 @@ export default function ServicesClient() {
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="absolute -bottom-10 -right-10 bg-surface-container-lowest p-8 rounded-4xl shadow-2xl max-w-xs hidden md:block border border-outline-variant/60"
+              className="absolute -bottom-10 -right-10 bg-surface-container-lowest dark:bg-slate-900/95 p-8 rounded-4xl shadow-2xl max-w-xs hidden md:block border-2 border-emerald-600/40 dark:border-emerald-500/50"
             >
               <p className="text-on-surface-variant italic leading-relaxed">&quot;The highlight of our trade show booth. Our lead generation increased by 40%.&quot;</p>
               <div className="mt-4 font-headline font-bold text-emerald-700 dark:text-emerald-400">Sarah J., Marketing Dir.</div>
@@ -256,7 +256,7 @@ export default function ServicesClient() {
         <div className="max-w-5xl mx-auto px-6">
           <motion.div 
             {...fadeInUp}
-            className="relative bg-emerald-50/20 dark:bg-emerald-950/20 rounded-[3rem] p-16 text-center border border-emerald-800/20 overflow-hidden"
+            className="relative bg-emerald-50/35 dark:bg-emerald-950/45 rounded-[3rem] p-16 text-center border-2 border-emerald-800/30 dark:border-emerald-500/40 overflow-hidden shadow-xl"
           >
             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-emerald-100/40 rounded-full blur-3xl" />
             <h2 className="text-4xl md:text-5xl font-headline font-extrabold text-on-surface mb-8">Ready to bring restorative wellness to your team?</h2>
@@ -269,7 +269,7 @@ export default function ServicesClient() {
               </Link>
               <button 
                 onClick={() => router.push('/contact-us?inquiry=brochure')}
-                className="px-10 py-5 bg-surface-container-lowest text-on-surface rounded-2xl font-headline font-bold text-lg border border-outline-variant hover:bg-surface-container-low transition-all"
+                className="px-10 py-5 bg-surface-container-lowest text-emerald-700 dark:text-emerald-300 rounded-2xl font-headline font-bold text-lg border-2 border-emerald-700 dark:border-emerald-500/60 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 transition-all"
               >
                 Download Brochure
               </button>

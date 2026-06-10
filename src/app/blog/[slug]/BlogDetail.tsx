@@ -83,12 +83,14 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
           components={{
-            img: ({node, ...props}) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            img: ({ node, ...props }) => {
               const cleanSrc = typeof props.src === 'string' ? props.src.replace(/&amp;/g, '&') : '';
               if (cleanSrc.includes('pollinations.ai')) {
                 return null; // Do not render broken AI images in the body
               }
               return (
+                // eslint-disable-next-line @next/next/no-img-element
                 <img 
                   src={cleanSrc}
                   className="w-full rounded-2xl shadow-xl my-8 object-cover object-center max-h-[35rem]" 

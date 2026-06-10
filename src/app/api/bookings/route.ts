@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/utils/supabaseServer';
 import { isValidEmail, isValidPhoneNumber } from '@/utils/validators';
-import { FormState } from '@/app/booking/types';
 import { isRateLimited } from '@/utils/rateLimit';
 import { sendBookingEmails } from '@/utils/email';
 
