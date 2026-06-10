@@ -125,12 +125,12 @@ export function ContactUsContent() {
                 <ContactItem
                   icon={<Mail className="w-6 h-6" />}
                   title="Email Us"
-                  lines={["Mikun.creatory@gmail.com", "support@onsitechairmassage.com"]}
+                  lines={["Mikun.creatory@gmail.com", "Mikun.creatory.26@gmail.com"]}
                 />
                 <ContactItem
                   icon={<Phone className="w-6 h-6" />}
                   title="Call Us"
-                  lines={["+1 (555) 892-4410", "Mon-Fri, 9am - 6pm EST"]}
+                  lines={["(+84) 374 716 789", "Mon-Fri, 9am - 6pm EST"]}
                 />
                 <ContactItem
                   icon={<MapPin className="w-6 h-6" />}
@@ -202,7 +202,7 @@ export function ContactUsContent() {
                     <label htmlFor={messageId} className="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase ml-1">Message</label>
                     <textarea
                       id={messageId}
-                      className="w-full px-6 py-4 rounded-xl bg-surface-container-high border-transparent focus:border-primary/20 focus:ring-0 focus:bg-white transition-all duration-200 placeholder:text-on-surface-variant text-black resize-none"
+                      className="w-full px-6 py-4 rounded-xl bg-surface-container-high border border-transparent focus:border-primary/40 focus:ring-4 focus:ring-primary/10 transition-all duration-200 placeholder:text-on-surface-variant text-on-surface outline-none resize-none"
                       placeholder="Tell us about your team and preferred dates..."
                       rows={5}
                       value={formData.message}

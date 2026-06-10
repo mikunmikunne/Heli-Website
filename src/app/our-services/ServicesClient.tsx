@@ -296,10 +296,10 @@ function ServiceCard({ title, time, desc, features, icon, popular, index }: {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`relative flex flex-col ${popular ? 'md:-translate-y-4' : ''}`}
+      className={`relative flex flex-col ${popular ? 'md:-translate-y-6 md:scale-[1.08] z-10' : ''}`}
     >
       <div 
-        className={`relative w-full h-full bg-surface-container-lowest p-10 rounded-[2.5rem] shadow-sm border border-outline-variant/60 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-700/5 ${popular ? 'ring-2 ring-emerald-600/30 shadow-xl' : ''}`}
+        className={`relative w-full h-full bg-surface-container-lowest p-10 rounded-[2.5rem] flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-700/5 ${popular ? 'border-2 border-emerald-700 dark:border-emerald-500 ring-4 ring-emerald-700/10 dark:ring-emerald-500/10 shadow-xl' : 'border border-outline-variant/60 shadow-sm'}`}
       >
         {popular && (
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-700 text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">

@@ -19,10 +19,10 @@ export default function Footer() {
               aria-label="Contact social channels"
             >
               <span className="inline-block text-xl">
-                <Image 
-                  src="/svg-pics/share-icon.svg" 
+                <Image
+                  src="/svg-pics/share-icon.svg"
                   alt="Share"
-                  width={24} 
+                  width={24}
                   height={24}
                   className="dark:invert"
                 />
@@ -100,10 +100,10 @@ export default function Footer() {
           <h4 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Contact</h4>
           <ul className="space-y-4">
             <li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
-              info@onsitechairmassage.com
+              Mikun.creatory.26@gmail.com
             </li>
             <li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
-              (555) 123-4567
+              (+84) 374 716 789
             </li>
           </ul>
         </div>
