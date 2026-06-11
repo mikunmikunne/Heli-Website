@@ -2,25 +2,60 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #f8f9fa;
-  --foreground: #191c1d;
-  --primary: #047857; /* Emerald 700 */
-  --primary-hover: #065f46;
-  --bg: #f8f9fa;
-  --text: #191c1d;
+  --primary: #059669; /* emerald-600 */
+  --primary-hover: #047857; /* emerald-700 */
+  --secondary: #0d9488; /* teal-600 */
+  --secondary-light: #ccfbf1; /* teal-100 */
   
-  --surface-container-low: #f3f4f5;
-  --surface-container-high: #e7e8e9;
-  --surface-container-highest: #e1e3e4;
+  --bg: #ffffff;
+  --text: #0f172a; /* slate-900 */
+  
+  --surface-container-low: #f8fafc; /* slate-50 */
+  --surface-container-high: #ecfdf5; /* emerald-50 */
+  --surface-container-highest: #e2e8f0; /* slate-200 */
   --surface-container-lowest: #ffffff;
-  --on-surface-variant: #3d4a42;
-  --border: #e5e7eb;
+  --on-surface-variant: #475569; /* slate-600 */
+  --border: #e2e8f0; /* slate-200 */
 
   --nav-bg: rgba(255, 255, 255, 0.7);
-  --nav-border: #e5e7eb;
-  --nav-text: #334155;
-  --nav-hover: #047857;
+  --nav-border: #e2e8f0;
+  --nav-text: #475569;
+  --nav-hover: #059669;
+
+  --accent-light: rgba(5, 150, 105, 0.05); /* emerald-600/5 */
+  
+  --background: var(--bg);
+  --foreground: var(--text);
+}
+
+.dark {
+  --primary: #10b981; /* emerald-500 */
+  --primary-hover: #34d399; /* emerald-400 */
+  --secondary: #14b8a6; /* teal-500 */
+  --secondary-light: rgba(16, 185, 129, 0.1); /* emerald-500/10 */
+  
+  --bg: #020617; /* slate-950 */
+  --text: #f8fafc; /* slate-50 */
+  
+  --surface-container-low: #0f172a; /* slate-900 */
+  --surface-container-high: #0f172a; /* slate-900 */
+  --surface-container-highest: #1e293b; /* slate-800 */
+  --surface-container-lowest: #0f172a; /* slate-900 */
+  --on-surface-variant: #94a3b8; /* slate-400 */
+  --border: #1e293b; /* slate-800 */
+
+  --nav-bg: rgba(2, 6, 23, 0.7);
+  --nav-border: #1e293b;
+  --nav-text: #94a3b8;
+  --nav-hover: #10b981;
+
+  --accent-light: rgba(16, 185, 129, 0.1); /* emerald-500/10 */
+
+  --background: var(--bg);
+  --foreground: var(--text);
 }
 
 @theme {
@@ -31,6 +66,9 @@
 
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
+  --color-accent-light: var(--accent-light);
   --color-background: var(--bg);
   --color-foreground: var(--text);
   
@@ -46,41 +84,21 @@
   --color-error: #ba1a1a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #f3f4f6;
-    --primary: #10b981; /* Emerald 500 for dark mode */
-    --primary-hover: #34d399;
-    --bg: #0a0a0a;
-    --text: #f3f4f6;
-
-    --surface-container-low: #111827; /* Gray 900 */
-    --surface-container-high: #1f2937; /* Gray 800 */
-    --surface-container-highest: #374151; /* Gray 700 */
-    --surface-container-lowest: #030712; /* Gray 950 */
-    --on-surface-variant: #cbd5e1; /* Slate 300 */
-    --border: #1f2937;
-
-    --nav-bg: rgba(15, 23, 42, 0.7);
-    --nav-border: #1e293b;
-    --nav-text: #cbd5e1;
-    --nav-hover: #10b981;
-  }
-}
-
 body {
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
 }
 
 @layer base {
   .glass-nav {
-    @apply bg-white/70 backdrop-blur-xl dark:bg-slate-900/70;
+    background-color: var(--nav-bg);
+    border-color: var(--nav-border);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
   }
 
   .ambient-shadow {
-    box-shadow: 0 40px 60px -10px rgba(25, 28, 29, 0.04);
+    box-shadow: 0 40px 60px -10px rgba(2, 6, 23, 0.04);
   }
 }
 

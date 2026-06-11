@@ -83,7 +83,7 @@ export default function ServicesClient() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             <motion.div 
               {...fadeInUp}
-              className="md:col-span-8 bg-surface-container-low p-12 rounded-[2.5rem] flex flex-col justify-between border border-outline-variant/60"
+              className="md:col-span-8 bg-surface-container-low p-12 rounded-[2.5rem] flex flex-col justify-between border border-border"
             >
               <div>
                 <Building2 className="text-emerald-600 w-12 h-12 mb-6" />
@@ -124,7 +124,7 @@ export default function ServicesClient() {
 
             <motion.div 
               {...fadeInUp}
-              className="md:col-span-8 bg-surface-container-low p-10 rounded-[2.5rem] flex items-center gap-8 border border-outline-variant/60 shadow-sm"
+              className="md:col-span-8 bg-surface-container-low p-10 rounded-[2.5rem] flex items-center gap-8 border border-border shadow-sm"
             >
               <div className="relative w-48 h-32 hidden sm:block flex-shrink-0">
                 <Image 
@@ -299,7 +299,7 @@ function ServiceCard({ title, time, desc, features, icon, popular, index }: {
       className={`relative flex flex-col ${popular ? 'md:-translate-y-6 md:scale-[1.08] z-10' : ''}`}
     >
       <div 
-        className={`relative w-full h-full bg-surface-container-lowest p-10 rounded-[2.5rem] flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-700/5 ${popular ? 'border-2 border-emerald-700 dark:border-emerald-500 ring-4 ring-emerald-700/10 dark:ring-emerald-500/10 shadow-xl' : 'border border-outline-variant/60 shadow-sm'}`}
+        className={`relative w-full h-full bg-surface-container-lowest p-10 rounded-[2.5rem] flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-700/5 ${popular ? 'border-2 border-emerald-700 dark:border-emerald-500 ring-4 ring-emerald-700/10 dark:ring-emerald-500/10 shadow-xl' : 'border border-border shadow-sm'}`}
       >
         {popular && (
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-700 text-white px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">

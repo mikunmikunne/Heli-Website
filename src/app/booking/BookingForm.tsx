@@ -106,7 +106,7 @@ export default function BookingForm() {
             {...register("fullName", { required: "Full Name is required" })}
             aria-invalid={!!errors.fullName}
             aria-describedby={errors.fullName ? "fullName-error" : undefined}
-            className={`text-gray-900 dark:text-white placeholder:text-gray-400 bg-white dark:bg-gray-900 border ${errors.fullName ? 'border-red-500' : 'border-transparent dark:border-white/5'} rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none`}
+            className={`text-on-surface placeholder:text-on-surface-variant/50 bg-surface-container-low border ${errors.fullName ? 'border-red-500' : 'border-border/80 dark:border-border/60'} rounded-xl px-4 py-3.5 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 not-placeholder-shown:border-primary/60 not-placeholder-shown:bg-surface-container-lowest transition-all outline-none`}
           />
           {errors.fullName && <span id="fullName-error" className="text-red-500 text-xs mt-1">{errors.fullName.message}</span>}
         </div>
@@ -120,7 +120,7 @@ export default function BookingForm() {
             {...register("companyName", { required: "Company Name is required" })}
             aria-invalid={!!errors.companyName}
             aria-describedby={errors.companyName ? "companyName-error" : undefined}
-            className={`text-gray-900 dark:text-white placeholder:text-gray-400 bg-white dark:bg-gray-900 border ${errors.companyName ? 'border-red-500' : 'border-transparent dark:border-white/5'} rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none`}
+            className={`text-on-surface placeholder:text-on-surface-variant/50 bg-surface-container-low border ${errors.companyName ? 'border-red-500' : 'border-border/80 dark:border-border/60'} rounded-xl px-4 py-3.5 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 not-placeholder-shown:border-primary/60 not-placeholder-shown:bg-surface-container-lowest transition-all outline-none`}
           />
           {errors.companyName && <span id="companyName-error" className="text-red-500 text-xs mt-1">{errors.companyName.message}</span>}
         </div>
@@ -137,7 +137,7 @@ export default function BookingForm() {
             })}
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? "email-error" : undefined}
-            className={`text-gray-900 dark:text-white placeholder:text-gray-400 bg-white dark:bg-gray-900 border ${errors.email ? 'border-red-500' : 'border-transparent dark:border-white/5'} rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none`}
+            className={`text-on-surface placeholder:text-on-surface-variant/50 bg-surface-container-low border ${errors.email ? 'border-red-500' : 'border-border/80 dark:border-border/60'} rounded-xl px-4 py-3.5 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 not-placeholder-shown:border-primary/60 not-placeholder-shown:bg-surface-container-lowest transition-all outline-none`}
           />
           {errors.email && <span id="email-error" className="text-red-500 text-xs mt-1">{errors.email.message}</span>}
         </div>
@@ -154,7 +154,7 @@ export default function BookingForm() {
             })}
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? "phone-error" : undefined}
-            className={`text-gray-900 dark:text-white placeholder:text-gray-400 bg-white dark:bg-gray-900 border ${errors.phone ? 'border-red-500' : 'border-transparent dark:border-white/5'} rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none`}
+            className={`text-on-surface placeholder:text-on-surface-variant/50 bg-surface-container-low border ${errors.phone ? 'border-red-500' : 'border-border/80 dark:border-border/60'} rounded-xl px-4 py-3.5 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 not-placeholder-shown:border-primary/60 not-placeholder-shown:bg-surface-container-lowest transition-all outline-none`}
           />
           {errors.phone && <span id="phone-error" className="text-red-500 text-xs mt-1">{errors.phone.message}</span>}
         </div>
@@ -165,7 +165,7 @@ export default function BookingForm() {
             <select
               id="employeeCount"
               {...register("employeeCount", { required: true })}
-              className="w-full text-gray-900 dark:text-white bg-white dark:bg-gray-900 border-none dark:border dark:border-white/5 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none appearance-none cursor-pointer [color-scheme:light] dark:[color-scheme:dark]"
+              className="w-full text-on-surface bg-surface-container-low border border-border/80 dark:border-border/60 rounded-xl px-4 py-3.5 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 transition-all outline-none appearance-none cursor-pointer [color-scheme:light] dark:[color-scheme:dark]"
             >
               {EMPLOYEE_COUNT_OPTIONS.map((option) => (
                 <option key={option} value={option} className="bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
@@ -186,7 +186,7 @@ export default function BookingForm() {
             aria-invalid={!!errors.preferredDate}
             aria-describedby={errors.preferredDate ? "preferredDate-error" : undefined}
             min={new Date().toISOString().split("T")[0]}
-            className={`text-gray-900 dark:text-white placeholder:text-gray-400 bg-white dark:bg-gray-900 border ${errors.preferredDate ? 'border-red-500' : 'border-transparent dark:border-white/5'} rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none w-full [color-scheme:light] dark:[color-scheme:dark]`}
+            className={`text-on-surface bg-surface-container-low border ${errors.preferredDate ? 'border-red-500' : 'border-border/80 dark:border-border/60'} rounded-xl px-4 py-3.5 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 transition-all outline-none w-full [color-scheme:light] dark:[color-scheme:dark]`}
           />
           {errors.preferredDate && <span id="preferredDate-error" className="text-red-500 text-xs mt-1">{errors.preferredDate.message}</span>}
         </div>
@@ -202,7 +202,7 @@ export default function BookingForm() {
           {...register("location", { required: "Event Location is required" })}
           aria-invalid={!!errors.location}
           aria-describedby={errors.location ? "location-error" : undefined}
-          className={`text-gray-900 dark:text-white placeholder:text-gray-400 bg-white dark:bg-gray-900 border ${errors.location ? 'border-red-500' : 'border-transparent dark:border-white/5'} rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none`}
+          className={`text-on-surface placeholder:text-on-surface-variant/50 bg-surface-container-low border ${errors.location ? 'border-red-500' : 'border-border/80 dark:border-border/60'} rounded-xl px-4 py-3.5 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 not-placeholder-shown:border-primary/60 not-placeholder-shown:bg-surface-container-lowest transition-all outline-none`}
         />
         {errors.location && <span id="location-error" className="text-red-500 text-xs mt-1">{errors.location.message}</span>}
       </div>
@@ -215,7 +215,7 @@ export default function BookingForm() {
           {...register("details")}
           rows={4}
           placeholder="Tell us about your event goals or specific requirements..."
-          className="text-gray-900 dark:text-white placeholder:text-gray-400 bg-white dark:bg-gray-900 border dark:border-white/5 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-600/20 transition-all outline-none resize-none"
+          className="text-on-surface placeholder:text-on-surface-variant/50 bg-surface-container-low border border-border/80 dark:border-border/60 rounded-xl px-4 py-3.5 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 transition-all outline-none resize-none"
         />
       </div>
 

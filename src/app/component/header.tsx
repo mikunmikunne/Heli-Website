@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { Sun, Moon } from "lucide-react";
 
 /*Sử dụng usePathname để xác định đường dẫn hiện tại và kiểm tra xem nó có khớp với href của mỗi mục điều hướng không */
 const navItems = [
@@ -16,6 +17,25 @@ const navItems = [
 export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  // Read theme on mount
+  useEffect(() => {
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
+  }, []);
+
+  const toggleTheme = () => {
+    if (theme === "light") {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setTheme("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setTheme("light");
+    }
+  };
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -81,7 +101,20 @@ export default function Header() {
             })}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors focus:outline-none cursor-pointer"
+              aria-label="Toggle Theme"
+            >
+              {theme === "light" ? (
+                <Moon className="w-5 h-5 shrink-0" />
+              ) : (
+                <Sun className="w-5 h-5 shrink-0 text-amber-400" />
+              )}
+            </button>
+
             <Link href="/booking" className="hidden lg:block bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:brightness-105 active:scale-95 transition-all">
               Get a Quote
             </Link>

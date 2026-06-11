@@ -30,7 +30,26 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${manrope.variable} ${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme');
+                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (_) {}
+              })()
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col overflow-x-hidden">{children}</body>
     </html>
   );

@@ -58,6 +58,7 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
   const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
   const fromName = process.env.SMTP_FROM_NAME || 'Onsite Chair Massage Team';
   const fromEmail = process.env.SMTP_USER;
+  const siteUrl = process.env.SITE_URL || 'https://onsitechairmassage.com';
 
   // 1. HTML Template gửi cho KHÁCH HÀNG (Customer Confirmation)
   const customerHtml = `
@@ -140,6 +141,10 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
             </div>
 
             <p>If you need to make any changes to these details, please reply directly to this email or contact us at <a href="mailto:hello@onsitechairmassage.com">hello@onsitechairmassage.com</a>.</p>
+            
+            <p style="margin-top: 30px; border-top: 1px dashed #e5e7eb; padding-top: 15px; font-size: 14px; color: #4b5563;">
+            For more information, please visit our website:: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage.com</a>
+            </p>
           </div>
           <div class="footer">
             <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>
@@ -240,6 +245,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
   const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
   const fromName = process.env.SMTP_FROM_NAME || 'Onsite Chair Massage Team';
   const fromEmail = process.env.SMTP_USER;
+  const siteUrl = process.env.SITE_URL || 'https://onsitechairmassage.com';
 
   // 1. HTML Template gửi cho KHÁCH HÀNG (Customer Confirmation)
   const customerHtml = `
@@ -283,6 +289,10 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
             </div>
 
             <p>If you have any other questions, please feel free to reply directly to this email.</p>
+            
+            <p style="margin-top: 30px; border-top: 1px dashed #e5e7eb; padding-top: 15px; font-size: 14px; color: #4b5563;">
+            For more information, please visit our website:  <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage.com</a>
+            </p>
           </div>
           <div class="footer">
             <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>

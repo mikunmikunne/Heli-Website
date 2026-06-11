@@ -7,7 +7,7 @@ export function FormField({ label, placeholder, type, value, onChange }: { label
       <label htmlFor={id} className="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase ml-1">{label}</label>
       <input 
         id={id}
-        className="w-full px-6 py-4 rounded-xl bg-surface-container-high border border-transparent focus:border-primary/40 focus:ring-4 focus:ring-primary/10 transition-all duration-200 placeholder:text-on-surface-variant text-on-surface outline-none"
+        className="w-full px-6 py-4 rounded-xl bg-surface-container-low border border-border/80 dark:border-border/60 focus:border-primary focus:bg-surface-container-lowest focus:ring-4 focus:ring-primary/15 not-placeholder-shown:border-primary/60 not-placeholder-shown:bg-surface-container-lowest transition-all duration-200 placeholder:text-on-surface-variant/50 text-on-surface outline-none"
         placeholder={placeholder}
         type={type}
         value={value}
