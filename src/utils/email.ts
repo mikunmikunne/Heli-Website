@@ -140,7 +140,7 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
               <p>Our corporate wellness coordinator will review your request and get back to you with a customized quote and schedule proposal within <strong>2 business hours</strong>.</p>
             </div>
 
-            <p>If you need to make any changes to these details, please reply directly to this email or contact us at <a href="mailto:hello@onsitechairmassage.com">hello@onsitechairmassage.com</a>.</p>
+            <p>If you need to make any changes to these details, please reply directly to this email or contact us at <a href="mailto:mikun.creatory.26@onsitechairmassage.com">https://onsite-chair-massage-web-update.vercel.app/</a>.</p>
             
             <p style="margin-top: 30px; border-top: 1px dashed #e5e7eb; padding-top: 15px; font-size: 14px; color: #4b5563;">
             For more information, please visit our website:: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage.com</a>
