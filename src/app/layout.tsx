@@ -32,7 +32,11 @@ export default function RootLayout({
       className={`${manrope.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <head>
+       <head>
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://picsum.photos" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://picsum.photos" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
