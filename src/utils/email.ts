@@ -58,7 +58,7 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
   const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
   const fromName = process.env.SMTP_FROM_NAME || 'Onsite Chair Massage Team';
   const fromEmail = process.env.SMTP_USER;
-  const siteUrl = process.env.SITE_URL || 'https://onsitechairmassage.com';
+  const siteUrl = process.env.SITE_URL || 'https://onsite-chair-massage-web-update.vercel.app/';
 
   // 1. HTML Template gửi cho KHÁCH HÀNG (Customer Confirmation)
   const customerHtml = `
