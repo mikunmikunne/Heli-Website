@@ -55,8 +55,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     priority
-                    fetchPriority={index === 0 ? "high" : undefined}
-                    unoptimized={true}
+                    fetchPriority="high"
                   />
                 ) : (
                   <Image
@@ -66,7 +65,6 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
-                    unoptimized={true}
                   />
                 )}
               </div>
@@ -77,18 +75,17 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 text-xs">{post.readTime}</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
                   {post.title}
-                </h3>
+                </h2>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">
                   {post.description}
                 </p>
                 <Link 
                     href={`/blog/${post.slug}`} 
-                    aria-label={`Read more about ${post.title}`}
-                    className="inline-flex items-center text-emerald-600 dark:text-emerald-400 font-bold hover:underline group-hover:underline-offset-4 transition-all"
+                    className="inline-flex items-center text-emerald-700 dark:text-emerald-400 font-bold hover:underline group-hover:underline-offset-4 transition-all"
                   >
-                    Read More <ArrowRight className="w-4 h-4 ml-1" />
+                    Read More <span className="sr-only">about {post.title}</span> <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
             </motion.article>

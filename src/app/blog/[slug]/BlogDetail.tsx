@@ -67,7 +67,6 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
               sizes="(max-width: 1024px) 100vw, 1024px"
               priority
               fetchPriority="high"
-              unoptimized={true}
             />
           </div>
         )}
