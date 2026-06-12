@@ -31,7 +31,8 @@ export function ContactItem({ icon, title, lines, href, onClick, target }: Conta
     if (lines.length > 0) {
       const firstLine = lines[0].trim();
       if (isEmail(firstLine)) {
-        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${firstLine}`, "_blank", "noopener,noreferrer");
+        const formattedRecipient = encodeURIComponent(`Onsitechairmassage <${firstLine}>`);
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${formattedRecipient}`, "_blank", "noopener,noreferrer");
       } else if (isPhone(firstLine)) {
         const cleanPhone = firstLine.replace(/[^\d+]/g, '');
         window.location.href = `tel:${cleanPhone}`;
@@ -42,7 +43,8 @@ export function ContactItem({ icon, title, lines, href, onClick, target }: Conta
   const renderLine = (line: string, i: number) => {
     if (isEmail(line)) {
       const email = line.trim();
-      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`;
+      const formattedRecipient = encodeURIComponent(`Onsitechairmassage <${email}>`);
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${formattedRecipient}`;
       return (
         <a
           key={i}

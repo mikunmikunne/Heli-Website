@@ -140,7 +140,7 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
               <p>Our corporate wellness coordinator will review your request and get back to you with a customized quote and schedule proposal within <strong>2 business hours</strong>.</p>
             </div>
 
-            <p>If you need to make any changes to these details, please reply directly to this email or visit our website at <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage</a>.</p>
+            <p>If you need to make any changes to these details, please reply directly to this email.</p>
             
             <p style="margin-top: 30px; border-top: 1px dashed #e5e7eb; padding-top: 15px; font-size: 14px; color: #4b5563;">
             For more information, please visit our website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage</a>
@@ -150,7 +150,7 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
             <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>
             <p>7/1 Đ. Thành Thái, Diên Hồng, Hồ Chí Minh 700000, Việt Nam</p>
             <p style="margin-top: 8px; font-size: 13px; color: #4b5563;">
-              Email: <a href="mailto:Mikun.creatory.26@gmail.com" style="color: #047857; text-decoration: underline; font-weight: 600;">Mikun.creatory.26@gmail.com</a> | 
+              Email: <a href="mailto:Onsitechairmassage%20%3CMikun.creatory.26@gmail.com%3E" style="color: #047857; text-decoration: underline; font-weight: 600;">Mikun.creatory.26@gmail.com</a> | 
               Website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: 600;">onsitechairmassage</a>
             </p>
           </div>
@@ -302,7 +302,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
             <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>
             <p>7/1 Đ. Thành Thái, Diên Hồng, Hồ Chí Minh 700000, Việt Nam</p>
             <p style="margin-top: 8px; font-size: 13px; color: #4b5563;">
-              Email: <a href="mailto:Mikun.creatory.26@gmail.com" style="color: #047857; text-decoration: underline; font-weight: 600;">Mikun.creatory.26@gmail.com</a> | 
+              Email: <a href="mailto:Onsitechairmassage%20%3CMikun.creatory.26@gmail.com%3E" style="color: #047857; text-decoration: underline; font-weight: 600;">Mikun.creatory.26@gmail.com</a> | 
               Website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: 600;">onsitechairmassage</a>
             </p>
           </div>

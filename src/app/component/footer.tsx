@@ -101,7 +101,7 @@ export default function Footer() {
           <ul className="space-y-4">
             <li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=Mikun.creatory.26@gmail.com"
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent("Onsitechairmassage <Mikun.creatory.26@gmail.com>")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-emerald-600 dark:hover:text-emerald-400 hover:underline transition-colors duration-200"
