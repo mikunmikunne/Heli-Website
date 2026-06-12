@@ -135,7 +135,8 @@ export function ContactUsContent() {
                 <ContactItem
                   icon={<MapPin className="w-6 h-6" />}
                   title="Business Location"
-                  lines={["452 Wellness Way, Suite 200", "San Francisco, CA 94107"]}
+                  lines={["7/1 Đ. Thành Thái, Diên Hồng", "Hồ Chí Minh 700000, Việt Nam"]}
+                  href="https://maps.app.goo.gl/44VQ3RPmDee2k9Cm6"
                 />
               </div>
 
@@ -260,8 +261,8 @@ export function ContactUsContent() {
               <Building2 className="text-primary w-5 h-5" />
               <h3 className="font-headline font-bold text-on-surface">Main Office</h3>
             </div>
-            <p className="text-on-surface-variant text-sm mb-4">Visit our administrative headquarters in the Financial District.</p>
-            <Link href="https://maps.google.com/?q=452+Wellness+Way,+Suite+200,+San+Francisco,+CA+94107" className="text-primary font-bold text-sm flex items-center gap-2 group/link">
+            <p className="text-on-surface-variant text-sm mb-4">Visit our main office in District 10, Ho Chi Minh City.</p>
+            <Link href="https://maps.app.goo.gl/44VQ3RPmDee2k9Cm6" target="_blank" rel="noopener noreferrer" className="text-primary font-bold text-sm flex items-center gap-2 group/link">
               Open in Google Maps
               <ChevronRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
             </Link>

@@ -140,15 +140,19 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
               <p>Our corporate wellness coordinator will review your request and get back to you with a customized quote and schedule proposal within <strong>2 business hours</strong>.</p>
             </div>
 
-            <p>If you need to make any changes to these details, please reply directly to this email or contact us at <a href="mailto:mikun.creatory.26@onsitechairmassage.com">https://onsite-chair-massage-web-update.vercel.app/</a>.</p>
+            <p>If you need to make any changes to these details, please reply directly to this email or visit our website at <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage</a>.</p>
             
             <p style="margin-top: 30px; border-top: 1px dashed #e5e7eb; padding-top: 15px; font-size: 14px; color: #4b5563;">
-            For more information, please visit our website:: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage.com</a>
+            For more information, please visit our website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage</a>
             </p>
           </div>
           <div class="footer">
             <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>
-            <p>452 Wellness Way, Suite 200, San Francisco, CA 94107</p>
+            <p>7/1 Đ. Thành Thái, Diên Hồng, Hồ Chí Minh 700000, Việt Nam</p>
+            <p style="margin-top: 8px; font-size: 13px; color: #4b5563;">
+              Email: <a href="mailto:Mikun.creatory.26@gmail.com" style="color: #047857; text-decoration: underline; font-weight: 600;">Mikun.creatory.26@gmail.com</a> | 
+              Website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: 600;">onsitechairmassage</a>
+            </p>
           </div>
         </div>
       </body>
@@ -245,7 +249,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
   const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
   const fromName = process.env.SMTP_FROM_NAME || 'Onsite Chair Massage Team';
   const fromEmail = process.env.SMTP_USER;
-  const siteUrl = process.env.SITE_URL || 'https://onsitechairmassage.com';
+  const siteUrl = process.env.SITE_URL || 'https://onsite-chair-massage-web-update.vercel.app/';
 
   // 1. HTML Template gửi cho KHÁCH HÀNG (Customer Confirmation)
   const customerHtml = `
@@ -291,12 +295,16 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
             <p>If you have any other questions, please feel free to reply directly to this email.</p>
             
             <p style="margin-top: 30px; border-top: 1px dashed #e5e7eb; padding-top: 15px; font-size: 14px; color: #4b5563;">
-            For more information, please visit our website:  <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage.com</a>
+            For more information, please visit our website:  <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage</a>
             </p>
           </div>
           <div class="footer">
             <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>
-            <p>452 Wellness Way, Suite 200, San Francisco, CA 94107</p>
+            <p>7/1 Đ. Thành Thái, Diên Hồng, Hồ Chí Minh 700000, Việt Nam</p>
+            <p style="margin-top: 8px; font-size: 13px; color: #4b5563;">
+              Email: <a href="mailto:Mikun.creatory.26@gmail.com" style="color: #047857; text-decoration: underline; font-weight: 600;">Mikun.creatory.26@gmail.com</a> | 
+              Website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: 600;">onsitechairmassage</a>
+            </p>
           </div>
         </div>
       </body>

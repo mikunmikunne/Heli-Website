@@ -100,10 +100,22 @@ export default function Footer() {
           <h4 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Contact</h4>
           <ul className="space-y-4">
             <li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
-              Mikun.creatory.26@gmail.com
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=Mikun.creatory.26@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-emerald-600 dark:hover:text-emerald-400 hover:underline transition-colors duration-200"
+              >
+                Mikun.creatory.26@gmail.com
+              </a>
             </li>
             <li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
-              (+84) 374 716 789
+              <a
+                href="tel:+84374716789"
+                className="hover:text-emerald-600 dark:hover:text-emerald-400 hover:underline transition-colors duration-200"
+              >
+                (+84) 374 716 789
+              </a>
             </li>
           </ul>
         </div>
