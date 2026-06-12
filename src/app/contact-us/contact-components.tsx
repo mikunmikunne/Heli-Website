@@ -83,6 +83,7 @@ export function ContactUsContent() {
           <Image
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2000"
             alt="Relaxing corporate massage treatment"
@@ -250,7 +251,7 @@ export function ContactUsContent() {
         <div className="relative w-full h-[500px] rounded-[2.5rem] overflow-hidden bg-surface-container shadow-inner group">
           <div className="absolute inset-0 w-full h-full opacity-90">
             <iframe
-              src="https://maps.google.com/maps?q=7%2F1%20%C4%90.%20Th%C3%A0nh%20Th%C3%A1i%2C%20Di%C3%AAn%20H%E1%BB%93ng%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vi%E1%BB%87t%20Nam&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=7%2F1%20%C4%90.%20Th%C3%A0nh%20Th%C3%A1i%2C%20Di%C3%AAn%20H%E1%BB%93ng%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vi%E1%BB%87t%20Nam&t=&z=16&ie=UTF8&iwloc=near&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -262,7 +263,7 @@ export function ContactUsContent() {
             />
           </div>
           {/* Interactive Overlay */}
-          <div className="absolute bottom-8 left-8 right-8 md:right-auto md:w-80 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-6 rounded-3xl shadow-xl border border-white/20 dark:border-white/10 z-10">
+          <div className="absolute top-2.5 left-2.5 right-2.5 md:right-auto md:w-[380px] bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-2xl border border-black/5 dark:border-white/10 z-10">
             <div className="flex items-center gap-3 mb-2">
               <Building2 className="text-primary w-5 h-5" />
               <h3 className="font-headline font-bold text-on-surface">Main Office</h3>

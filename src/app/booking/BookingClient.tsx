@@ -74,6 +74,7 @@ export default function BookingClient() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover brightness-75 group-hover:scale-105 transition-transform duration-700"
                 priority
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/80 to-transparent flex items-end p-6">
                 <p className="text-white font-medium text-sm">Trusted by 500+ forward-thinking companies worldwide.</p>

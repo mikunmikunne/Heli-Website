@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Users, TrendingUp, Heart, Star } from "lucide-react";
+import { Users, TrendingUp, Heart, Star, ChevronDown } from "lucide-react";
 
 const benefitsData = [
   {
@@ -102,12 +103,14 @@ export const Hero = () => {
           <div className="absolute -top-20 -right-20 w-96 h-96 bg-teal-100 rounded-full blur-[100px] opacity-50" />
           <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto">
             <Image 
-              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000" 
-              width={1000}
-              height={1250}
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800" 
+              width={800}
+              height={533}
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="w-full h-full object-cover"
               alt="Massage Therapy"
               priority
+              fetchPriority="high"
             />
           </div>
         </motion.div>
@@ -161,7 +164,7 @@ export const Steps = () => {
                     {item.step}
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">{item.title}</h4>
+                    <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">{item.title}</h3>
                     <p className="text-slate-600 dark:text-slate-400">{item.desc}</p>
                   </div>
                 </div>
@@ -238,11 +241,93 @@ export const CTA = () => {
         
         <div className="relative z-10 max-w-3xl mx-auto">
           <h2 className="text-4xl lg:text-6xl font-extrabold text-white mb-8 leading-tight">Ready to Transform Your Workplace?</h2>
-          <p className="text-white/80 text-xl mb-12">Join hundreds of companies that prioritize employee wellness with onsite chair massage.</p>
+          <p className="text-white/95 text-xl mb-12">Join hundreds of companies that prioritize employee wellness with onsite chair massage.</p>
           
           <Link href="/contact-us" className="inline-block bg-white text-emerald-700 dark:text-emerald-800 px-10 py-5 rounded-2xl font-bold text-xl shadow-xl hover:scale-105 transition-transform text-center">
             Book Your Session
           </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const faqData = [
+  {
+    question: "How much space does an onsite chair massage therapist need?",
+    answer: "We only need a quiet 5x5 foot space per massage chair. A small conference room, empty office, or quiet corner is perfect. We bring all required equipment, including the ergonomic chair, music, and sanitizing supplies."
+  },
+  {
+    question: "How long is each individual massage session?",
+    answer: "Sessions typically run for 15, 20, or 30 minutes. 15 minutes is the most popular corporate option, allowing you to easily fit up to 4 employees per hour per therapist."
+  },
+  {
+    question: "Do employees need to undress or change clothes?",
+    answer: "It depends on the service package. For onsite chair massages, employees remain fully clothed with no oils used. For onsite table massages (optional wellness events), we use professional massage oils, and clients may undress to their comfort level in a private room."
+  },
+  {
+    question: "What are the pricing options for corporate wellness events?",
+    answer: "We offer flexible pricing models: either company-sponsored (hourly rate paid by the company, which is the most popular) or employee-paid (employees book and pay for their own time slots). Contact us for a custom quote based on your company size."
+  },
+  {
+    question: "What areas do your onsite chair massage therapists cover?",
+    answer: "We serve businesses and corporate offices across Ho Chi Minh City and surrounding areas. For recurring wellness programs, we can customize a schedule that works for your team."
+  }
+];
+
+export const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
+
+  return (
+    <section className="py-12 md:py-20 lg:py-24 bg-white dark:bg-slate-950">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <span className="text-emerald-700 dark:text-emerald-400 font-bold tracking-widest uppercase text-xs mb-4 block">Got Questions?</span>
+          <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
+          <p className="text-slate-600 dark:text-slate-400">Everything you need to know about our onsite chair massage services.</p>
+        </div>
+
+        <div className="space-y-4">
+          {faqData.map((faq, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <div 
+                key={idx}
+                className="border border-slate-100 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900/50 hover:border-emerald-700/30 dark:hover:border-emerald-400/30 transition-all duration-300"
+              >
+                <button
+                  onClick={() => toggleFAQ(idx)}
+                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  aria-expanded={isOpen}
+                >
+                  <span className="font-bold text-lg text-slate-900 dark:text-white pr-4">
+                    {faq.question}
+                  </span>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex-shrink-0 text-emerald-700 dark:text-emerald-400"
+                  >
+                    <ChevronDown size={20} />
+                  </motion.div>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="p-6 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800/50">
+                    {faq.answer}
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

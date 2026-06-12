@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
         </div>
         <div>
-          <h4 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Services</h4>
+          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Services</h3>
           <ul className="space-y-4">
             <li>
               <Link
@@ -68,7 +68,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Company</h4>
+          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Company</h3>
           <ul className="space-y-4">
             <li>
               <Link
@@ -97,7 +97,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Contact</h4>
+          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Contact</h3>
           <ul className="space-y-4">
             <li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
               <a

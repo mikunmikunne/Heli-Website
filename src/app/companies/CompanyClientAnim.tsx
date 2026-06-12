@@ -50,6 +50,7 @@ export function CompanyHeroAnim() {
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
+              fetchPriority="high"
             />
           </div>
           <div className="absolute -bottom-8 -left-8 bg-surface-container-lowest dark:bg-slate-900/90 p-6 rounded-2xl shadow-xl flex items-center gap-4 border-2 border-emerald-700/30 dark:border-emerald-500/30">

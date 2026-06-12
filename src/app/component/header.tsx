@@ -115,7 +115,7 @@ export default function Header() {
               )}
             </button>
 
-            <Link href="/booking" className="hidden lg:block bg-emerald-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:brightness-105 active:scale-95 transition-all">
+            <Link href="/booking" className="hidden lg:block bg-emerald-700 text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:brightness-105 active:scale-95 transition-all">
               Get a Quote
             </Link>
 
@@ -171,7 +171,7 @@ export default function Header() {
         </div>
 
         <div className="mt-8">
-          <Link href="/booking" className="inline-block text-center w-full bg-emerald-600 text-white py-3 rounded-xl font-bold text-base hover:brightness-105 active:scale-95 transition-all shadow-lg shadow-emerald-600/20">
+          <Link href="/booking" className="inline-block text-center w-full bg-emerald-700 text-white py-3 rounded-xl font-bold text-base hover:brightness-105 active:scale-95 transition-all shadow-lg shadow-emerald-700/20">
               Get a Quote
           </Link>
         </div>
