@@ -33,10 +33,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
        <head>
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
-        <link rel="preconnect" href="https://picsum.photos" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://picsum.photos" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
