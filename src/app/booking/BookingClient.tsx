@@ -53,7 +53,7 @@ export default function BookingClient() {
                 <div className="bg-emerald-600/10 p-2 rounded-lg">
                   <Calendar className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold">Fast Response</h3>
+                <h2 className="text-xl font-bold">Fast Response</h2>
               </div>
               <p className="text-gray-700 dark:text-gray-400 leading-relaxed">
                 Our corporate wellness coordinators typically respond to all inquiries within <span className="text-emerald-700 dark:text-emerald-400 font-bold">2 business hours</span>.
@@ -93,7 +93,7 @@ export default function BookingClient() {
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 dark:text-white text-sm">Licensed Therapists</h4>
+                  <h3 className="font-bold text-gray-900 dark:text-white text-sm">Licensed Therapists</h3>
                   <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">Insured and background-checked professionals.</p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default function BookingClient() {
                   <Calendar className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 dark:text-white text-sm">Flexible Scheduling</h4>
+                  <h3 className="font-bold text-gray-900 dark:text-white text-sm">Flexible Scheduling</h3>
                   <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">Recurring sessions or one-time events.</p>
                 </div>
               </div>
