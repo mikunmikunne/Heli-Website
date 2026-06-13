@@ -298,7 +298,7 @@ export function ContactUsContent() {
               <h3 className="font-headline font-bold text-on-surface">Main Office</h3>
             </div>
             <p className="text-on-surface-variant text-sm mb-4">Visit our main office in District 10, Ho Chi Minh City.</p>
-            <Link href="https://maps.app.goo.gl/44VQ3RPmDee2k9Cm6" target="_blank" rel="noopener noreferrer" className="text-primary font-bold text-sm flex items-center gap-2 group/link">
+            <Link href="https://maps.app.goo.gl/44VQ3RPmDee2k9Cm6" target="_blank" rel="noopener noreferrer" className="text-emerald-700 font-bold text-sm flex items-center gap-2 group/link">
               Open in Google Maps
               <ChevronRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
             </Link>
@@ -321,7 +321,7 @@ export function ContactUsContent() {
           </h2>
           <button
             onClick={() => router.push('/booking')}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary rounded-full font-headline font-bold text-lg shadow-lg hover:scale-105 transition-transform mx-auto"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-700 rounded-full font-headline font-bold text-lg shadow-lg hover:scale-105 transition-transform mx-auto"
           >
             Book a Session
             <Calendar className="w-5 h-5" />

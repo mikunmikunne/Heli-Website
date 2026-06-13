@@ -35,6 +35,35 @@ export default function ForCompanies() {
         <section className="bg-surface-container-low py-12 md:py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 items-center">
+              {/* Text Column (First in HTML DOM so h2 is defined before h3 stat cards) */}
+              <div className="order-1 md:order-2 space-y-6">
+                <h2 className="text-3xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">
+                  The silent cost of workplace stress
+                </h2>
+                <p className="text-on-surface-variant leading-relaxed text-lg">
+                  Physical tension and mental fatigue are more than just
+                  discomfort—they are direct inhibitors to your company&apos;s
+                  potential. We provide a restorative anchor in the fast-paced
+                  corporate world.
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Lower absenteeism rates",
+                    "Reduced ergonomic-related injuries",
+                    "Improved focus and mental clarity",
+                  ].map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-center gap-3 text-on-surface/90 font-medium"
+                    >
+                      <CheckCircle2 className="text-emerald-600" size={20} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Stats Cards Column (Second in HTML DOM, visually order-2 on mobile and order-1 on desktop) */}
               <div className="order-2 md:order-1">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-4 pt-12">
@@ -68,32 +97,6 @@ export default function ForCompanies() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="order-1 md:order-2 space-y-6">
-                <h2 className="text-3xl md:text-5xl font-headline font-bold text-on-surface tracking-tight">
-                  The silent cost of workplace stress
-                </h2>
-                <p className="text-on-surface-variant leading-relaxed text-lg">
-                  Physical tension and mental fatigue are more than just
-                  discomfort—they are direct inhibitors to your company&apos;s
-                  potential. We provide a restorative anchor in the fast-paced
-                  corporate world.
-                </p>
-                <ul className="space-y-4">
-                  {[
-                    "Lower absenteeism rates",
-                    "Reduced ergonomic-related injuries",
-                    "Improved focus and mental clarity",
-                  ].map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-center gap-3 text-on-surface/90 font-medium"
-                    >
-                      <CheckCircle2 className="text-emerald-600" size={20} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </div>
