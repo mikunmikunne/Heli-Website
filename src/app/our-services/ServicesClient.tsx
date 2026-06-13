@@ -67,6 +67,9 @@ export default function ServicesClient() {
               height={750}
               className="relative rounded-[2.5rem] shadow-2xl w-full aspect-[4/3] object-cover"
               referrerPolicy="no-referrer"
+              sizes="(max-width: 1024px) 100vw, 500px"
+              priority
+              fetchPriority="high"
             />
           </motion.div>
         </div>
@@ -221,8 +224,8 @@ export default function ServicesClient() {
                     {item.icon}
                   </div>
                   <div>
-                    <h4 className="text-xl font-headline font-bold mb-2 text-on-surface">{item.title}</h4>
-                    <ul className="text-on-surface-variant/70 space-y-1 list-disc list-inside marker:text-emerald-600 text-sm">
+                    <h3 className="text-xl font-headline font-bold mb-2 text-on-surface">{item.title}</h3>
+                    <ul className="text-on-surface-variant space-y-1 list-disc list-inside marker:text-emerald-600 text-sm">
                       {item.items.map((li, k) => <li key={k}>{li}</li>)}
                     </ul>
                   </div>
@@ -245,7 +248,7 @@ export default function ServicesClient() {
             <div key={i} className="space-y-4">
               <div className="text-emerald-400 mx-auto w-10 h-10">{stat.icon}</div>
               <div className="text-4xl font-headline font-extrabold text-white">{stat.val}</div>
-              <div className="text-emerald-200/60 text-[10px] font-bold tracking-widest uppercase">{stat.label}</div>
+              <div className="text-emerald-200 text-[10px] font-bold tracking-widest uppercase">{stat.label}</div>
             </div>
           ))}
         </div>

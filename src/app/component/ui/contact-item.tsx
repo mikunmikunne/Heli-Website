@@ -51,7 +51,7 @@ export function ContactItem({ icon, title, lines, href, onClick, target }: Conta
           href={gmailUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="block text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:underline transition-colors mt-1 font-medium select-all"
+          className="block text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 hover:underline transition-colors mt-1 font-medium select-all"
           onClick={(e) => e.stopPropagation()}
         >
           {line}
@@ -65,7 +65,7 @@ export function ContactItem({ icon, title, lines, href, onClick, target }: Conta
         <a
           key={i}
           href={`tel:${cleanPhone}`}
-          className="block text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:underline transition-colors mt-1 font-medium"
+          className="block text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 hover:underline transition-colors mt-1 font-medium"
           onClick={(e) => e.stopPropagation()}
         >
           {line}
@@ -89,7 +89,7 @@ export function ContactItem({ icon, title, lines, href, onClick, target }: Conta
         {icon}
       </div>
       <div>
-        <h4 className="font-headline font-semibold text-on-surface text-lg group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors duration-300">{title}</h4>
+        <h3 className="font-headline font-semibold text-on-surface text-lg group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors duration-300">{title}</h3>
         {lines.map((line, i) => renderLine(line, i))}
       </div>
     </div>

@@ -179,10 +179,10 @@ export default function ForCompanies() {
                       {item.step}
                     </div>
                     <div className="space-y-2">
-                      <h4 className="font-headline font-bold text-lg text-on-surface">
+                      <h3 className="font-headline font-bold text-lg text-on-surface">
                         {item.title}
-                      </h4>
-                      <p className="text-on-surface-variant/70 text-sm">{item.desc}</p>
+                      </h3>
+                      <p className="text-on-surface-variant text-sm">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -381,7 +381,7 @@ function TestimonialCard({
         </div>
         <div>
           <p className="font-bold text-sm text-on-surface">{author}</p>
-          <p className="text-xs text-on-surface-variant/70">{role}</p>
+          <p className="text-xs text-on-surface-variant">{role}</p>
         </div>
       </div>
     </div>

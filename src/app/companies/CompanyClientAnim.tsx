@@ -59,7 +59,7 @@ export function CompanyHeroAnim() {
             </div>
             <div>
               <p className="text-sm font-bold text-on-surface">94% Retention</p>
-              <p className="text-xs text-on-surface-variant/70">Among wellness clients</p>
+              <p className="text-xs text-on-surface-variant">Among wellness clients</p>
             </div>
           </div>
         </motion.div>
@@ -74,7 +74,7 @@ export function AnimStatCard({ title, desc, colorClass }: { title: string, desc:
       whileHover={{ y: -5 }}
       className="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant/60"
     >
-      <h4 className={`text-3xl font-bold font-headline ${colorClass}`}>{title}</h4>
+      <h3 className={`text-3xl font-bold font-headline ${colorClass}`}>{title}</h3>
       <p className="text-sm text-on-surface-variant mt-2 font-medium">{desc}</p>
     </motion.div>
   );

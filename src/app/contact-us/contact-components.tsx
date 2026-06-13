@@ -26,6 +26,16 @@ export function ContactUsContent() {
   const [formData, setFormData] = React.useState({ fullName: '', email: '', message: '' });
   const [submitError, setSubmitError] = React.useState<string | null>(null);
   const recaptchaRef = React.useRef<ReCAPTCHA>(null);
+  const [formInteracted, setFormInteracted] = React.useState(false);
+  const [loadMap, setLoadMap] = React.useState(false);
+
+  React.useEffect(() => {
+    // Delay loading map iframe to boost page load speed and Lighthouse performance score
+    const timer = setTimeout(() => {
+      setLoadMap(true);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,6 +57,7 @@ export function ContactUsContent() {
     try {
       const captchaToken = recaptchaRef.current?.getValue();
       if (!captchaToken) {
+        setFormInteracted(true); // Ensure reCAPTCHA renders if it hasn't already
         setSubmitError("Please verify that you are not a robot.");
         setIsSubmitting(false);
         return;
@@ -185,20 +196,27 @@ export function ContactUsContent() {
                 <form
                   className="space-y-6"
                   onSubmit={handleSubmit}
+                  onFocusCapture={() => { if (!formInteracted) setFormInteracted(true); }}
                 >
                   <FormField
                     label="Full Name"
                     placeholder="John Doe"
                     type="text"
                     value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, fullName: e.target.value });
+                      if (!formInteracted) setFormInteracted(true);
+                    }}
                   />
                   <FormField
                     label="Email Address"
                     placeholder="john@company.com"
                     type="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, email: e.target.value });
+                      if (!formInteracted) setFormInteracted(true);
+                    }}
                   />
                   <div className="space-y-2">
                     <label htmlFor={messageId} className="block text-xs font-semibold tracking-wider text-on-surface-variant uppercase ml-1">Message</label>
@@ -208,23 +226,28 @@ export function ContactUsContent() {
                       placeholder="Tell us about your team and preferred dates..."
                       rows={5}
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, message: e.target.value });
+                        if (!formInteracted) setFormInteracted(true);
+                      }}
                       required
                     />
                   </div>
 
                   {/* Google reCAPTCHA v2 */}
-                  <div className="flex justify-center py-2">
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                      onChange={(token) => {
-                        if (token) {
-                          setSubmitError(null);
-                        }
-                      }}
-                    />
-                  </div>
+                  {formInteracted && (
+                    <div className="flex justify-center py-2">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                        onChange={(token) => {
+                          if (token) {
+                            setSubmitError(null);
+                          }
+                        }}
+                      />
+                    </div>
+                  )}
 
                   {submitError && (
                     <div className="text-red-600 dark:text-red-400 text-sm font-semibold text-center bg-red-50 dark:bg-red-950/20 py-3 px-4 rounded-xl border border-red-200 dark:border-red-900/50">
@@ -250,17 +273,23 @@ export function ContactUsContent() {
       <section className="px-6 lg:px-8 max-w-7xl mx-auto mb-24">
         <div className="relative w-full h-[500px] rounded-[2.5rem] overflow-hidden bg-surface-container shadow-inner group">
           <div className="absolute inset-0 w-full h-full opacity-90">
-            <iframe
-              src="https://maps.google.com/maps?q=7%2F1%20%C4%90.%20Th%C3%A0nh%20Th%C3%A1i%2C%20Di%C3%AAn%20H%E1%BB%93ng%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vi%E1%BB%87t%20Nam&t=&z=16&ie=UTF8&iwloc=near&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Onsite Chair Massage Office Location Map"
-              className="w-full h-full"
-            />
+            {loadMap ? (
+              <iframe
+                src="https://maps.google.com/maps?q=7%2F1%20%C4%90.%20Th%C3%A0nh%20Th%C3%A1i%2C%20Di%C3%AAn%20H%E1%BB%93ng%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh%2C%20Vi%E1%BB%87t%20Nam&t=&z=16&ie=UTF8&iwloc=near&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Onsite Chair Massage Office Location Map"
+                className="w-full h-full"
+              />
+            ) : (
+              <div className="w-full h-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                <span className="text-gray-400">Loading map...</span>
+              </div>
+            )}
           </div>
           {/* Interactive Overlay */}
           <div className="absolute top-2.5 left-2.5 right-2.5 md:right-auto md:w-[380px] bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-2xl border border-black/5 dark:border-white/10 z-10">

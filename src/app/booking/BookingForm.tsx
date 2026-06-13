@@ -17,6 +17,7 @@ export default function BookingForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [formInteracted, setFormInteracted] = useState(false);
 
   const {
     register,
@@ -41,6 +42,7 @@ export default function BookingForm() {
     try {
       const captchaToken = recaptchaRef.current?.getValue();
       if (!captchaToken) {
+        setFormInteracted(true); // Ensure reCAPTCHA renders
         setSubmitError("Please verify that you are not a robot.");
         return;
       }
@@ -94,7 +96,7 @@ export default function BookingForm() {
   };
 
   return (
-    <form className="space-y-8" onSubmit={handleFormSubmit} noValidate>
+    <form className="space-y-8" onSubmit={handleFormSubmit} noValidate onFocusCapture={() => { if (!formInteracted) setFormInteracted(true); }}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Full Name */}
         <div className="flex flex-col gap-2">
@@ -220,17 +222,19 @@ export default function BookingForm() {
       </div>
 
       {/* Google reCAPTCHA v2 */}
-      <div className="flex justify-center py-2">
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-          onChange={(token) => {
-            if (token) {
-              setSubmitError(null);
-            }
-          }}
-        />
-      </div>
+      {formInteracted && (
+        <div className="flex justify-center py-2">
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+            onChange={(token) => {
+              if (token) {
+                setSubmitError(null);
+              }
+            }}
+          />
+        </div>
+      )}
 
       {submitError && (
         <div className="text-red-600 dark:text-red-400 text-sm font-semibold text-center bg-red-50 dark:bg-red-950/20 py-3 px-4 rounded-xl border border-red-200 dark:border-red-900/50">
