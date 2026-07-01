@@ -4,92 +4,62 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Users, TrendingUp, Heart, Star, ChevronDown } from "lucide-react";
-
-const benefitsData = [
-  {
-    title: "Reduce Stress",
-    desc: "Lower cortisol levels and alleviate physical tension that accumulates during long work hours.",
-    icon: <Heart className="text-emerald-700 dark:text-emerald-400" />,
-    color: "bg-emerald-50 dark:bg-emerald-950/40"
-  },
-  {
-    title: "Improve Productivity",
-    desc: "A brief mental and physical reset increases focus and cognitive function for the rest of the day.",
-    icon: <TrendingUp className="text-emerald-700 dark:text-emerald-400" />,
-    color: "bg-emerald-50 dark:bg-emerald-950/40"
-  },
-  {
-    title: "Boost Morale",
-    desc: "Show genuine appreciation for your team with a perk that feels deeply personal and restorative.",
-    icon: <Users className="text-emerald-700 dark:text-emerald-400" />,
-    color: "bg-emerald-50 dark:bg-emerald-950/40"
-  }
-];
-
-const stepsData = [
-  { step: "01", title: "Book Your Session", desc: "Select a date and time that fits your office schedule through our intuitive portal." },
-  { step: "02", title: "We Arrive & Setup", desc: "Our licensed therapists arrive with ergonomic chairs and everything needed for a quiet setup." },
-  { step: "03", title: "Your Team Relaxes", desc: "Employees enjoy 15-20 minute sessions and return to their desks feeling completely refreshed." }
-];
-
-const reviewsData = [
-  {
-    name: "Sarah Jenkins",
-    role: "HR Director, TechFlow",
-    text: "The most popular benefit we've ever introduced. Our therapists are professional and incredibly skilled.",
-    avatar: "https://picsum.photos/seed/sarah/100/100"
-  },
-  {
-    name: "David Chen",
-    role: "Operations Lead, Nexus",
-    text: "Setting up recurring sessions was effortless. It's made a noticeable difference in office energy.",
-    avatar: "https://picsum.photos/seed/david/100/100"
-  },
-  {
-    name: "Elena Rodriguez",
-    role: "People Ops, BrightScale",
-    text: "Worth every penny for the morale boost. The calming presence we didn't know we needed.",
-    avatar: "https://picsum.photos/seed/elena/100/100"
-  }
-];
+import { Heart, ShoppingCart, ArrowRight, Shield, Activity, Sparkles, Star, ChevronDown, Check } from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
+import { CHAIR_MODELS } from "@/utils/chairModels";
+import { useRouter } from "next/navigation";
 
 export const Hero = () => {
   return (
-    <section className="relative pt-24 pb-12 sm:pt-32 sm:pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section className="relative pt-28 pb-12 sm:pt-36 sm:pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50 dark:bg-slate-950">
+      {/* Background Gradients */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[100px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="z-10"
         >
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-[1.1] mb-6 text-balance">
-            Premium Onsite Chair Massage for Your <span className="text-emerald-700 dark:text-emerald-400">Workspace</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-100/80 dark:bg-emerald-950/40 rounded-full text-emerald-800 dark:text-emerald-300 text-xs font-bold mb-6">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>AI-Powered Wellness Technology</span>
+          </div>
+
+          <h1 className="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white leading-[1.1] mb-6 text-balance tracking-tight">
+            The Future of <span className="text-emerald-600 dark:text-emerald-400">Intelligent</span> Relaxation
           </h1>
           <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-xl leading-relaxed">
-            Boost morale, reduce stress, and show your team you care with professional massage therapy delivered directly to your office.
+            Experience therapeutic healing at home with Heli's smart massage chairs. Guided by biosensors to scan posture and locate pain points automatically.
           </p>
           
-          <Link href="/contact-us" className="inline-block bg-emerald-700 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-emerald-700/20 hover:opacity-90 transition-all text-center">
-            Book Now
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="#products" className="inline-flex items-center justify-center bg-emerald-600 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-emerald-600/20 hover:bg-emerald-700 hover:shadow-emerald-600/30 transition-all text-center">
+              Explore Models
+            </Link>
+            <Link href="/booking" className="inline-flex items-center justify-center border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center">
+              Book Showroom Trial
+            </Link>
+          </div>
 
           <div className="mt-12 flex items-center gap-4">
             <div className="flex -space-x-3">
               {[1, 2, 3].map((i) => (
-                <Image 
-                  key={i}
-                  src={`https://picsum.photos/seed/user${i}/100/100`} 
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full border-4 border-white object-cover shrink-0"
-                  alt={`Portrait of participating HR professional ${i}`}
-                />
+                <div key={i} className="relative w-12 h-12 rounded-full border-4 border-white dark:border-slate-950 overflow-hidden shrink-0">
+                  <Image 
+                    src={`https://picsum.photos/seed/user${i}/100/100`} 
+                    alt={`User avatar ${i}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               ))}
             </div>
-            <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              Trusted by <span className="text-slate-900 dark:text-white font-bold">500+</span> local HR teams
+            <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
+              Rated <span className="text-slate-900 dark:text-white font-black">4.9/5 stars</span> by over <span className="text-slate-900 dark:text-white font-black">10,000+</span> wellness enthusiasts
             </p>
           </div>
         </motion.div>
@@ -100,15 +70,13 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <div className="absolute -top-20 -right-20 w-96 h-96 bg-teal-100 rounded-full blur-[100px] opacity-50" />
-          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto">
+          <div className="absolute -top-10 -right-10 w-96 h-96 bg-emerald-200/20 dark:bg-emerald-800/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] sm:aspect-[16/11]">
             <Image 
-              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800" 
-              width={800}
-              height={533}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="w-full h-full object-cover"
-              alt="Massage Therapy"
+              src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800" 
+              alt="Premium Heli Smart Massage Chair"
+              fill
+              className="object-cover"
               priority
               fetchPriority="high"
             />
@@ -120,47 +88,175 @@ export const Hero = () => {
 };
 
 export const Benefits = () => {
+  const { cart, favorites, addToCart, toggleFavorite, addToViewed } = useCart();
+  const { user } = useAuth();
+  const router = useRouter();
+
+  const handleProductAction = (chairId: string, action: "cart" | "order" | "detail") => {
+    addToViewed(chairId);
+    
+    if (action === "cart") {
+      addToCart(chairId, 1);
+    } else if (action === "order") {
+      router.push(`/booking?chair=${chairId}`);
+    }
+  };
+
   return (
-    <section className="py-12 md:py-20 lg:py-24 bg-white dark:bg-slate-950">
+    <section id="products" className="py-20 bg-white dark:bg-slate-950 scroll-mt-16">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-10 md:mb-16 lg:mb-20">
-          <span className="text-emerald-700 dark:text-emerald-400 font-bold tracking-widest uppercase text-xs mb-4 block">Why Wellness Matters</span>
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white">Investing in Your People</h2>
+        <div className="text-center mb-16">
+          <span className="text-emerald-600 dark:text-emerald-400 font-extrabold tracking-widest uppercase text-xs mb-4 block">Heli Smart Series</span>
+          <h2 className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">Compare Our Models</h2>
+          <p className="text-slate-500 dark:text-slate-400 mt-4 max-w-xl mx-auto">
+            Choose the model that fits your lifestyle. Get custom biosensor scanning, smart app support, or advanced graphene heat therapy.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {benefitsData.map((benefit, idx) => (
-            <motion.div 
-              key={idx}
-              whileHover={{ y: -10 }}
-              className="p-10 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:shadow-xl hover:shadow-emerald-700/5 transition-all"
-            >
-              <div className={`w-16 h-16 ${benefit.color} rounded-2xl flex items-center justify-center mb-8`}>
-                {benefit.icon}
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">{benefit.title}</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{benefit.desc}</p>
-            </motion.div>
-          ))}
+        {/* 3 models cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {Object.entries(CHAIR_MODELS).map(([id, details]) => {
+            const isFav = favorites.includes(id);
+            return (
+              <motion.div 
+                key={id}
+                whileHover={{ y: -8 }}
+                onClick={() => addToViewed(id)}
+                className="group rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 p-8 hover:shadow-xl hover:shadow-emerald-600/5 transition-all flex flex-col justify-between overflow-hidden relative"
+              >
+                {/* Favorite Heart Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (!user) {
+                      router.push("/login");
+                    } else {
+                      toggleFavorite(id);
+                    }
+                  }}
+                  className="absolute top-6 right-6 z-20 p-2.5 rounded-full bg-white dark:bg-slate-800 shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                  aria-label="Add to favorites"
+                >
+                  <Heart className={`w-5 h-5 transition-colors ${isFav ? "text-rose-500 fill-rose-500" : "text-slate-400 dark:text-slate-500 hover:text-rose-500"}`} />
+                </button>
+
+                <div>
+                  {/* Image */}
+                  <div className="relative w-full h-56 rounded-2xl overflow-hidden mb-6 bg-slate-100">
+                    <Image 
+                      src={details.image} 
+                      alt={details.name} 
+                      fill 
+                      className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                    />
+                  </div>
+
+                  {/* Title & Price */}
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white">{details.name}</h3>
+                  </div>
+                  <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider mb-4">{details.desc}</p>
+                  
+                  <div className="mb-6">
+                    <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{details.priceStr}</p>
+                    <p className="text-xs text-slate-400 font-semibold mt-1">Pre-order deposit 20%: {details.depositStr}</p>
+                  </div>
+
+                  {/* Features List */}
+                  <div className="space-y-2.5 border-t border-slate-200 dark:border-slate-800 pt-6 mb-8">
+                    {details.features.map((feat, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+                        <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Buy Buttons */}
+                <div className="space-y-3">
+                  <button
+                    onClick={() => handleProductAction(id, "cart")}
+                    className="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white py-3.5 rounded-xl font-bold hover:bg-emerald-700 transition active:scale-98 shadow-md cursor-pointer"
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    <span>Add to Cart</span>
+                  </button>
+                  <button
+                    onClick={() => handleProductAction(id, "order")}
+                    className="w-full py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold rounded-xl transition active:scale-98 cursor-pointer"
+                  >
+                    Pre-order Now
+                  </button>
+                </div>
+
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* Recently Viewed Products */}
+        <RecentlyViewed />
+
       </div>
     </section>
   );
 };
 
-export const Steps = () => {
+// Subcomponent: Recently Viewed
+const RecentlyViewed = () => {
+  const { viewed } = useCart();
+  
+  if (viewed.length === 0) return null;
+
   return (
-    <section className="py-12 md:py-20 lg:py-24 bg-[#f8f9fa] dark:bg-slate-900/40">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="border-t border-slate-200 dark:border-slate-800 pt-16 mt-16"
+    >
+      <h3 className="text-xl font-black text-slate-900 dark:text-white mb-6">Recently Viewed Products</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {viewed.map((id) => {
+          const details = CHAIR_MODELS[id];
+          if (!details) return null;
+          return (
+            <Link key={id} href="#products" className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-150 dark:border-slate-800/80 hover:brightness-95 transition-all">
+              <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 bg-slate-100">
+                <Image src={details.image} alt={details.name} fill className="object-cover" />
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900 dark:text-white text-sm">{details.name}</h4>
+                <p className="text-xs text-emerald-600 dark:text-emerald-400 font-bold mt-1">{details.priceStr}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+};
+
+export const Steps = () => {
+  const stepsData = [
+    { step: "01", title: "Select Your Model", desc: "Browse Comfort, Balance, and Luxe models, comparing details and intelligent feature packages." },
+    { step: "02", title: "Order or Try", desc: "Select direct Pre-order with 20% VNPay deposit, or book a private trial session at our showroom." },
+    { step: "03", title: "Stress-Free Setup", desc: "We provide white-glove professional home delivery and installation, and 5 years full warranty." }
+  ];
+
+  return (
+    <section className="py-20 bg-slate-50 dark:bg-slate-900/40">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="w-full lg:w-1/2">
-            <h2 className="text-4xl text-slate-900 dark:text-white lg:text-5xl font-extrabold mb-8 leading-tight">Seamless Integration Into Your Workday</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-12">We handle everything from scheduling to setup, so you can focus on running your business.</p>
+            <span className="text-emerald-600 dark:text-emerald-400 font-extrabold tracking-widest uppercase text-xs mb-4 block">Process</span>
+            <h2 className="text-4xl text-slate-900 dark:text-white lg:text-5xl font-black mb-8 leading-tight tracking-tight">Getting Your Heli</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 mb-12">We guarantee a seamless journey from model customization to doorstep white-glove installation.</p>
             
             <div className="space-y-10">
               {stepsData.map((item, idx) => (
                 <div key={idx} className="flex gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-100 dark:bg-teal-950/65 text-teal-900 dark:text-teal-300 flex items-center justify-center font-bold font-headline">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-950/65 text-emerald-950 dark:text-emerald-300 flex items-center justify-center font-black">
                     {item.step}
                   </div>
                   <div>
@@ -180,18 +276,18 @@ export const Steps = () => {
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="rounded-3xl shadow-lg object-cover"
-                  alt="Office Massage"
+                  alt="Heli relaxation experience"
                 />
               </div>
             </div>
             <div>
               <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[400px]">
                 <Image 
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" 
+                  src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=600" 
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="rounded-3xl shadow-lg object-cover"
-                  alt="Modern Office"
+                  className="rounded-3xl shadow-lg object-cover animate-pulse"
+                  alt="Modern Heli Wellness Setting"
                 />
               </div>
             </div>
@@ -203,21 +299,45 @@ export const Steps = () => {
 };
 
 export const Testimonials = () => {
+  const reviewsData = [
+    {
+      name: "Hoang Nguyen",
+      role: "Software Architect, VNG Corp",
+      text: "The Heli Luxe biosensors accurately detected my shoulder strain. The 4D Zero-Gravity is absolute magic after long coding hours.",
+      avatar: "https://picsum.photos/seed/hoang/100/100"
+    },
+    {
+      name: "Thuong Mai",
+      role: "Wellness Advisor, Healthy Living Co.",
+      text: "As an ergonomics advisor, I highly recommend Heli Balance. The custom airbag pressure is incredibly accurate and soothing.",
+      avatar: "https://picsum.photos/seed/thuong/100/100"
+    },
+    {
+      name: "Tuan Tran",
+      role: "Freelance Designer",
+      text: "Ordered the Heli Comfort. Compact design, beautiful leather, and fits perfectly in my home office. Love the Bluetooth speakers!",
+      avatar: "https://picsum.photos/seed/tuan/100/100"
+    }
+  ];
+
   return (
-    <section className="py-12 md:py-20 lg:py-24 bg-white dark:bg-slate-950">
+    <section className="py-20 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-8 md:mb-12 lg:mb-16">
-          <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white">What HR Leaders are Saying</h2>
+        <div className="text-center mb-16">
+          <span className="text-emerald-600 dark:text-emerald-400 font-extrabold tracking-widest uppercase text-xs mb-4 block">Testimonials</span>
+          <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">What Owners Say</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviewsData.map((review, idx) => (
-            <div key={idx} className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
-              <div className="flex text-emerald-700 dark:text-emerald-400 mb-6">
+            <div key={idx} className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800/80 hover:shadow-lg transition-all duration-350">
+              <div className="flex text-amber-500 mb-6">
                 {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={16} fill="currentColor" />)}
               </div>
               <p className="text-lg text-slate-700 dark:text-slate-300 italic mb-8">&quot;{review.text}&quot;</p>
               <div className="flex items-center gap-4">
-                <Image src={review.avatar} width={48} height={48} className="w-12 h-12 rounded-full object-cover shrink-0" alt={`Portrait of ${review.name}, ${review.role}`} />
+                <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0">
+                  <Image src={review.avatar} alt={review.name} fill className="object-cover" />
+                </div>
                 <div>
                   <p className="font-bold text-slate-900 dark:text-white">{review.name}</p>
                   <p className="text-xs text-slate-500 dark:text-slate-400">{review.role}</p>
@@ -233,18 +353,18 @@ export const Testimonials = () => {
 
 export const CTA = () => {
   return (
-    <section className="py-12 md:py-20 lg:py-24 px-6 bg-[#f8f9fa] dark:bg-slate-900/40">
-      <div className="max-w-7xl mx-auto bg-emerald-700 dark:bg-emerald-800/80 rounded-[3rem] p-12 lg:p-24 text-center relative overflow-hidden">
+    <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900/40">
+      <div className="max-w-7xl mx-auto bg-emerald-700 dark:bg-emerald-800/80 rounded-[3rem] p-12 lg:p-24 text-center relative overflow-hidden shadow-2xl">
         <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-white rounded-full blur-[120px]" />
         </div>
         
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-4xl lg:text-6xl font-extrabold text-white mb-8 leading-tight">Ready to Transform Your Workplace?</h2>
-          <p className="text-white/95 text-xl mb-12">Join hundreds of companies that prioritize employee wellness with onsite chair massage.</p>
+          <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 leading-tight tracking-tight">Ready to Elevate Your Wellness?</h2>
+          <p className="text-white/95 text-xl mb-12">Pre-order today and secure a 5-year full warranty and free delivery.</p>
           
-          <Link href="/contact-us" className="inline-block bg-white text-emerald-700 dark:text-emerald-800 px-10 py-5 rounded-2xl font-bold text-xl shadow-xl hover:scale-105 transition-transform text-center">
-            Book Your Session
+          <Link href="/booking" className="inline-block bg-white text-emerald-700 hover:scale-105 transition-transform px-10 py-5 rounded-2xl font-black text-xl shadow-xl">
+            Book Trial / Buy
           </Link>
         </div>
       </div>
@@ -254,24 +374,20 @@ export const CTA = () => {
 
 const faqData = [
   {
-    question: "How much space does an onsite chair massage therapist need?",
-    answer: "We only need a quiet 5x5 foot space per massage chair. A small conference room, empty office, or quiet corner is perfect. We bring all required equipment, including the ergonomic chair, music, and sanitizing supplies."
+    question: "Does the Heli chair automatically adapt to my body shape?",
+    answer: "Yes! All Heli models feature smart body scanning. On start, they scan your height, spine alignment, and shoulders to customize con-roller paths and pressure points for optimized comfort."
   },
   {
-    question: "How long is each individual massage session?",
-    answer: "Sessions typically run for 15, 20, or 30 minutes. 15 minutes is the most popular corporate option, allowing you to easily fit up to 4 employees per hour per therapist."
+    question: "What is the pre-order deposit policy?",
+    answer: "To pre-order any model, a secure 20% deposit is processed via VNPay Sandbox. The remaining 80% is payable upon delivery, inspection, and successful setup in your home."
   },
   {
-    question: "Do employees need to undress or change clothes?",
-    answer: "It depends on the service package. For onsite chair massages, employees remain fully clothed with no oils used. For onsite table massages (optional wellness events), we use professional massage oils, and clients may undress to their comfort level in a private room."
+    question: "How does the showroom experience trial work?",
+    answer: "You can book a 45-minute individual session at our Heli Wellness Showroom for 200,000 VND. You will get a dedicated health consultation and full access to test all Comfort, Balance, and Luxe models."
   },
   {
-    question: "What are the pricing options for corporate wellness events?",
-    answer: "We offer flexible pricing models: either company-sponsored (hourly rate paid by the company, which is the most popular) or employee-paid (employees book and pay for their own time slots). Contact us for a custom quote based on your company size."
-  },
-  {
-    question: "What areas do your onsite chair massage therapists cover?",
-    answer: "We serve businesses and corporate offices across Ho Chi Minh City and surrounding areas. For recurring wellness programs, we can customize a schedule that works for your team."
+    question: "What does the 5-year warranty cover?",
+    answer: "Our 5-year warranty covers all structural frames, mechanics, electronics, biological sensors, and software systems. We support lifetime local maintenance and software updates."
   }
 ];
 
@@ -283,12 +399,12 @@ export const FAQ = () => {
   };
 
   return (
-    <section className="py-12 md:py-20 lg:py-24 bg-white dark:bg-slate-950">
+    <section className="py-20 bg-white dark:bg-slate-950">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-12">
-          <span className="text-emerald-700 dark:text-emerald-400 font-bold tracking-widest uppercase text-xs mb-4 block">Got Questions?</span>
-          <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
-          <p className="text-slate-600 dark:text-slate-400">Everything you need to know about our onsite chair massage services.</p>
+          <span className="text-emerald-600 dark:text-emerald-400 font-extrabold tracking-widest uppercase text-xs mb-4 block">FAQ</span>
+          <h2 className="text-4xl font-black text-slate-900 dark:text-white mb-4 tracking-tight">Questions & Answers</h2>
+          <p className="text-slate-600 dark:text-slate-400">Everything you need to know about the Heli Smart Massage Chair experience.</p>
         </div>
 
         <div className="space-y-4">
@@ -297,11 +413,11 @@ export const FAQ = () => {
             return (
               <div 
                 key={idx}
-                className="border border-slate-100 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900/50 hover:border-emerald-700/30 dark:hover:border-emerald-400/30 transition-all duration-300"
+                className="border border-slate-200/80 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900/50 hover:border-emerald-600/30 dark:hover:border-emerald-400/30 transition-all duration-300"
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <span className="font-bold text-lg text-slate-900 dark:text-white pr-4">
@@ -310,7 +426,7 @@ export const FAQ = () => {
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="flex-shrink-0 text-emerald-700 dark:text-emerald-400"
+                    className="flex-shrink-0 text-emerald-600 dark:text-emerald-400"
                   >
                     <ChevronDown size={20} />
                   </motion.div>
@@ -321,7 +437,7 @@ export const FAQ = () => {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="p-6 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800/50">
+                  <div className="p-6 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200/80 dark:border-slate-800/50">
                     {faq.answer}
                   </div>
                 </motion.div>
