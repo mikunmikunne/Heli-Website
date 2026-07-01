@@ -21,17 +21,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const mappedPost = mapWordPressPostToBlogData(post);
 
     return {
-        title: `${mappedPost.title} | Onsite Chair Massage`,
+        title: `${mappedPost.title} | Heli Smart Massage Chair`,
         description: mappedPost.description,
         openGraph: {
-            title: `${mappedPost.title} | Onsite Chair Massage`,
+            title: `${mappedPost.title} | Heli Smart Massage Chair`,
             description: mappedPost.description,
             images: [{ url: mappedPost.image }],
             type: "article",
         },
         twitter: {
             card: "summary_large_image",
-            title: `${mappedPost.title} | Onsite Chair Massage`,
+            title: `${mappedPost.title} | Heli Smart Massage Chair`,
             description: mappedPost.description,
             images: [mappedPost.image],
         }
@@ -62,15 +62,15 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Onsite Chair Massage",
+            "name": "Heli Smart Massage Chair",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://onsitechairmassage.com/next.svg"
+                "url": "https://helicorp.vn/next.svg"
             }
         },
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": `https://onsitechairmassage.com/blog/${mappedPost.slug}`
+            "@id": `https://helicorp.vn/blog/${mappedPost.slug}`
         }
     };
 

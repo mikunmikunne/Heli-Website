@@ -25,7 +25,7 @@ export const topicDisplayNameMap: Record<string, string> = {
   "healthy-workplace": "Healthy Workplace",
   "mental-health-at-work": "Mental Health at Work",
   "office-relaxation": "Office Relaxation",
-  "onsite-chair-massage": "Onsite Chair Massage",
+  "onsite-chair-massage": "Heli Smart Massage Chair",
   "stress-relief": "Stress Relief",
   "team-productivity": "Team Productivity"
 };

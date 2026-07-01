@@ -48,7 +48,7 @@ export function mapWordPressPostToBlogData(article: WordPressPost): BlogPost {
     description: plainTextDescription,
     image: imageUrl || getImageForTopic(topic),
     date: article.date ? new Date(article.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Unknown Date',
-    author: "Onsite Chair Massage Team",
+    author: "Heli Smart Chair Team",
     content: markdownContent,
   };
 }

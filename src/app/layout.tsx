@@ -16,9 +16,13 @@ const inter = Inter({
   display: 'swap',
 });
 
+import { AuthProvider } from "@/context/AuthContext";
+import { CartProvider } from "@/context/CartContext";
+import Chatbot from "@/app/component/Chatbot";
+
 export const metadata: Metadata = {
-  title: "Onsite Chair Massage | Corporate Wellness Solutions",
-  description: "Professional onsite chair massage services for offices and corporate events. Reduce stress, boost productivity, and improve employee wellness.",
+  title: "Heli Smart Massage Chair | Next-Gen AI Wellness",
+  description: "Experience the future of wellness with Heli Smart Massage Chair. AI posture scanning, biosensors, 4D Zero Gravity, and IoT smart app connectivity.",
 };
 
 export default function RootLayout({
@@ -50,7 +54,14 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col overflow-x-hidden">{children}</body>
+      <body className="min-h-full flex flex-col overflow-x-hidden">
+        <AuthProvider>
+          <CartProvider>
+            {children}
+            <Chatbot />
+          </CartProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }

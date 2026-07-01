@@ -6,12 +6,12 @@ import { getPublishedArticles } from "@/utils/wordpress";
 import { mapWordPressPostToBlogData } from "@/utils/blog";
 
 export const metadata: Metadata = {
-  title: "Wellness Insights & Blog | Onsite Chair Massage",
-  description: "Expert perspectives on corporate wellness, office ergonomics, and employee mental health. Learn how onsite chair massage can transform your workplace.",
+  title: "Wellness Insights & Blog | Heli Smart Massage Chair",
+  description: "Expert perspectives on corporate wellness, office ergonomics, and employee mental health. Learn how Heli smart wellness technology can transform your lifestyle.",
   openGraph: {
-    title: "Wellness Insights & Blog | Onsite Chair Massage",
-    description: "Expert perspectives on corporate wellness and workplace productivity.",
-    images: [{ url: "https://lh3.googleusercontent.com/aida-public/AB6AXuDhB-IX1D737i4KTvOeM4XBpkVnT9Cs9TCInF-j6QHlHwvIlbnoqDq-UMf5kZEm7th3f2Vw-eQuFdK9KPvLSx_XgVvlT2K0-BZoAXLAeWsxbPdln1TFA6Boz1BC64DcPIOMzRhvGx0wfQdN8Wkwgy3SowyL8YRmSUBPkOfI9R-5BvFM2rKzqa2KXlw0TyqZ2iNmt_UpKAlZxjCq1QBvTVHM3P05nckM9ymtFZsNQp2ORVWJWyVSxpqbfvXN8PuEHglPqUzUWsuAMiM" }],
+    title: "Wellness Insights & Blog | Heli Smart Massage Chair",
+    description: "Expert perspectives on corporate wellness, ergonomics, and smart health tech.",
+    images: [{ url: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800" }],
   },
 };
 

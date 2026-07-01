@@ -282,7 +282,7 @@ export function ContactUsContent() {
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Onsite Chair Massage Office Location Map"
+                title="Heli Smart Massage Chair Office Location Map"
                 className="w-full h-full"
               />
             ) : (

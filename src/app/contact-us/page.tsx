@@ -4,11 +4,11 @@ import Footer from "../component/footer";
 import { ContactUsContent } from "./contact-components";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Onsite Chair Massage",
-  description: "Get in touch with Onsite Chair Massage. Ask a question, request booking information, or discuss custom wellness solutions for your workplace.",
+  title: "Contact Us | Heli Smart Massage Chair",
+  description: "Get in touch with Heli Smart Massage Chair support. Ask questions about Comfort, Balance, or Luxe models, showroom trial sessions, or pre-orders.",
   openGraph: {
-    title: "Contact Us | Onsite Chair Massage",
-    description: "Get in touch with Onsite Chair Massage. Ask a question, request booking information, or discuss custom wellness solutions.",
+    title: "Contact Us | Heli Smart Massage Chair",
+    description: "Get in touch with Heli Smart Massage Chair support. Ask questions about Comfort, Balance, or Luxe models, showroom trials, or pre-orders.",
   }
 };
 

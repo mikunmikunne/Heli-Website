@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getPublishedArticles, WordPressPost } from '@/utils/wordpress';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.SITE_URL || 'https://onsitechairmassage.com';
+  const baseUrl = process.env.SITE_URL || 'https://helicorp.vn';
 
   // 1. Fetch dynamic blog posts from WordPress
   let posts: WordPressPost[] = [];
@@ -33,12 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/companies`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
+
     {
       url: `${baseUrl}/contact-us`,
       lastModified: new Date(),
@@ -46,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/our-services`,
+      url: `${baseUrl}/specs`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,

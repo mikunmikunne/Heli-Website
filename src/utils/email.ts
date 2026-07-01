@@ -56,9 +56,9 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
   }
 
   const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
-  const fromName = process.env.SMTP_FROM_NAME || 'Onsite Chair Massage Team';
+  const fromName = process.env.SMTP_FROM_NAME || 'Heli Smart Massage Chair Team';
   const fromEmail = process.env.SMTP_USER;
-  const siteUrl = process.env.SITE_URL || 'https://onsite-chair-massage-web-update.vercel.app/';
+  const siteUrl = process.env.SITE_URL || 'https://heli-smart-massage-chair-web.vercel.app/';
 
   // 1. HTML Template gửi cho KHÁCH HÀNG (Customer Confirmation)
   const customerHtml = `
@@ -90,7 +90,7 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
       <body>
         <div class="container">
           <div class="header">
-            <h1>Onsite Chair Massage</h1>
+            <h1>Heli Smart Massage Chair</h1>
             <p>Thank you for requesting a corporate quote</p>
           </div>
           <div class="content">
@@ -143,15 +143,15 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
             <p>If you need to make any changes to these details, please reply directly to this email.</p>
             
             <p style="margin-top: 30px; border-top: 1px dashed #e5e7eb; padding-top: 15px; font-size: 14px; color: #4b5563;">
-            For more information, please visit our website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage</a>
+            For more information, please visit our website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">Heli</a>
             </p>
           </div>
           <div class="footer">
-            <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} Heli Smart Massage Chair. All rights reserved.</p>
             <p>7/1 Đ. Thành Thái, Diên Hồng, Hồ Chí Minh 700000, Việt Nam</p>
             <p style="margin-top: 8px; font-size: 13px; color: #4b5563;">
-              Email: <a href="mailto:Onsitechairmassage%20%3CMikun.creatory.26@gmail.com%3E" style="color: #047857; text-decoration: underline; font-weight: 600;">Mikun.creatory.26@gmail.com</a> | 
-              Website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: 600;">onsitechairmassage</a>
+              Email: <a href="mailto:Heli%20%3Csupport@helicorp.vn%3E" style="color: #047857; text-decoration: underline; font-weight: 600;">support@helicorp.vn</a> | 
+              Website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: 600;">Heli</a>
             </p>
           </div>
         </div>
@@ -223,7 +223,7 @@ export async function sendBookingEmails(data: BookingEmailData): Promise<void> {
   await transporter.sendMail({
     from: `"${fromName}" <${fromEmail}>`,
     to: data.email,
-    subject: 'We have received your Quote Request | Onsite Chair Massage',
+    subject: 'We have received your Quote Request | Heli Smart Massage Chair',
     html: customerHtml,
   });
 
@@ -247,9 +247,9 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
   }
 
   const adminEmail = process.env.ADMIN_EMAIL || process.env.SMTP_USER;
-  const fromName = process.env.SMTP_FROM_NAME || 'Onsite Chair Massage Team';
+  const fromName = process.env.SMTP_FROM_NAME || 'Heli Smart Massage Chair Team';
   const fromEmail = process.env.SMTP_USER;
-  const siteUrl = process.env.SITE_URL || 'https://onsite-chair-massage-web-update.vercel.app/';
+  const siteUrl = process.env.SITE_URL || 'https://heli-smart-massage-chair-web.vercel.app/';
 
   // 1. HTML Template gửi cho KHÁCH HÀNG (Customer Confirmation)
   const customerHtml = `
@@ -277,7 +277,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
       <body>
         <div class="container">
           <div class="header">
-            <h1>Onsite Chair Massage</h1>
+            <h1>Heli Smart Massage Chair</h1>
             <p>We have received your message</p>
           </div>
           <div class="content">
@@ -295,15 +295,15 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
             <p>If you have any other questions, please feel free to reply directly to this email.</p>
             
             <p style="margin-top: 30px; border-top: 1px dashed #e5e7eb; padding-top: 15px; font-size: 14px; color: #4b5563;">
-            For more information, please visit our website:  <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">onsitechairmassage</a>
+            For more information, please visit our website:  <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: bold;">Heli</a>
             </p>
           </div>
           <div class="footer">
-            <p>&copy; ${new Date().getFullYear()} Onsite Chair Massage. All rights reserved.</p>
+            <p>&copy; ${new Date().getFullYear()} Heli Smart Massage Chair. All rights reserved.</p>
             <p>7/1 Đ. Thành Thái, Diên Hồng, Hồ Chí Minh 700000, Việt Nam</p>
             <p style="margin-top: 8px; font-size: 13px; color: #4b5563;">
-              Email: <a href="mailto:Onsitechairmassage%20%3CMikun.creatory.26@gmail.com%3E" style="color: #047857; text-decoration: underline; font-weight: 600;">Mikun.creatory.26@gmail.com</a> | 
-              Website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: 600;">onsitechairmassage</a>
+              Email: <a href="mailto:Heli%20%3Csupport@helicorp.vn%3E" style="color: #047857; text-decoration: underline; font-weight: 600;">support@helicorp.vn</a> | 
+              Website: <a href="${siteUrl}" style="color: #047857; text-decoration: underline; font-weight: 600;">Heli</a>
             </p>
           </div>
         </div>
@@ -354,7 +354,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
   await transporter.sendMail({
     from: `"${fromName}" <${fromEmail}>`,
     to: data.email,
-    subject: 'We have received your message | Onsite Chair Massage',
+    subject: 'We have received your message | Heli Smart Massage Chair',
     html: customerHtml,
   });
 
@@ -362,7 +362,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<void> {
   await transporter.sendMail({
     from: `"${fromName} System" <${fromEmail}>`,
     to: adminEmail,
-    subject: `✉️ [New Message] ${data.fullName} - Onsite Chair Massage`,
+    subject: `✉️ [New Message] ${data.fullName} - Heli Smart Massage Chair`,
     html: adminHtml,
   });
 }

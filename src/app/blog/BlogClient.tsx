@@ -107,24 +107,24 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
 
           <div className="relative z-10 max-w-xl text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Bring wellness to your workplace today.
+              Experience Heli Wellness Today.
             </h2>
             <p className="text-white/80 text-lg">
-              Join 200+ companies that prioritize their team&apos;s health with our professional onsite massage services.
+              Join thousands of satisfied Heli users enjoying smart AI body scanning and deep muscle relief daily.
             </p>
           </div>
           <div className="relative z-10 flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => router.push("/booking")}
-              className="bg-white text-emerald-600 dark:text-emerald-400 font-bold px-10 py-5 rounded-2xl shadow-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-95"
+              className="bg-white text-emerald-600 dark:text-emerald-400 font-bold px-10 py-5 rounded-2xl shadow-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all active:scale-95 cursor-pointer"
             >
-              Get a Free Quote
+              Order Now
             </button>
             <button
-              onClick={() => router.push("/our-services")}
-              className="bg-white/10 backdrop-blur-md text-white border border-white/20 font-bold px-10 py-5 rounded-2xl hover:bg-white/20 transition-all active:scale-95"
+              onClick={() => router.push("/specs")}
+              className="bg-white/10 backdrop-blur-md text-white border border-white/20 font-bold px-10 py-5 rounded-2xl hover:bg-white/20 transition-all active:scale-95 cursor-pointer"
             >
-              View Services
+              View Specifications
             </button>
           </div>
         </motion.div>
