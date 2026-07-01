@@ -32,7 +32,7 @@ const nextConfig: NextConfig = {
       img-src 'self' blob: data: https://images.unsplash.com https://lh3.googleusercontent.com https://picsum.photos https://image.pollinations.ai;
       font-src 'self' https://fonts.gstatic.com;
       frame-src 'self' https://www.google.com https://maps.google.com;
-      connect-src 'self' https://xlwredhqjpfkxlcwdlqd.supabase.co https://dev-onsite-chair-massage.pantheonsite.io;
+      connect-src 'self' https://*.supabase.co https://dev-onsite-chair-massage.pantheonsite.io;
     `.replace(/\s{2,}/g, ' ').trim();
 
     return [
