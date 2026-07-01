@@ -1,86 +1,62 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full pt-16 pb-8 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950">
+    <footer className="w-full pt-16 pb-8 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-1">
-          <div className="text-lg font-bold text-emerald-800 dark:text-emerald-400 mb-6">
-            Onsite Chair Massage
+          <div className="text-xl font-black text-emerald-800 dark:text-emerald-400 mb-6 tracking-tight">
+            HELI SMART CHAIR
           </div>
           <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-            Bringing relaxation and restorative wellness directly to the modern workplace across the nation.
+            Bringing biological AI wellness technology directly to your home. Designed for modern life recovery.
           </p>
-          <div className="flex gap-4">
-            <Link
-              className="w-10 h-10 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-              href="/contact-us"
-              aria-label="Contact social channels"
-            >
-              <span className="inline-block text-xl">
-                <Image
-                  src="/svg-pics/share-icon.svg"
-                  alt="Share"
-                  width={24}
-                  height={24}
-                  className="dark:invert"
-                />
-              </span>
-            </Link>
-          </div>
         </div>
+        
         <div>
-          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Services</h3>
+          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6 text-sm uppercase tracking-wider">Models</h3>
           <ul className="space-y-4">
             <li>
               <Link
-                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
-                href="/our-services"
+                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                href="#products"
               >
-                Weekly Wellness
+                Heli Comfort
               </Link>
             </li>
             <li>
               <Link
-                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
-                href="/our-services"
+                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                href="#products"
               >
-                Corporate Events
+                Heli Balance
               </Link>
             </li>
             <li>
               <Link
-                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
-                href="/our-services"
+                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                href="#products"
               >
-                Employee Appreciation
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
-                href="/our-services"
-              >
-                Trade Shows
+                Heli Luxe
               </Link>
             </li>
           </ul>
         </div>
+        
         <div>
-          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Company</h3>
+          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6 text-sm uppercase tracking-wider">Company</h3>
           <ul className="space-y-4">
             <li>
               <Link
-                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
-                href="/companies"
+                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                href="/specs"
               >
-                For Companies
+                Specs & Technology
               </Link>
             </li>
             <li>
               <Link
-                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
+                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 href="/blog"
               >
                 Blog
@@ -88,31 +64,30 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:translate-x-1 transition-all inline-block"
-                href="/contact-us"
+                className="text-sm text-slate-500 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                href="/booking"
               >
-                Contact
+                Book / Buy
               </Link>
             </li>
           </ul>
         </div>
+        
         <div>
-          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6">Contact</h3>
+          <h3 className="text-gray-700 dark:text-gray-300 font-bold mb-6 text-sm uppercase tracking-wider">Contact</h3>
           <ul className="space-y-4">
-            <li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
+            <li className="text-slate-500 dark:text-slate-400 text-sm">
               <a
-                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent("Onsitechairmassage <Mikun.creatory.26@gmail.com>")}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-emerald-600 dark:hover:text-emerald-400 hover:underline transition-colors duration-200"
+                href="mailto:support@helicorp.vn"
+                className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
               >
-                Mikun.creatory.26@gmail.com
+                support@helicorp.vn
               </a>
             </li>
-            <li className="text-gray-500 dark:text-gray-400 flex items-center gap-2">
+            <li className="text-slate-500 dark:text-slate-400 text-sm">
               <a
                 href="tel:+84374716789"
-                className="hover:text-emerald-600 dark:hover:text-emerald-400 hover:underline transition-colors duration-200"
+                className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
               >
                 (+84) 374 716 789
               </a>
@@ -120,9 +95,10 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200/60 dark:border-slate-800/60 text-center">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          &copy; {new Date().getFullYear()} Onsite Chair Massage. All rights reserved.
+      
+      <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200 dark:border-slate-850 text-center">
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          &copy; {new Date().getFullYear()} Heli Smart Chair Corp. All rights reserved.
         </p>
       </div>
     </footer>
